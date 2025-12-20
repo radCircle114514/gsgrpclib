@@ -77,8 +77,13 @@ func InvokeRpcGetUserByRoleName(roleName string, ctx context.Context) ([]interfa
 	return userList, nil
 }
 
-func InvokeRpcGetUserDetailList(ctx context.Context) ([]map[string]interface{}, error) {
-	vo, err := client.InvokeWecomRPCMethod(ctx, "GetUserDetailList", &wecom_rpc.RequestAO{})
+func InvokeRpcGetUserDetailList(userID string, dataList []interface{}, ctx context.Context) ([]map[string]interface{}, error) {
+	data, _ := utils.ParseDataToAny(userID)
+	result, _ := utils.ParseDataListToAnyList(dataList)
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetUserDetailList", &wecom_rpc.RequestAO{
+		Data:     data,
+		DataList: result,
+	})
 	if err != nil {
 		return nil, err
 	}
