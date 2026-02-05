@@ -35,6 +35,7 @@ service BookingRPC {
   rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc GetGiftList(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
+  rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 }
 
 message ResponseVO {
