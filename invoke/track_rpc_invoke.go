@@ -4,12 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/iznilul/gsgrpclib/client"
 	track_rpc "github.com/iznilul/gsgrpclib/proto/track"
 	"github.com/iznilul/gsgrpclib/utils"
 	"github.com/mumushuiding/util"
 	"github.com/pkg/errors"
-	"strings"
 )
 
 func GenerateRequestAO(data interface{}, dataList []interface{}, map1 map[string]interface{}, mapList []map[string]interface{}) *track_rpc.RequestAO {
@@ -279,4 +281,31 @@ func InvokeRpcTrackSyncTrack(contentNo string, ctx context.Context) error {
 		return err
 	}
 	return nil
+}
+
+func InvokeRpcTrackQueryDataInTimeScope(table, column string, startTime, endTime *time.Time, filter map[string]interface{}, ctx context.Context) ([]map[string]interface{}, error) {
+	queryAO := map[string]interface{}{
+		"table":  table,
+		"column": column,
+		"filter": filter,
+	}
+	if startTime != nil {
+		queryAO["startTime"] = *startTime
+	}
+	if endTime != nil {
+		queryAO["endTime"] = *endTime
+	}
+	toAny, err := utils.ParseMapToAny(queryAO)
+	if err != nil {
+		return nil, err
+	}
+	ao := &track_rpc.RequestAO{
+		Map: toAny,
+	}
+	vo, err := client.InvokeTrackRPCMethod(ctx, "QueryDataInTimeScope", ao)
+	if err != nil {
+		return nil, err
+	}
+	mapList := utils.ParseAnyToMapList(vo.MapList)
+	return mapList, nil
 }

@@ -34,6 +34,7 @@ service TrackRPC {
   rpc FindHistoryTrackList (RequestAO) returns (ResponseVO) {}
   rpc SyncTrack (RequestAO) returns (ResponseVO) {}
   rpc FindContentNoListBySerialNumberList (RequestAO) returns (ResponseVO) {}
+  rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 }
 
 message NoParam {
