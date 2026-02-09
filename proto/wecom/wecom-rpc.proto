@@ -92,6 +92,7 @@ service WecomRPC {
   rpc SyncInternshipPlan(RequestAO) returns (ResponseVO) {}
   rpc UpdateSupplier(RequestAO) returns (ResponseVO) {}
   rpc UpdateUser(RequestAO) returns (ResponseVO) {}
+  rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {
