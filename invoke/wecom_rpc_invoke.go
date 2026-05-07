@@ -1039,3 +1039,12 @@ func InvokeWecomRpcQueryDataInTimeScope(table, column string, startTime, endTime
 	mapList := utils.ParseAnyToMapList(vo.MapList)
 	return mapList, nil
 }
+
+func InvokeRpcGetDepartmentTree(ctx context.Context) (map[string]interface{}, error) {
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetDepartmentTree", &wecom_rpc.RequestAO{})
+	if err != nil {
+		return nil, err
+	}
+	map1 := utils.ParseAnyToMap(vo.Map)
+	return map1, nil
+}

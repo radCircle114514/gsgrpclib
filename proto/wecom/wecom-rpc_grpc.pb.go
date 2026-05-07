@@ -102,6 +102,7 @@ const (
 	WecomRPC_UpdateSupplier_FullMethodName                  = "/wrpc.WecomRPC/UpdateSupplier"
 	WecomRPC_UpdateUser_FullMethodName                      = "/wrpc.WecomRPC/UpdateUser"
 	WecomRPC_QueryDataInTimeScope_FullMethodName            = "/wrpc.WecomRPC/QueryDataInTimeScope"
+	WecomRPC_GetDepartmentTree_FullMethodName               = "/wrpc.WecomRPC/GetDepartmentTree"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -177,6 +178,7 @@ type WecomRPCClient interface {
 	UpdateSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryDataInTimeScope(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -857,6 +859,16 @@ func (c *wecomRPCClient) QueryDataInTimeScope(ctx context.Context, in *RequestAO
 	return out, nil
 }
 
+func (c *wecomRPCClient) GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetDepartmentTree_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WecomRPCServer is the server API for WecomRPC service.
 // All implementations must embed UnimplementedWecomRPCServer
 // for forward compatibility.
@@ -930,6 +942,7 @@ type WecomRPCServer interface {
 	UpdateSupplier(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateUser(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error)
+	GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1140,6 +1153,9 @@ func (UnimplementedWecomRPCServer) UpdateUser(context.Context, *RequestAO) (*Res
 }
 func (UnimplementedWecomRPCServer) QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryDataInTimeScope not implemented")
+}
+func (UnimplementedWecomRPCServer) GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetDepartmentTree not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -2368,6 +2384,24 @@ func _WecomRPC_QueryDataInTimeScope_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_GetDepartmentTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetDepartmentTree(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetDepartmentTree_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetDepartmentTree(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WecomRPC_ServiceDesc is the grpc.ServiceDesc for WecomRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2642,6 +2676,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "QueryDataInTimeScope",
 			Handler:    _WecomRPC_QueryDataInTimeScope_Handler,
+		},
+		{
+			MethodName: "GetDepartmentTree",
+			Handler:    _WecomRPC_GetDepartmentTree_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

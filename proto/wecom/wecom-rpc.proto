@@ -93,6 +93,7 @@ service WecomRPC {
   rpc UpdateSupplier(RequestAO) returns (ResponseVO) {}
   rpc UpdateUser(RequestAO) returns (ResponseVO) {}
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
+  rpc GetDepartmentTree(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {
