@@ -26,74 +26,103 @@ package wrpc;
 
 // Interface exported by the server.
 service WecomRPC {
+  // User and Department
   rpc GetUserList(RequestAO) returns (ResponseVO) {}
   rpc GetAllUserList(RequestAO) returns (ResponseVO) {}
   rpc GetUserInfo(RequestAO) returns (ResponseVO) {}
   rpc SaveUserDetail(UserDetailAO) returns (ResponseVO) {}
   rpc GetUserDetailByUserID(RequestAO) returns (ResponseVO) {}
   rpc GetUserDetailList(RequestAO) returns (ResponseVO) {}
+  rpc ListUserByCond(RequestAO) returns (ResponseVO) {}
+  rpc UpdateUser(RequestAO) returns (ResponseVO) {}
+  rpc GetDepartmentTree(RequestAO) returns (ResponseVO) {}
+
+  // Role
   rpc GetRoleList(RequestAO) returns (ResponseVO) {}
   rpc GetRoleByUserID(RequestAO) returns (ResponseVO) {}
   rpc GetUserByRoleName(RequestAO) returns (ResponseVO) {}
+
+  // Customer
   rpc FindCustomerList(FindCustomerAO) returns (ResponseVO) {}
-  rpc FindCustomerGroupList(FindCustomerGroupAO) returns (ResponseVO) {}
   rpc FindCustomerCouldBeSelectedList(RequestAO) returns (ResponseVO) {}
   rpc AddCustomer(AddCustomerAO) returns (ResponseVO) {}
   rpc UpdateCustomerRemark(UpdateCustomerAO) returns (ResponseVO) {}
   rpc GetCustomerInRobotChat(GetCustomerInRobotChatAO) returns (ResponseVO) {}
+  rpc FlushCustomer(RequestAO) returns (ResponseVO) {}
+  rpc GetNeedNotifyCustomerList(RequestAO) returns (ResponseVO) {}
+  rpc FindClaimedCustomer(RequestAO) returns (ResponseVO) {}
+
+  // Customer Group
+  rpc FindCustomerGroupList(FindCustomerGroupAO) returns (ResponseVO) {}
   rpc GetCustomerGroup(GetCustomerGroupAO) returns (ResponseVO) {}
   rpc GetCustomerGroupList(GetCustomerGroupAO) returns (ResponseVO) {}
   rpc GetCustomerGroupChat(RequestAO) returns (ResponseVO) {}
   rpc GetCustomerGroupChatByChatID(RequestAO) returns (ResponseVO) {}
-  rpc FlushCustomer(RequestAO) returns (ResponseVO) {}
+  rpc QueryCustomerGroupByCond(OptionAO) returns (ResponseVO) {}
   rpc SyncCustomerGroup(RequestAO) returns (ResponseVO) {}
   rpc FlushCustomerGroup(RequestAO) returns (ResponseVO) {}
-  rpc QueryCustomerGroupByCond(OptionAO) returns (ResponseVO) {}
-  rpc SendTextMsg(RequestAO) returns (ResponseVO) {}
-  rpc SendWarnMsg(RequestAO) returns (ResponseVO) {}
+
+  // Account User
   rpc FindAccountUserList(FindAccountAO) returns (ResponseVO) {}
-  rpc SyncAccountUser(RequestAO) returns (ResponseVO) {}
-  rpc FlushAccountUser(RequestAO) returns (ResponseVO) {}
   rpc GetAccountUserList(RequestAO) returns (ResponseVO) {}
   rpc GetAccountUserListByOpenIDList(OpenIDListAO) returns (ResponseVO) {}
   rpc ModifyAccountUserRemark(ModifyRemarkAO) returns (ResponseVO) {}
   rpc GetAccountTagList(RequestAO) returns (ResponseVO) {}
+  rpc SyncAccountUser(RequestAO) returns (ResponseVO) {}
+  rpc FlushAccountUser(RequestAO) returns (ResponseVO) {}
   rpc GetOauthCallBackURL(RequestAO) returns (ResponseVO) {}
+
+  // Contact and Message
   rpc SyncContactWayList(RequestAO) returns (ResponseVO) {}
   rpc FlushContactWay(RequestAO) returns (ResponseVO) {}
+  rpc SendTextMsg(RequestAO) returns (ResponseVO) {}
+  rpc SendWarnMsg(RequestAO) returns (ResponseVO) {}
   rpc SendAccountTrackMsg(RequestAO) returns (ResponseVO) {}
   rpc SendAccountProcMsg(RequestAO) returns (ResponseVO) {}
-  rpc QueryFieldList(RequestAO) returns (ResponseVO) {}
+
+  // Supplier and Business Customer
   rpc FindSupplierList(RequestAO) returns (ResponseVO) {}
+  rpc QuerySupplierBySpNoList(RequestAO) returns (ResponseVO) {}
   rpc SyncSupplier(RequestAO) returns (ResponseVO) {}
+  rpc UpdateSupplier(RequestAO) returns (ResponseVO) {}
   rpc FindBusinessCustomerList(RequestAO) returns (ResponseVO) {}
+  rpc GetBusinessCustomer(RequestAO) returns (ResponseVO) {}
   rpc SyncBusinessCustomer(RequestAO) returns (ResponseVO) {}
   rpc UpdateBusinessCustomer(RequestAO) returns (ResponseVO) {}
+
+  // Metadata Query
+  rpc QueryFieldList(RequestAO) returns (ResponseVO) {}
   rpc FindEnumList(RequestAO) returns (ResponseVO) {}
   rpc QueryNameByType(RequestAO) returns (ResponseVO) {}
-  rpc GetBusinessCustomer(RequestAO) returns (ResponseVO) {}
-  rpc GetNeedNotifyCustomerList(RequestAO) returns (ResponseVO) {}
-  rpc FindClaimedCustomer(RequestAO) returns (ResponseVO) {}
+
+  // Point and Workday
   rpc SaveCustomerPointRecord(RequestAO) returns (ResponseVO) {}
   rpc GetCustomerPointRecord(RequestAO) returns (ResponseVO) {}
   rpc ListCustomerPointRecord(RequestAO) returns (ResponseVO) {}
-  rpc ListUserByCond(RequestAO) returns (ResponseVO) {}
   rpc JudgeTodayIsWorkday(RequestAO) returns (ResponseVO) {}
+
+  // Indicator and Report
   rpc QueryIndicatorCount(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorDetail(RequestAO) returns (ResponseVO) {}
+  rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
   rpc QueryHalfDayLeaveMap(RequestAO) returns (ResponseVO) {}
   rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc GenerateReportRecord(RequestAO) returns (ResponseVO) {}
+
+  // Training
   rpc SyncAcademy(RequestAO) returns (ResponseVO) {}
   rpc SyncTraining(RequestAO) returns (ResponseVO) {}
   rpc SyncCourse(RequestAO) returns (ResponseVO) {}
-  rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
-  rpc QuerySupplierBySpNoList(RequestAO) returns (ResponseVO) {}
   rpc SyncInternshipPlan(RequestAO) returns (ResponseVO) {}
-  rpc UpdateSupplier(RequestAO) returns (ResponseVO) {}
-  rpc UpdateUser(RequestAO) returns (ResponseVO) {}
+
+  // Time Scope Query
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
-  rpc GetDepartmentTree(RequestAO) returns (ResponseVO) {}
+
+  // Approval
+  rpc GetApprovalDetail(GetApprovalDetailAO) returns (ResponseVO) {}
+  rpc GetApprovalList(GetApprovalListAO) returns (ResponseVO) {}
+  rpc CreateApproval(CreateApprovalAO) returns (ResponseVO) {}
+  rpc GetApprovalTemplate(GetApprovalTemplateAO) returns (ResponseVO) {}
 }
 
 message MessageAO {
@@ -198,4 +227,21 @@ message ResponseVO {
 message KeyValue {
   string key = 1;
   google.protobuf.Any value = 2;
+}
+
+message GetApprovalDetailAO {
+  string spNo = 1;
+}
+
+message GetApprovalListAO {
+  int64 startTime = 1;
+  int64 endTime = 2;
+}
+
+message CreateApprovalAO {
+  string dataJson = 1;
+}
+
+message GetApprovalTemplateAO {
+  string templateID = 1;
 }

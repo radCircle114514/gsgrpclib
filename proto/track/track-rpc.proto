@@ -26,14 +26,21 @@ package trpc;
 
 // Interface exported by the server.
 service TrackRPC {
+  // Basic Query
   rpc QueryFieldList (RequestAO) returns (ResponseVO) {}
-  rpc SendSyncRequest (RequestAO) returns (ResponseVO) {}
   rpc FindStationList (RequestAO) returns (ResponseVO) {}
+
+  // Track Lifecycle
+  rpc SendSyncRequest (RequestAO) returns (ResponseVO) {}
   rpc FindOngoingTrackList (RequestAO) returns (ResponseVO) {}
-  rpc FinishTrack (RequestAO) returns (ResponseVO) {}
   rpc FindHistoryTrackList (RequestAO) returns (ResponseVO) {}
+  rpc FinishTrack (RequestAO) returns (ResponseVO) {}
   rpc SyncTrack (RequestAO) returns (ResponseVO) {}
+
+  // Content Query
   rpc FindContentNoListBySerialNumberList (RequestAO) returns (ResponseVO) {}
+
+  // Time Scope Query
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 }
 

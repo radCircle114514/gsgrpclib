@@ -26,20 +26,34 @@ package brpc;
 
 // Interface exported by the server.
 service BusinessRPC {
+  // Order
   rpc GenerateOrder(RequestAO) returns (ResponseVO) {}
   rpc FindOrderInfo(RequestAO) returns (ResponseVO) {}
+  rpc ListOrderInfo(RequestAO) returns (ResponseVO) {}
+
+  // Process
   rpc FindProcInstByChatID(RequestAO) returns (ResponseVO) {}
+
+  // Track
   rpc UpdateTrack(RequestAO) returns (ResponseVO) {}
+
+  // Content
   rpc FindContentNoList(RequestAO) returns (ResponseVO) {}
+
+  // Customer and Account Settings
   rpc UpdateNotifyMode(RequestAO) returns (ResponseVO) {}
   rpc UpdateCustomerRemark(RequestAO) returns (ResponseVO) {}
   rpc UpdateMiniAndAccount(RequestAO) returns (ResponseVO) {}
+
+  // Indicator and Report
   rpc QueryIndicatorCount(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorDetail(RequestAO) returns (ResponseVO) {}
-  rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
-  rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
+  rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc GenerateRecordInMonth(RequestAO) returns (ResponseVO) {}
+
+  // Profit Sync
+  rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
 }
 
 message IdentityLink {

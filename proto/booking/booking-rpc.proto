@@ -26,15 +26,22 @@ package borpc;
 
 // Interface exported by the server.
 service BookingRPC {
+  // Mini User
   rpc FindMiniUser(RequestAO) returns (ResponseVO) {}
   rpc FindMiniUserList(RequestAO) returns (ResponseVO) {}
   rpc FindMiniUserListByOpenIDList(RequestAO) returns (ResponseVO) {}
   rpc SendMiniMsg(RequestAO) returns (ResponseVO) {}
+
+  // Gift
+  rpc GetGiftList(RequestAO) returns (ResponseVO) {}
+
+  // Indicator and Statistics
   rpc QueryIndicatorCount(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorDetail(RequestAO) returns (ResponseVO) {}
-  rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
-  rpc GetGiftList(RequestAO) returns (ResponseVO) {}
   rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
+  rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
+
+  // Time Scope Query
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 }
 

@@ -41,68 +41,72 @@ const (
 	WecomRPC_SaveUserDetail_FullMethodName                  = "/wrpc.WecomRPC/SaveUserDetail"
 	WecomRPC_GetUserDetailByUserID_FullMethodName           = "/wrpc.WecomRPC/GetUserDetailByUserID"
 	WecomRPC_GetUserDetailList_FullMethodName               = "/wrpc.WecomRPC/GetUserDetailList"
+	WecomRPC_ListUserByCond_FullMethodName                  = "/wrpc.WecomRPC/ListUserByCond"
+	WecomRPC_UpdateUser_FullMethodName                      = "/wrpc.WecomRPC/UpdateUser"
+	WecomRPC_GetDepartmentTree_FullMethodName               = "/wrpc.WecomRPC/GetDepartmentTree"
 	WecomRPC_GetRoleList_FullMethodName                     = "/wrpc.WecomRPC/GetRoleList"
 	WecomRPC_GetRoleByUserID_FullMethodName                 = "/wrpc.WecomRPC/GetRoleByUserID"
 	WecomRPC_GetUserByRoleName_FullMethodName               = "/wrpc.WecomRPC/GetUserByRoleName"
 	WecomRPC_FindCustomerList_FullMethodName                = "/wrpc.WecomRPC/FindCustomerList"
-	WecomRPC_FindCustomerGroupList_FullMethodName           = "/wrpc.WecomRPC/FindCustomerGroupList"
 	WecomRPC_FindCustomerCouldBeSelectedList_FullMethodName = "/wrpc.WecomRPC/FindCustomerCouldBeSelectedList"
 	WecomRPC_AddCustomer_FullMethodName                     = "/wrpc.WecomRPC/AddCustomer"
 	WecomRPC_UpdateCustomerRemark_FullMethodName            = "/wrpc.WecomRPC/UpdateCustomerRemark"
 	WecomRPC_GetCustomerInRobotChat_FullMethodName          = "/wrpc.WecomRPC/GetCustomerInRobotChat"
+	WecomRPC_FlushCustomer_FullMethodName                   = "/wrpc.WecomRPC/FlushCustomer"
+	WecomRPC_GetNeedNotifyCustomerList_FullMethodName       = "/wrpc.WecomRPC/GetNeedNotifyCustomerList"
+	WecomRPC_FindClaimedCustomer_FullMethodName             = "/wrpc.WecomRPC/FindClaimedCustomer"
+	WecomRPC_FindCustomerGroupList_FullMethodName           = "/wrpc.WecomRPC/FindCustomerGroupList"
 	WecomRPC_GetCustomerGroup_FullMethodName                = "/wrpc.WecomRPC/GetCustomerGroup"
 	WecomRPC_GetCustomerGroupList_FullMethodName            = "/wrpc.WecomRPC/GetCustomerGroupList"
 	WecomRPC_GetCustomerGroupChat_FullMethodName            = "/wrpc.WecomRPC/GetCustomerGroupChat"
 	WecomRPC_GetCustomerGroupChatByChatID_FullMethodName    = "/wrpc.WecomRPC/GetCustomerGroupChatByChatID"
-	WecomRPC_FlushCustomer_FullMethodName                   = "/wrpc.WecomRPC/FlushCustomer"
+	WecomRPC_QueryCustomerGroupByCond_FullMethodName        = "/wrpc.WecomRPC/QueryCustomerGroupByCond"
 	WecomRPC_SyncCustomerGroup_FullMethodName               = "/wrpc.WecomRPC/SyncCustomerGroup"
 	WecomRPC_FlushCustomerGroup_FullMethodName              = "/wrpc.WecomRPC/FlushCustomerGroup"
-	WecomRPC_QueryCustomerGroupByCond_FullMethodName        = "/wrpc.WecomRPC/QueryCustomerGroupByCond"
-	WecomRPC_SendTextMsg_FullMethodName                     = "/wrpc.WecomRPC/SendTextMsg"
-	WecomRPC_SendWarnMsg_FullMethodName                     = "/wrpc.WecomRPC/SendWarnMsg"
 	WecomRPC_FindAccountUserList_FullMethodName             = "/wrpc.WecomRPC/FindAccountUserList"
-	WecomRPC_SyncAccountUser_FullMethodName                 = "/wrpc.WecomRPC/SyncAccountUser"
-	WecomRPC_FlushAccountUser_FullMethodName                = "/wrpc.WecomRPC/FlushAccountUser"
 	WecomRPC_GetAccountUserList_FullMethodName              = "/wrpc.WecomRPC/GetAccountUserList"
 	WecomRPC_GetAccountUserListByOpenIDList_FullMethodName  = "/wrpc.WecomRPC/GetAccountUserListByOpenIDList"
 	WecomRPC_ModifyAccountUserRemark_FullMethodName         = "/wrpc.WecomRPC/ModifyAccountUserRemark"
 	WecomRPC_GetAccountTagList_FullMethodName               = "/wrpc.WecomRPC/GetAccountTagList"
+	WecomRPC_SyncAccountUser_FullMethodName                 = "/wrpc.WecomRPC/SyncAccountUser"
+	WecomRPC_FlushAccountUser_FullMethodName                = "/wrpc.WecomRPC/FlushAccountUser"
 	WecomRPC_GetOauthCallBackURL_FullMethodName             = "/wrpc.WecomRPC/GetOauthCallBackURL"
 	WecomRPC_SyncContactWayList_FullMethodName              = "/wrpc.WecomRPC/SyncContactWayList"
 	WecomRPC_FlushContactWay_FullMethodName                 = "/wrpc.WecomRPC/FlushContactWay"
+	WecomRPC_SendTextMsg_FullMethodName                     = "/wrpc.WecomRPC/SendTextMsg"
+	WecomRPC_SendWarnMsg_FullMethodName                     = "/wrpc.WecomRPC/SendWarnMsg"
 	WecomRPC_SendAccountTrackMsg_FullMethodName             = "/wrpc.WecomRPC/SendAccountTrackMsg"
 	WecomRPC_SendAccountProcMsg_FullMethodName              = "/wrpc.WecomRPC/SendAccountProcMsg"
-	WecomRPC_QueryFieldList_FullMethodName                  = "/wrpc.WecomRPC/QueryFieldList"
 	WecomRPC_FindSupplierList_FullMethodName                = "/wrpc.WecomRPC/FindSupplierList"
+	WecomRPC_QuerySupplierBySpNoList_FullMethodName         = "/wrpc.WecomRPC/QuerySupplierBySpNoList"
 	WecomRPC_SyncSupplier_FullMethodName                    = "/wrpc.WecomRPC/SyncSupplier"
+	WecomRPC_UpdateSupplier_FullMethodName                  = "/wrpc.WecomRPC/UpdateSupplier"
 	WecomRPC_FindBusinessCustomerList_FullMethodName        = "/wrpc.WecomRPC/FindBusinessCustomerList"
+	WecomRPC_GetBusinessCustomer_FullMethodName             = "/wrpc.WecomRPC/GetBusinessCustomer"
 	WecomRPC_SyncBusinessCustomer_FullMethodName            = "/wrpc.WecomRPC/SyncBusinessCustomer"
 	WecomRPC_UpdateBusinessCustomer_FullMethodName          = "/wrpc.WecomRPC/UpdateBusinessCustomer"
+	WecomRPC_QueryFieldList_FullMethodName                  = "/wrpc.WecomRPC/QueryFieldList"
 	WecomRPC_FindEnumList_FullMethodName                    = "/wrpc.WecomRPC/FindEnumList"
 	WecomRPC_QueryNameByType_FullMethodName                 = "/wrpc.WecomRPC/QueryNameByType"
-	WecomRPC_GetBusinessCustomer_FullMethodName             = "/wrpc.WecomRPC/GetBusinessCustomer"
-	WecomRPC_GetNeedNotifyCustomerList_FullMethodName       = "/wrpc.WecomRPC/GetNeedNotifyCustomerList"
-	WecomRPC_FindClaimedCustomer_FullMethodName             = "/wrpc.WecomRPC/FindClaimedCustomer"
 	WecomRPC_SaveCustomerPointRecord_FullMethodName         = "/wrpc.WecomRPC/SaveCustomerPointRecord"
 	WecomRPC_GetCustomerPointRecord_FullMethodName          = "/wrpc.WecomRPC/GetCustomerPointRecord"
 	WecomRPC_ListCustomerPointRecord_FullMethodName         = "/wrpc.WecomRPC/ListCustomerPointRecord"
-	WecomRPC_ListUserByCond_FullMethodName                  = "/wrpc.WecomRPC/ListUserByCond"
 	WecomRPC_JudgeTodayIsWorkday_FullMethodName             = "/wrpc.WecomRPC/JudgeTodayIsWorkday"
 	WecomRPC_QueryIndicatorCount_FullMethodName             = "/wrpc.WecomRPC/QueryIndicatorCount"
 	WecomRPC_QueryIndicatorDetail_FullMethodName            = "/wrpc.WecomRPC/QueryIndicatorDetail"
+	WecomRPC_QueryIndicatorCountInBatch_FullMethodName      = "/wrpc.WecomRPC/QueryIndicatorCountInBatch"
 	WecomRPC_QueryHalfDayLeaveMap_FullMethodName            = "/wrpc.WecomRPC/QueryHalfDayLeaveMap"
 	WecomRPC_CalculateUserIndicator_FullMethodName          = "/wrpc.WecomRPC/CalculateUserIndicator"
 	WecomRPC_GenerateReportRecord_FullMethodName            = "/wrpc.WecomRPC/GenerateReportRecord"
 	WecomRPC_SyncAcademy_FullMethodName                     = "/wrpc.WecomRPC/SyncAcademy"
 	WecomRPC_SyncTraining_FullMethodName                    = "/wrpc.WecomRPC/SyncTraining"
 	WecomRPC_SyncCourse_FullMethodName                      = "/wrpc.WecomRPC/SyncCourse"
-	WecomRPC_QueryIndicatorCountInBatch_FullMethodName      = "/wrpc.WecomRPC/QueryIndicatorCountInBatch"
-	WecomRPC_QuerySupplierBySpNoList_FullMethodName         = "/wrpc.WecomRPC/QuerySupplierBySpNoList"
 	WecomRPC_SyncInternshipPlan_FullMethodName              = "/wrpc.WecomRPC/SyncInternshipPlan"
-	WecomRPC_UpdateSupplier_FullMethodName                  = "/wrpc.WecomRPC/UpdateSupplier"
-	WecomRPC_UpdateUser_FullMethodName                      = "/wrpc.WecomRPC/UpdateUser"
 	WecomRPC_QueryDataInTimeScope_FullMethodName            = "/wrpc.WecomRPC/QueryDataInTimeScope"
-	WecomRPC_GetDepartmentTree_FullMethodName               = "/wrpc.WecomRPC/GetDepartmentTree"
+	WecomRPC_GetApprovalDetail_FullMethodName               = "/wrpc.WecomRPC/GetApprovalDetail"
+	WecomRPC_GetApprovalList_FullMethodName                 = "/wrpc.WecomRPC/GetApprovalList"
+	WecomRPC_CreateApproval_FullMethodName                  = "/wrpc.WecomRPC/CreateApproval"
+	WecomRPC_GetApprovalTemplate_FullMethodName             = "/wrpc.WecomRPC/GetApprovalTemplate"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -111,74 +115,91 @@ const (
 //
 // Interface exported by the server.
 type WecomRPCClient interface {
+	// User and Department
 	GetUserList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetAllUserList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SaveUserDetail(ctx context.Context, in *UserDetailAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserDetailByUserID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserDetailList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Role
 	GetRoleList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetRoleByUserID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserByRoleName(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Customer
 	FindCustomerList(ctx context.Context, in *FindCustomerAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindCustomerGroupList(ctx context.Context, in *FindCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindCustomerCouldBeSelectedList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	AddCustomer(ctx context.Context, in *AddCustomerAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateCustomerRemark(ctx context.Context, in *UpdateCustomerAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerInRobotChat(ctx context.Context, in *GetCustomerInRobotChatAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetNeedNotifyCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindClaimedCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Customer Group
+	FindCustomerGroupList(ctx context.Context, in *FindCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerGroup(ctx context.Context, in *GetCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerGroupList(ctx context.Context, in *GetCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerGroupChat(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerGroupChatByChatID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FlushCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	QueryCustomerGroupByCond(ctx context.Context, in *OptionAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncCustomerGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FlushCustomerGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	QueryCustomerGroupByCond(ctx context.Context, in *OptionAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	SendTextMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	SendWarnMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Account User
 	FindAccountUserList(ctx context.Context, in *FindAccountAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	SyncAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FlushAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetAccountUserList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetAccountUserListByOpenIDList(ctx context.Context, in *OpenIDListAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	ModifyAccountUserRemark(ctx context.Context, in *ModifyRemarkAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetAccountTagList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	SyncAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetOauthCallBackURL(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Contact and Message
 	SyncContactWayList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FlushContactWay(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	SendTextMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	SendWarnMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SendAccountTrackMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SendAccountProcMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Supplier and Business Customer
 	FindSupplierList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	QuerySupplierBySpNoList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UpdateSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindBusinessCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Metadata Query
+	QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindEnumList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryNameByType(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	GetBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	GetNeedNotifyCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindClaimedCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Point and Workday
 	SaveCustomerPointRecord(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerPointRecord(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	ListCustomerPointRecord(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	JudgeTodayIsWorkday(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Indicator and Report
 	QueryIndicatorCount(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryIndicatorDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	QueryIndicatorCountInBatch(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryHalfDayLeaveMap(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	CalculateUserIndicator(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GenerateReportRecord(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Training
 	SyncAcademy(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncTraining(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncCourse(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	QueryIndicatorCountInBatch(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	QuerySupplierBySpNoList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncInternshipPlan(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	UpdateSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Time Scope Query
 	QueryDataInTimeScope(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Approval
+	GetApprovalDetail(ctx context.Context, in *GetApprovalDetailAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetApprovalList(ctx context.Context, in *GetApprovalListAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	CreateApproval(ctx context.Context, in *CreateApprovalAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetApprovalTemplate(ctx context.Context, in *GetApprovalTemplateAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -249,6 +270,36 @@ func (c *wecomRPCClient) GetUserDetailList(ctx context.Context, in *RequestAO, o
 	return out, nil
 }
 
+func (c *wecomRPCClient) ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_ListUserByCond_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetDepartmentTree_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) GetRoleList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -283,16 +334,6 @@ func (c *wecomRPCClient) FindCustomerList(ctx context.Context, in *FindCustomerA
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_FindCustomerList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) FindCustomerGroupList(ctx context.Context, in *FindCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FindCustomerGroupList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -339,6 +380,46 @@ func (c *wecomRPCClient) GetCustomerInRobotChat(ctx context.Context, in *GetCust
 	return out, nil
 }
 
+func (c *wecomRPCClient) FlushCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FlushCustomer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetNeedNotifyCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetNeedNotifyCustomerList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) FindClaimedCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FindClaimedCustomer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) FindCustomerGroupList(ctx context.Context, in *FindCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FindCustomerGroupList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) GetCustomerGroup(ctx context.Context, in *GetCustomerGroupAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -379,10 +460,10 @@ func (c *wecomRPCClient) GetCustomerGroupChatByChatID(ctx context.Context, in *R
 	return out, nil
 }
 
-func (c *wecomRPCClient) FlushCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) QueryCustomerGroupByCond(ctx context.Context, in *OptionAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FlushCustomer_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, WecomRPC_QueryCustomerGroupByCond_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -409,60 +490,10 @@ func (c *wecomRPCClient) FlushCustomerGroup(ctx context.Context, in *RequestAO, 
 	return out, nil
 }
 
-func (c *wecomRPCClient) QueryCustomerGroupByCond(ctx context.Context, in *OptionAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_QueryCustomerGroupByCond_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) SendTextMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_SendTextMsg_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) SendWarnMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_SendWarnMsg_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *wecomRPCClient) FindAccountUserList(ctx context.Context, in *FindAccountAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_FindAccountUserList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) SyncAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_SyncAccountUser_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) FlushAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FlushAccountUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -509,6 +540,26 @@ func (c *wecomRPCClient) GetAccountTagList(ctx context.Context, in *RequestAO, o
 	return out, nil
 }
 
+func (c *wecomRPCClient) SyncAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_SyncAccountUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) FlushAccountUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FlushAccountUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) GetOauthCallBackURL(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -539,6 +590,26 @@ func (c *wecomRPCClient) FlushContactWay(ctx context.Context, in *RequestAO, opt
 	return out, nil
 }
 
+func (c *wecomRPCClient) SendTextMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_SendTextMsg_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) SendWarnMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_SendWarnMsg_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) SendAccountTrackMsg(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -559,20 +630,20 @@ func (c *wecomRPCClient) SendAccountProcMsg(ctx context.Context, in *RequestAO, 
 	return out, nil
 }
 
-func (c *wecomRPCClient) QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) FindSupplierList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_QueryFieldList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, WecomRPC_FindSupplierList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wecomRPCClient) FindSupplierList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) QuerySupplierBySpNoList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FindSupplierList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, WecomRPC_QuerySupplierBySpNoList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -589,10 +660,30 @@ func (c *wecomRPCClient) SyncSupplier(ctx context.Context, in *RequestAO, opts .
 	return out, nil
 }
 
+func (c *wecomRPCClient) UpdateSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UpdateSupplier_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) FindBusinessCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_FindBusinessCustomerList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetBusinessCustomer_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -619,6 +710,16 @@ func (c *wecomRPCClient) UpdateBusinessCustomer(ctx context.Context, in *Request
 	return out, nil
 }
 
+func (c *wecomRPCClient) QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_QueryFieldList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wecomRPCClient) FindEnumList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -633,36 +734,6 @@ func (c *wecomRPCClient) QueryNameByType(ctx context.Context, in *RequestAO, opt
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_QueryNameByType_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) GetBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_GetBusinessCustomer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) GetNeedNotifyCustomerList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_GetNeedNotifyCustomerList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) FindClaimedCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FindClaimedCustomer_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -699,16 +770,6 @@ func (c *wecomRPCClient) ListCustomerPointRecord(ctx context.Context, in *Reques
 	return out, nil
 }
 
-func (c *wecomRPCClient) ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_ListUserByCond_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *wecomRPCClient) JudgeTodayIsWorkday(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -733,6 +794,16 @@ func (c *wecomRPCClient) QueryIndicatorDetail(ctx context.Context, in *RequestAO
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_QueryIndicatorDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) QueryIndicatorCountInBatch(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_QueryIndicatorCountInBatch_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -799,50 +870,10 @@ func (c *wecomRPCClient) SyncCourse(ctx context.Context, in *RequestAO, opts ...
 	return out, nil
 }
 
-func (c *wecomRPCClient) QueryIndicatorCountInBatch(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_QueryIndicatorCountInBatch_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) QuerySupplierBySpNoList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_QuerySupplierBySpNoList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *wecomRPCClient) SyncInternshipPlan(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_SyncInternshipPlan_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) UpdateSupplier(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_UpdateSupplier_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_UpdateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -859,10 +890,40 @@ func (c *wecomRPCClient) QueryDataInTimeScope(ctx context.Context, in *RequestAO
 	return out, nil
 }
 
-func (c *wecomRPCClient) GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) GetApprovalDetail(ctx context.Context, in *GetApprovalDetailAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_GetDepartmentTree_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetApprovalList(ctx context.Context, in *GetApprovalListAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) CreateApproval(ctx context.Context, in *CreateApprovalAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_CreateApproval_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetApprovalTemplate(ctx context.Context, in *GetApprovalTemplateAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -875,74 +936,91 @@ func (c *wecomRPCClient) GetDepartmentTree(ctx context.Context, in *RequestAO, o
 //
 // Interface exported by the server.
 type WecomRPCServer interface {
+	// User and Department
 	GetUserList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetAllUserList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetUserInfo(context.Context, *RequestAO) (*ResponseVO, error)
 	SaveUserDetail(context.Context, *UserDetailAO) (*ResponseVO, error)
 	GetUserDetailByUserID(context.Context, *RequestAO) (*ResponseVO, error)
 	GetUserDetailList(context.Context, *RequestAO) (*ResponseVO, error)
+	ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error)
+	UpdateUser(context.Context, *RequestAO) (*ResponseVO, error)
+	GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error)
+	// Role
 	GetRoleList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetRoleByUserID(context.Context, *RequestAO) (*ResponseVO, error)
 	GetUserByRoleName(context.Context, *RequestAO) (*ResponseVO, error)
+	// Customer
 	FindCustomerList(context.Context, *FindCustomerAO) (*ResponseVO, error)
-	FindCustomerGroupList(context.Context, *FindCustomerGroupAO) (*ResponseVO, error)
 	FindCustomerCouldBeSelectedList(context.Context, *RequestAO) (*ResponseVO, error)
 	AddCustomer(context.Context, *AddCustomerAO) (*ResponseVO, error)
 	UpdateCustomerRemark(context.Context, *UpdateCustomerAO) (*ResponseVO, error)
 	GetCustomerInRobotChat(context.Context, *GetCustomerInRobotChatAO) (*ResponseVO, error)
+	FlushCustomer(context.Context, *RequestAO) (*ResponseVO, error)
+	GetNeedNotifyCustomerList(context.Context, *RequestAO) (*ResponseVO, error)
+	FindClaimedCustomer(context.Context, *RequestAO) (*ResponseVO, error)
+	// Customer Group
+	FindCustomerGroupList(context.Context, *FindCustomerGroupAO) (*ResponseVO, error)
 	GetCustomerGroup(context.Context, *GetCustomerGroupAO) (*ResponseVO, error)
 	GetCustomerGroupList(context.Context, *GetCustomerGroupAO) (*ResponseVO, error)
 	GetCustomerGroupChat(context.Context, *RequestAO) (*ResponseVO, error)
 	GetCustomerGroupChatByChatID(context.Context, *RequestAO) (*ResponseVO, error)
-	FlushCustomer(context.Context, *RequestAO) (*ResponseVO, error)
+	QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error)
 	SyncCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error)
 	FlushCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error)
-	QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error)
-	SendTextMsg(context.Context, *RequestAO) (*ResponseVO, error)
-	SendWarnMsg(context.Context, *RequestAO) (*ResponseVO, error)
+	// Account User
 	FindAccountUserList(context.Context, *FindAccountAO) (*ResponseVO, error)
-	SyncAccountUser(context.Context, *RequestAO) (*ResponseVO, error)
-	FlushAccountUser(context.Context, *RequestAO) (*ResponseVO, error)
 	GetAccountUserList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetAccountUserListByOpenIDList(context.Context, *OpenIDListAO) (*ResponseVO, error)
 	ModifyAccountUserRemark(context.Context, *ModifyRemarkAO) (*ResponseVO, error)
 	GetAccountTagList(context.Context, *RequestAO) (*ResponseVO, error)
+	SyncAccountUser(context.Context, *RequestAO) (*ResponseVO, error)
+	FlushAccountUser(context.Context, *RequestAO) (*ResponseVO, error)
 	GetOauthCallBackURL(context.Context, *RequestAO) (*ResponseVO, error)
+	// Contact and Message
 	SyncContactWayList(context.Context, *RequestAO) (*ResponseVO, error)
 	FlushContactWay(context.Context, *RequestAO) (*ResponseVO, error)
+	SendTextMsg(context.Context, *RequestAO) (*ResponseVO, error)
+	SendWarnMsg(context.Context, *RequestAO) (*ResponseVO, error)
 	SendAccountTrackMsg(context.Context, *RequestAO) (*ResponseVO, error)
 	SendAccountProcMsg(context.Context, *RequestAO) (*ResponseVO, error)
-	QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error)
+	// Supplier and Business Customer
 	FindSupplierList(context.Context, *RequestAO) (*ResponseVO, error)
+	QuerySupplierBySpNoList(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncSupplier(context.Context, *RequestAO) (*ResponseVO, error)
+	UpdateSupplier(context.Context, *RequestAO) (*ResponseVO, error)
 	FindBusinessCustomerList(context.Context, *RequestAO) (*ResponseVO, error)
+	GetBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error)
+	// Metadata Query
+	QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error)
 	FindEnumList(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryNameByType(context.Context, *RequestAO) (*ResponseVO, error)
-	GetBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error)
-	GetNeedNotifyCustomerList(context.Context, *RequestAO) (*ResponseVO, error)
-	FindClaimedCustomer(context.Context, *RequestAO) (*ResponseVO, error)
+	// Point and Workday
 	SaveCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error)
 	GetCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error)
 	ListCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error)
-	ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error)
 	JudgeTodayIsWorkday(context.Context, *RequestAO) (*ResponseVO, error)
+	// Indicator and Report
 	QueryIndicatorCount(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryIndicatorDetail(context.Context, *RequestAO) (*ResponseVO, error)
+	QueryIndicatorCountInBatch(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryHalfDayLeaveMap(context.Context, *RequestAO) (*ResponseVO, error)
 	CalculateUserIndicator(context.Context, *RequestAO) (*ResponseVO, error)
 	GenerateReportRecord(context.Context, *RequestAO) (*ResponseVO, error)
+	// Training
 	SyncAcademy(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncTraining(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncCourse(context.Context, *RequestAO) (*ResponseVO, error)
-	QueryIndicatorCountInBatch(context.Context, *RequestAO) (*ResponseVO, error)
-	QuerySupplierBySpNoList(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncInternshipPlan(context.Context, *RequestAO) (*ResponseVO, error)
-	UpdateSupplier(context.Context, *RequestAO) (*ResponseVO, error)
-	UpdateUser(context.Context, *RequestAO) (*ResponseVO, error)
+	// Time Scope Query
 	QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error)
-	GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error)
+	// Approval
+	GetApprovalDetail(context.Context, *GetApprovalDetailAO) (*ResponseVO, error)
+	GetApprovalList(context.Context, *GetApprovalListAO) (*ResponseVO, error)
+	CreateApproval(context.Context, *CreateApprovalAO) (*ResponseVO, error)
+	GetApprovalTemplate(context.Context, *GetApprovalTemplateAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -971,6 +1049,15 @@ func (UnimplementedWecomRPCServer) GetUserDetailByUserID(context.Context, *Reque
 func (UnimplementedWecomRPCServer) GetUserDetailList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUserDetailList not implemented")
 }
+func (UnimplementedWecomRPCServer) ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListUserByCond not implemented")
+}
+func (UnimplementedWecomRPCServer) UpdateUser(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (UnimplementedWecomRPCServer) GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetDepartmentTree not implemented")
+}
 func (UnimplementedWecomRPCServer) GetRoleList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetRoleList not implemented")
 }
@@ -982,9 +1069,6 @@ func (UnimplementedWecomRPCServer) GetUserByRoleName(context.Context, *RequestAO
 }
 func (UnimplementedWecomRPCServer) FindCustomerList(context.Context, *FindCustomerAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindCustomerList not implemented")
-}
-func (UnimplementedWecomRPCServer) FindCustomerGroupList(context.Context, *FindCustomerGroupAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindCustomerGroupList not implemented")
 }
 func (UnimplementedWecomRPCServer) FindCustomerCouldBeSelectedList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindCustomerCouldBeSelectedList not implemented")
@@ -998,6 +1082,18 @@ func (UnimplementedWecomRPCServer) UpdateCustomerRemark(context.Context, *Update
 func (UnimplementedWecomRPCServer) GetCustomerInRobotChat(context.Context, *GetCustomerInRobotChatAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetCustomerInRobotChat not implemented")
 }
+func (UnimplementedWecomRPCServer) FlushCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushCustomer not implemented")
+}
+func (UnimplementedWecomRPCServer) GetNeedNotifyCustomerList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetNeedNotifyCustomerList not implemented")
+}
+func (UnimplementedWecomRPCServer) FindClaimedCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindClaimedCustomer not implemented")
+}
+func (UnimplementedWecomRPCServer) FindCustomerGroupList(context.Context, *FindCustomerGroupAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindCustomerGroupList not implemented")
+}
 func (UnimplementedWecomRPCServer) GetCustomerGroup(context.Context, *GetCustomerGroupAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetCustomerGroup not implemented")
 }
@@ -1010,8 +1106,8 @@ func (UnimplementedWecomRPCServer) GetCustomerGroupChat(context.Context, *Reques
 func (UnimplementedWecomRPCServer) GetCustomerGroupChatByChatID(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetCustomerGroupChatByChatID not implemented")
 }
-func (UnimplementedWecomRPCServer) FlushCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FlushCustomer not implemented")
+func (UnimplementedWecomRPCServer) QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method QueryCustomerGroupByCond not implemented")
 }
 func (UnimplementedWecomRPCServer) SyncCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncCustomerGroup not implemented")
@@ -1019,23 +1115,8 @@ func (UnimplementedWecomRPCServer) SyncCustomerGroup(context.Context, *RequestAO
 func (UnimplementedWecomRPCServer) FlushCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FlushCustomerGroup not implemented")
 }
-func (UnimplementedWecomRPCServer) QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method QueryCustomerGroupByCond not implemented")
-}
-func (UnimplementedWecomRPCServer) SendTextMsg(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SendTextMsg not implemented")
-}
-func (UnimplementedWecomRPCServer) SendWarnMsg(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SendWarnMsg not implemented")
-}
 func (UnimplementedWecomRPCServer) FindAccountUserList(context.Context, *FindAccountAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindAccountUserList not implemented")
-}
-func (UnimplementedWecomRPCServer) SyncAccountUser(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SyncAccountUser not implemented")
-}
-func (UnimplementedWecomRPCServer) FlushAccountUser(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FlushAccountUser not implemented")
 }
 func (UnimplementedWecomRPCServer) GetAccountUserList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAccountUserList not implemented")
@@ -1049,6 +1130,12 @@ func (UnimplementedWecomRPCServer) ModifyAccountUserRemark(context.Context, *Mod
 func (UnimplementedWecomRPCServer) GetAccountTagList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAccountTagList not implemented")
 }
+func (UnimplementedWecomRPCServer) SyncAccountUser(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SyncAccountUser not implemented")
+}
+func (UnimplementedWecomRPCServer) FlushAccountUser(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushAccountUser not implemented")
+}
 func (UnimplementedWecomRPCServer) GetOauthCallBackURL(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetOauthCallBackURL not implemented")
 }
@@ -1058,23 +1145,35 @@ func (UnimplementedWecomRPCServer) SyncContactWayList(context.Context, *RequestA
 func (UnimplementedWecomRPCServer) FlushContactWay(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FlushContactWay not implemented")
 }
+func (UnimplementedWecomRPCServer) SendTextMsg(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendTextMsg not implemented")
+}
+func (UnimplementedWecomRPCServer) SendWarnMsg(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendWarnMsg not implemented")
+}
 func (UnimplementedWecomRPCServer) SendAccountTrackMsg(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendAccountTrackMsg not implemented")
 }
 func (UnimplementedWecomRPCServer) SendAccountProcMsg(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendAccountProcMsg not implemented")
 }
-func (UnimplementedWecomRPCServer) QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method QueryFieldList not implemented")
-}
 func (UnimplementedWecomRPCServer) FindSupplierList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindSupplierList not implemented")
+}
+func (UnimplementedWecomRPCServer) QuerySupplierBySpNoList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method QuerySupplierBySpNoList not implemented")
 }
 func (UnimplementedWecomRPCServer) SyncSupplier(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncSupplier not implemented")
 }
+func (UnimplementedWecomRPCServer) UpdateSupplier(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateSupplier not implemented")
+}
 func (UnimplementedWecomRPCServer) FindBusinessCustomerList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindBusinessCustomerList not implemented")
+}
+func (UnimplementedWecomRPCServer) GetBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetBusinessCustomer not implemented")
 }
 func (UnimplementedWecomRPCServer) SyncBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncBusinessCustomer not implemented")
@@ -1082,20 +1181,14 @@ func (UnimplementedWecomRPCServer) SyncBusinessCustomer(context.Context, *Reques
 func (UnimplementedWecomRPCServer) UpdateBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateBusinessCustomer not implemented")
 }
+func (UnimplementedWecomRPCServer) QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method QueryFieldList not implemented")
+}
 func (UnimplementedWecomRPCServer) FindEnumList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindEnumList not implemented")
 }
 func (UnimplementedWecomRPCServer) QueryNameByType(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryNameByType not implemented")
-}
-func (UnimplementedWecomRPCServer) GetBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetBusinessCustomer not implemented")
-}
-func (UnimplementedWecomRPCServer) GetNeedNotifyCustomerList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetNeedNotifyCustomerList not implemented")
-}
-func (UnimplementedWecomRPCServer) FindClaimedCustomer(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindClaimedCustomer not implemented")
 }
 func (UnimplementedWecomRPCServer) SaveCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SaveCustomerPointRecord not implemented")
@@ -1106,9 +1199,6 @@ func (UnimplementedWecomRPCServer) GetCustomerPointRecord(context.Context, *Requ
 func (UnimplementedWecomRPCServer) ListCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListCustomerPointRecord not implemented")
 }
-func (UnimplementedWecomRPCServer) ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method ListUserByCond not implemented")
-}
 func (UnimplementedWecomRPCServer) JudgeTodayIsWorkday(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method JudgeTodayIsWorkday not implemented")
 }
@@ -1117,6 +1207,9 @@ func (UnimplementedWecomRPCServer) QueryIndicatorCount(context.Context, *Request
 }
 func (UnimplementedWecomRPCServer) QueryIndicatorDetail(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryIndicatorDetail not implemented")
+}
+func (UnimplementedWecomRPCServer) QueryIndicatorCountInBatch(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method QueryIndicatorCountInBatch not implemented")
 }
 func (UnimplementedWecomRPCServer) QueryHalfDayLeaveMap(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryHalfDayLeaveMap not implemented")
@@ -1136,26 +1229,23 @@ func (UnimplementedWecomRPCServer) SyncTraining(context.Context, *RequestAO) (*R
 func (UnimplementedWecomRPCServer) SyncCourse(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncCourse not implemented")
 }
-func (UnimplementedWecomRPCServer) QueryIndicatorCountInBatch(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method QueryIndicatorCountInBatch not implemented")
-}
-func (UnimplementedWecomRPCServer) QuerySupplierBySpNoList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method QuerySupplierBySpNoList not implemented")
-}
 func (UnimplementedWecomRPCServer) SyncInternshipPlan(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncInternshipPlan not implemented")
-}
-func (UnimplementedWecomRPCServer) UpdateSupplier(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method UpdateSupplier not implemented")
-}
-func (UnimplementedWecomRPCServer) UpdateUser(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method UpdateUser not implemented")
 }
 func (UnimplementedWecomRPCServer) QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryDataInTimeScope not implemented")
 }
-func (UnimplementedWecomRPCServer) GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetDepartmentTree not implemented")
+func (UnimplementedWecomRPCServer) GetApprovalDetail(context.Context, *GetApprovalDetailAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetApprovalDetail not implemented")
+}
+func (UnimplementedWecomRPCServer) GetApprovalList(context.Context, *GetApprovalListAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetApprovalList not implemented")
+}
+func (UnimplementedWecomRPCServer) CreateApproval(context.Context, *CreateApprovalAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateApproval not implemented")
+}
+func (UnimplementedWecomRPCServer) GetApprovalTemplate(context.Context, *GetApprovalTemplateAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetApprovalTemplate not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -1286,6 +1376,60 @@ func _WecomRPC_GetUserDetailList_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_ListUserByCond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).ListUserByCond(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_ListUserByCond_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).ListUserByCond(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UpdateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UpdateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UpdateUser(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetDepartmentTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetDepartmentTree(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetDepartmentTree_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetDepartmentTree(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_GetRoleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1354,24 +1498,6 @@ func _WecomRPC_FindCustomerList_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).FindCustomerList(ctx, req.(*FindCustomerAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_FindCustomerGroupList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FindCustomerGroupAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).FindCustomerGroupList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_FindCustomerGroupList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).FindCustomerGroupList(ctx, req.(*FindCustomerGroupAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1448,6 +1574,78 @@ func _WecomRPC_GetCustomerInRobotChat_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_FlushCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FlushCustomer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FlushCustomer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FlushCustomer(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetNeedNotifyCustomerList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetNeedNotifyCustomerList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetNeedNotifyCustomerList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetNeedNotifyCustomerList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_FindClaimedCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FindClaimedCustomer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FindClaimedCustomer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FindClaimedCustomer(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_FindCustomerGroupList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindCustomerGroupAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FindCustomerGroupList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FindCustomerGroupList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FindCustomerGroupList(ctx, req.(*FindCustomerGroupAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_GetCustomerGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetCustomerGroupAO)
 	if err := dec(in); err != nil {
@@ -1520,20 +1718,20 @@ func _WecomRPC_GetCustomerGroupChatByChatID_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_FlushCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
+func _WecomRPC_QueryCustomerGroupByCond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OptionAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WecomRPCServer).FlushCustomer(ctx, in)
+		return srv.(WecomRPCServer).QueryCustomerGroupByCond(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: WecomRPC_FlushCustomer_FullMethodName,
+		FullMethod: WecomRPC_QueryCustomerGroupByCond_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).FlushCustomer(ctx, req.(*RequestAO))
+		return srv.(WecomRPCServer).QueryCustomerGroupByCond(ctx, req.(*OptionAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1574,60 +1772,6 @@ func _WecomRPC_FlushCustomerGroup_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_QueryCustomerGroupByCond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OptionAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).QueryCustomerGroupByCond(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_QueryCustomerGroupByCond_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).QueryCustomerGroupByCond(ctx, req.(*OptionAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_SendTextMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).SendTextMsg(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_SendTextMsg_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).SendTextMsg(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_SendWarnMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).SendWarnMsg(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_SendWarnMsg_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).SendWarnMsg(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _WecomRPC_FindAccountUserList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindAccountAO)
 	if err := dec(in); err != nil {
@@ -1642,42 +1786,6 @@ func _WecomRPC_FindAccountUserList_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).FindAccountUserList(ctx, req.(*FindAccountAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_SyncAccountUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).SyncAccountUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_SyncAccountUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).SyncAccountUser(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_FlushAccountUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).FlushAccountUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_FlushAccountUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).FlushAccountUser(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1754,6 +1862,42 @@ func _WecomRPC_GetAccountTagList_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_SyncAccountUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).SyncAccountUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_SyncAccountUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).SyncAccountUser(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_FlushAccountUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FlushAccountUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FlushAccountUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FlushAccountUser(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_GetOauthCallBackURL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1808,6 +1952,42 @@ func _WecomRPC_FlushContactWay_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_SendTextMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).SendTextMsg(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_SendTextMsg_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).SendTextMsg(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_SendWarnMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).SendWarnMsg(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_SendWarnMsg_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).SendWarnMsg(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_SendAccountTrackMsg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1844,24 +2024,6 @@ func _WecomRPC_SendAccountProcMsg_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_QueryFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).QueryFieldList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_QueryFieldList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).QueryFieldList(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _WecomRPC_FindSupplierList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1876,6 +2038,24 @@ func _WecomRPC_FindSupplierList_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).FindSupplierList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_QuerySupplierBySpNoList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).QuerySupplierBySpNoList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_QuerySupplierBySpNoList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).QuerySupplierBySpNoList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1898,6 +2078,24 @@ func _WecomRPC_SyncSupplier_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_UpdateSupplier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UpdateSupplier(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UpdateSupplier_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UpdateSupplier(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_FindBusinessCustomerList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1912,6 +2110,24 @@ func _WecomRPC_FindBusinessCustomerList_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).FindBusinessCustomerList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetBusinessCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetBusinessCustomer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetBusinessCustomer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetBusinessCustomer(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1952,6 +2168,24 @@ func _WecomRPC_UpdateBusinessCustomer_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_QueryFieldList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).QueryFieldList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_QueryFieldList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).QueryFieldList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WecomRPC_FindEnumList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -1984,60 +2218,6 @@ func _WecomRPC_QueryNameByType_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).QueryNameByType(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_GetBusinessCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).GetBusinessCustomer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_GetBusinessCustomer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetBusinessCustomer(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_GetNeedNotifyCustomerList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).GetNeedNotifyCustomerList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_GetNeedNotifyCustomerList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetNeedNotifyCustomerList(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_FindClaimedCustomer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).FindClaimedCustomer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_FindClaimedCustomer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).FindClaimedCustomer(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2096,24 +2276,6 @@ func _WecomRPC_ListCustomerPointRecord_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_ListUserByCond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).ListUserByCond(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_ListUserByCond_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).ListUserByCond(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _WecomRPC_JudgeTodayIsWorkday_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -2164,6 +2326,24 @@ func _WecomRPC_QueryIndicatorDetail_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).QueryIndicatorDetail(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_QueryIndicatorCountInBatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).QueryIndicatorCountInBatch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_QueryIndicatorCountInBatch_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).QueryIndicatorCountInBatch(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2276,42 +2456,6 @@ func _WecomRPC_SyncCourse_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_QueryIndicatorCountInBatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).QueryIndicatorCountInBatch(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_QueryIndicatorCountInBatch_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).QueryIndicatorCountInBatch(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_QuerySupplierBySpNoList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).QuerySupplierBySpNoList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_QuerySupplierBySpNoList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).QuerySupplierBySpNoList(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _WecomRPC_SyncInternshipPlan_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -2326,42 +2470,6 @@ func _WecomRPC_SyncInternshipPlan_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).SyncInternshipPlan(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_UpdateSupplier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).UpdateSupplier(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_UpdateSupplier_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).UpdateSupplier(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).UpdateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_UpdateUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).UpdateUser(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2384,20 +2492,74 @@ func _WecomRPC_QueryDataInTimeScope_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_GetDepartmentTree_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
+func _WecomRPC_GetApprovalDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetApprovalDetailAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WecomRPCServer).GetDepartmentTree(ctx, in)
+		return srv.(WecomRPCServer).GetApprovalDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: WecomRPC_GetDepartmentTree_FullMethodName,
+		FullMethod: WecomRPC_GetApprovalDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetDepartmentTree(ctx, req.(*RequestAO))
+		return srv.(WecomRPCServer).GetApprovalDetail(ctx, req.(*GetApprovalDetailAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetApprovalList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetApprovalListAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetApprovalList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetApprovalList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetApprovalList(ctx, req.(*GetApprovalListAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_CreateApproval_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateApprovalAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).CreateApproval(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_CreateApproval_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).CreateApproval(ctx, req.(*CreateApprovalAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetApprovalTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetApprovalTemplateAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetApprovalTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetApprovalTemplate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetApprovalTemplate(ctx, req.(*GetApprovalTemplateAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2434,6 +2596,18 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_GetUserDetailList_Handler,
 		},
 		{
+			MethodName: "ListUserByCond",
+			Handler:    _WecomRPC_ListUserByCond_Handler,
+		},
+		{
+			MethodName: "UpdateUser",
+			Handler:    _WecomRPC_UpdateUser_Handler,
+		},
+		{
+			MethodName: "GetDepartmentTree",
+			Handler:    _WecomRPC_GetDepartmentTree_Handler,
+		},
+		{
 			MethodName: "GetRoleList",
 			Handler:    _WecomRPC_GetRoleList_Handler,
 		},
@@ -2448,10 +2622,6 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindCustomerList",
 			Handler:    _WecomRPC_FindCustomerList_Handler,
-		},
-		{
-			MethodName: "FindCustomerGroupList",
-			Handler:    _WecomRPC_FindCustomerGroupList_Handler,
 		},
 		{
 			MethodName: "FindCustomerCouldBeSelectedList",
@@ -2470,6 +2640,22 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_GetCustomerInRobotChat_Handler,
 		},
 		{
+			MethodName: "FlushCustomer",
+			Handler:    _WecomRPC_FlushCustomer_Handler,
+		},
+		{
+			MethodName: "GetNeedNotifyCustomerList",
+			Handler:    _WecomRPC_GetNeedNotifyCustomerList_Handler,
+		},
+		{
+			MethodName: "FindClaimedCustomer",
+			Handler:    _WecomRPC_FindClaimedCustomer_Handler,
+		},
+		{
+			MethodName: "FindCustomerGroupList",
+			Handler:    _WecomRPC_FindCustomerGroupList_Handler,
+		},
+		{
 			MethodName: "GetCustomerGroup",
 			Handler:    _WecomRPC_GetCustomerGroup_Handler,
 		},
@@ -2486,8 +2672,8 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_GetCustomerGroupChatByChatID_Handler,
 		},
 		{
-			MethodName: "FlushCustomer",
-			Handler:    _WecomRPC_FlushCustomer_Handler,
+			MethodName: "QueryCustomerGroupByCond",
+			Handler:    _WecomRPC_QueryCustomerGroupByCond_Handler,
 		},
 		{
 			MethodName: "SyncCustomerGroup",
@@ -2498,28 +2684,8 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_FlushCustomerGroup_Handler,
 		},
 		{
-			MethodName: "QueryCustomerGroupByCond",
-			Handler:    _WecomRPC_QueryCustomerGroupByCond_Handler,
-		},
-		{
-			MethodName: "SendTextMsg",
-			Handler:    _WecomRPC_SendTextMsg_Handler,
-		},
-		{
-			MethodName: "SendWarnMsg",
-			Handler:    _WecomRPC_SendWarnMsg_Handler,
-		},
-		{
 			MethodName: "FindAccountUserList",
 			Handler:    _WecomRPC_FindAccountUserList_Handler,
-		},
-		{
-			MethodName: "SyncAccountUser",
-			Handler:    _WecomRPC_SyncAccountUser_Handler,
-		},
-		{
-			MethodName: "FlushAccountUser",
-			Handler:    _WecomRPC_FlushAccountUser_Handler,
 		},
 		{
 			MethodName: "GetAccountUserList",
@@ -2538,6 +2704,14 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_GetAccountTagList_Handler,
 		},
 		{
+			MethodName: "SyncAccountUser",
+			Handler:    _WecomRPC_SyncAccountUser_Handler,
+		},
+		{
+			MethodName: "FlushAccountUser",
+			Handler:    _WecomRPC_FlushAccountUser_Handler,
+		},
+		{
 			MethodName: "GetOauthCallBackURL",
 			Handler:    _WecomRPC_GetOauthCallBackURL_Handler,
 		},
@@ -2550,6 +2724,14 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_FlushContactWay_Handler,
 		},
 		{
+			MethodName: "SendTextMsg",
+			Handler:    _WecomRPC_SendTextMsg_Handler,
+		},
+		{
+			MethodName: "SendWarnMsg",
+			Handler:    _WecomRPC_SendWarnMsg_Handler,
+		},
+		{
 			MethodName: "SendAccountTrackMsg",
 			Handler:    _WecomRPC_SendAccountTrackMsg_Handler,
 		},
@@ -2558,20 +2740,28 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_SendAccountProcMsg_Handler,
 		},
 		{
-			MethodName: "QueryFieldList",
-			Handler:    _WecomRPC_QueryFieldList_Handler,
-		},
-		{
 			MethodName: "FindSupplierList",
 			Handler:    _WecomRPC_FindSupplierList_Handler,
+		},
+		{
+			MethodName: "QuerySupplierBySpNoList",
+			Handler:    _WecomRPC_QuerySupplierBySpNoList_Handler,
 		},
 		{
 			MethodName: "SyncSupplier",
 			Handler:    _WecomRPC_SyncSupplier_Handler,
 		},
 		{
+			MethodName: "UpdateSupplier",
+			Handler:    _WecomRPC_UpdateSupplier_Handler,
+		},
+		{
 			MethodName: "FindBusinessCustomerList",
 			Handler:    _WecomRPC_FindBusinessCustomerList_Handler,
+		},
+		{
+			MethodName: "GetBusinessCustomer",
+			Handler:    _WecomRPC_GetBusinessCustomer_Handler,
 		},
 		{
 			MethodName: "SyncBusinessCustomer",
@@ -2582,24 +2772,16 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_UpdateBusinessCustomer_Handler,
 		},
 		{
+			MethodName: "QueryFieldList",
+			Handler:    _WecomRPC_QueryFieldList_Handler,
+		},
+		{
 			MethodName: "FindEnumList",
 			Handler:    _WecomRPC_FindEnumList_Handler,
 		},
 		{
 			MethodName: "QueryNameByType",
 			Handler:    _WecomRPC_QueryNameByType_Handler,
-		},
-		{
-			MethodName: "GetBusinessCustomer",
-			Handler:    _WecomRPC_GetBusinessCustomer_Handler,
-		},
-		{
-			MethodName: "GetNeedNotifyCustomerList",
-			Handler:    _WecomRPC_GetNeedNotifyCustomerList_Handler,
-		},
-		{
-			MethodName: "FindClaimedCustomer",
-			Handler:    _WecomRPC_FindClaimedCustomer_Handler,
 		},
 		{
 			MethodName: "SaveCustomerPointRecord",
@@ -2614,10 +2796,6 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_ListCustomerPointRecord_Handler,
 		},
 		{
-			MethodName: "ListUserByCond",
-			Handler:    _WecomRPC_ListUserByCond_Handler,
-		},
-		{
 			MethodName: "JudgeTodayIsWorkday",
 			Handler:    _WecomRPC_JudgeTodayIsWorkday_Handler,
 		},
@@ -2628,6 +2806,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "QueryIndicatorDetail",
 			Handler:    _WecomRPC_QueryIndicatorDetail_Handler,
+		},
+		{
+			MethodName: "QueryIndicatorCountInBatch",
+			Handler:    _WecomRPC_QueryIndicatorCountInBatch_Handler,
 		},
 		{
 			MethodName: "QueryHalfDayLeaveMap",
@@ -2654,32 +2836,28 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_SyncCourse_Handler,
 		},
 		{
-			MethodName: "QueryIndicatorCountInBatch",
-			Handler:    _WecomRPC_QueryIndicatorCountInBatch_Handler,
-		},
-		{
-			MethodName: "QuerySupplierBySpNoList",
-			Handler:    _WecomRPC_QuerySupplierBySpNoList_Handler,
-		},
-		{
 			MethodName: "SyncInternshipPlan",
 			Handler:    _WecomRPC_SyncInternshipPlan_Handler,
-		},
-		{
-			MethodName: "UpdateSupplier",
-			Handler:    _WecomRPC_UpdateSupplier_Handler,
-		},
-		{
-			MethodName: "UpdateUser",
-			Handler:    _WecomRPC_UpdateUser_Handler,
 		},
 		{
 			MethodName: "QueryDataInTimeScope",
 			Handler:    _WecomRPC_QueryDataInTimeScope_Handler,
 		},
 		{
-			MethodName: "GetDepartmentTree",
-			Handler:    _WecomRPC_GetDepartmentTree_Handler,
+			MethodName: "GetApprovalDetail",
+			Handler:    _WecomRPC_GetApprovalDetail_Handler,
+		},
+		{
+			MethodName: "GetApprovalList",
+			Handler:    _WecomRPC_GetApprovalList_Handler,
+		},
+		{
+			MethodName: "CreateApproval",
+			Handler:    _WecomRPC_CreateApproval_Handler,
+		},
+		{
+			MethodName: "GetApprovalTemplate",
+			Handler:    _WecomRPC_GetApprovalTemplate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
