@@ -99,6 +99,20 @@ func InvokeWecomRpcUpdateUser(userInfo map[string]interface{}, ctx context.Conte
 	return nil
 }
 
+func InvokeRpcGetUserIdentity(code string, ctx context.Context) (map[string]interface{}, error) {
+	data, err := utils.ParseDataToAny(code)
+	if err != nil {
+		return nil, err
+	}
+	ao := &wecom_rpc.RequestAO{Data: data}
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetUserIdentity", ao)
+	if err != nil {
+		return nil, err
+	}
+	map1 := utils.ParseAnyToMap(vo.Map)
+	return map1, nil
+}
+
 func InvokeRpcGetDepartmentTree(ctx context.Context) (map[string]interface{}, error) {
 	vo, err := client.InvokeWecomRPCMethod(ctx, "GetDepartmentTree", &wecom_rpc.RequestAO{})
 	if err != nil {

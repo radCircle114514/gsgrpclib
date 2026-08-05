@@ -36,6 +36,7 @@ service WecomRPC {
   rpc ListUserByCond(RequestAO) returns (ResponseVO) {}
   rpc UpdateUser(RequestAO) returns (ResponseVO) {}
   rpc GetDepartmentTree(RequestAO) returns (ResponseVO) {}
+  rpc GetUserIdentity(RequestAO) returns (ResponseVO) {}
 
   // Role
   rpc GetRoleList(RequestAO) returns (ResponseVO) {}

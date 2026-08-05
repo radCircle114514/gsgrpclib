@@ -44,6 +44,7 @@ const (
 	WecomRPC_ListUserByCond_FullMethodName                  = "/wrpc.WecomRPC/ListUserByCond"
 	WecomRPC_UpdateUser_FullMethodName                      = "/wrpc.WecomRPC/UpdateUser"
 	WecomRPC_GetDepartmentTree_FullMethodName               = "/wrpc.WecomRPC/GetDepartmentTree"
+	WecomRPC_GetUserIdentity_FullMethodName                 = "/wrpc.WecomRPC/GetUserIdentity"
 	WecomRPC_GetRoleList_FullMethodName                     = "/wrpc.WecomRPC/GetRoleList"
 	WecomRPC_GetRoleByUserID_FullMethodName                 = "/wrpc.WecomRPC/GetRoleByUserID"
 	WecomRPC_GetUserByRoleName_FullMethodName               = "/wrpc.WecomRPC/GetUserByRoleName"
@@ -125,6 +126,7 @@ type WecomRPCClient interface {
 	ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetUserIdentity(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Role
 	GetRoleList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetRoleByUserID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
@@ -294,6 +296,16 @@ func (c *wecomRPCClient) GetDepartmentTree(ctx context.Context, in *RequestAO, o
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_GetDepartmentTree_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetUserIdentity(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetUserIdentity_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -946,6 +958,7 @@ type WecomRPCServer interface {
 	ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateUser(context.Context, *RequestAO) (*ResponseVO, error)
 	GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error)
+	GetUserIdentity(context.Context, *RequestAO) (*ResponseVO, error)
 	// Role
 	GetRoleList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetRoleByUserID(context.Context, *RequestAO) (*ResponseVO, error)
@@ -1057,6 +1070,9 @@ func (UnimplementedWecomRPCServer) UpdateUser(context.Context, *RequestAO) (*Res
 }
 func (UnimplementedWecomRPCServer) GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetDepartmentTree not implemented")
+}
+func (UnimplementedWecomRPCServer) GetUserIdentity(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserIdentity not implemented")
 }
 func (UnimplementedWecomRPCServer) GetRoleList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetRoleList not implemented")
@@ -1426,6 +1442,24 @@ func _WecomRPC_GetDepartmentTree_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).GetDepartmentTree(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetUserIdentity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetUserIdentity(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetUserIdentity_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetUserIdentity(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2606,6 +2640,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetDepartmentTree",
 			Handler:    _WecomRPC_GetDepartmentTree_Handler,
+		},
+		{
+			MethodName: "GetUserIdentity",
+			Handler:    _WecomRPC_GetUserIdentity_Handler,
 		},
 		{
 			MethodName: "GetRoleList",
