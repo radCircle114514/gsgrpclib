@@ -106,8 +106,6 @@ const (
 	WecomRPC_QueryDataInTimeScope_FullMethodName            = "/wrpc.WecomRPC/QueryDataInTimeScope"
 	WecomRPC_GetApprovalDetail_FullMethodName               = "/wrpc.WecomRPC/GetApprovalDetail"
 	WecomRPC_GetApprovalList_FullMethodName                 = "/wrpc.WecomRPC/GetApprovalList"
-	WecomRPC_CreateApproval_FullMethodName                  = "/wrpc.WecomRPC/CreateApproval"
-	WecomRPC_GetApprovalTemplate_FullMethodName             = "/wrpc.WecomRPC/GetApprovalTemplate"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -198,10 +196,8 @@ type WecomRPCClient interface {
 	// Time Scope Query
 	QueryDataInTimeScope(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Approval
-	GetApprovalDetail(ctx context.Context, in *GetApprovalDetailAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	GetApprovalList(ctx context.Context, in *GetApprovalListAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	CreateApproval(ctx context.Context, in *CreateApprovalAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	GetApprovalTemplate(ctx context.Context, in *GetApprovalTemplateAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetApprovalDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetApprovalList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -902,7 +898,7 @@ func (c *wecomRPCClient) QueryDataInTimeScope(ctx context.Context, in *RequestAO
 	return out, nil
 }
 
-func (c *wecomRPCClient) GetApprovalDetail(ctx context.Context, in *GetApprovalDetailAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) GetApprovalDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalDetail_FullMethodName, in, out, cOpts...)
@@ -912,30 +908,10 @@ func (c *wecomRPCClient) GetApprovalDetail(ctx context.Context, in *GetApprovalD
 	return out, nil
 }
 
-func (c *wecomRPCClient) GetApprovalList(ctx context.Context, in *GetApprovalListAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) GetApprovalList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalList_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) CreateApproval(ctx context.Context, in *CreateApprovalAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_CreateApproval_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *wecomRPCClient) GetApprovalTemplate(ctx context.Context, in *GetApprovalTemplateAO, opts ...grpc.CallOption) (*ResponseVO, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_GetApprovalTemplate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1030,10 +1006,8 @@ type WecomRPCServer interface {
 	// Time Scope Query
 	QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error)
 	// Approval
-	GetApprovalDetail(context.Context, *GetApprovalDetailAO) (*ResponseVO, error)
-	GetApprovalList(context.Context, *GetApprovalListAO) (*ResponseVO, error)
-	CreateApproval(context.Context, *CreateApprovalAO) (*ResponseVO, error)
-	GetApprovalTemplate(context.Context, *GetApprovalTemplateAO) (*ResponseVO, error)
+	GetApprovalDetail(context.Context, *RequestAO) (*ResponseVO, error)
+	GetApprovalList(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1251,17 +1225,11 @@ func (UnimplementedWecomRPCServer) SyncInternshipPlan(context.Context, *RequestA
 func (UnimplementedWecomRPCServer) QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryDataInTimeScope not implemented")
 }
-func (UnimplementedWecomRPCServer) GetApprovalDetail(context.Context, *GetApprovalDetailAO) (*ResponseVO, error) {
+func (UnimplementedWecomRPCServer) GetApprovalDetail(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetApprovalDetail not implemented")
 }
-func (UnimplementedWecomRPCServer) GetApprovalList(context.Context, *GetApprovalListAO) (*ResponseVO, error) {
+func (UnimplementedWecomRPCServer) GetApprovalList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetApprovalList not implemented")
-}
-func (UnimplementedWecomRPCServer) CreateApproval(context.Context, *CreateApprovalAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateApproval not implemented")
-}
-func (UnimplementedWecomRPCServer) GetApprovalTemplate(context.Context, *GetApprovalTemplateAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetApprovalTemplate not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -2527,7 +2495,7 @@ func _WecomRPC_QueryDataInTimeScope_Handler(srv interface{}, ctx context.Context
 }
 
 func _WecomRPC_GetApprovalDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetApprovalDetailAO)
+	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2539,13 +2507,13 @@ func _WecomRPC_GetApprovalDetail_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: WecomRPC_GetApprovalDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetApprovalDetail(ctx, req.(*GetApprovalDetailAO))
+		return srv.(WecomRPCServer).GetApprovalDetail(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _WecomRPC_GetApprovalList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetApprovalListAO)
+	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2557,43 +2525,7 @@ func _WecomRPC_GetApprovalList_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: WecomRPC_GetApprovalList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetApprovalList(ctx, req.(*GetApprovalListAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_CreateApproval_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateApprovalAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).CreateApproval(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_CreateApproval_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).CreateApproval(ctx, req.(*CreateApprovalAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _WecomRPC_GetApprovalTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetApprovalTemplateAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WecomRPCServer).GetApprovalTemplate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: WecomRPC_GetApprovalTemplate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).GetApprovalTemplate(ctx, req.(*GetApprovalTemplateAO))
+		return srv.(WecomRPCServer).GetApprovalList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2888,14 +2820,6 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetApprovalList",
 			Handler:    _WecomRPC_GetApprovalList_Handler,
-		},
-		{
-			MethodName: "CreateApproval",
-			Handler:    _WecomRPC_CreateApproval_Handler,
-		},
-		{
-			MethodName: "GetApprovalTemplate",
-			Handler:    _WecomRPC_GetApprovalTemplate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -9,19 +9,12 @@ import (
 )
 
 func InvokeRpcGetApprovalDetail(spNo string, ctx context.Context) (map[string]interface{}, error) {
-	conn, err := client.InitWecomRpcClientConn()
+	data, err := utils.ParseDataToAny(spNo)
 	if err != nil {
 		return nil, err
 	}
-	defer conn.Close()
-	rpcClient := wecom_rpc.NewWecomRPCClient(conn)
-	ao := &wecom_rpc.GetApprovalDetailAO{
-		SpNo: spNo,
-	}
-	ctx, cancel := client.SetTimeout(ctx)
-	defer cancel()
-
-	vo, err := rpcClient.GetApprovalDetail(ctx, ao)
+	ao := &wecom_rpc.RequestAO{Data: data}
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetApprovalDetail", ao)
 	if err != nil {
 		return nil, err
 	}
@@ -29,66 +22,26 @@ func InvokeRpcGetApprovalDetail(spNo string, ctx context.Context) (map[string]in
 	return map1, nil
 }
 
-func InvokeRpcGetApprovalList(startTime, endTime int64, ctx context.Context) ([]map[string]interface{}, error) {
-	conn, err := client.InitWecomRpcClientConn()
+// InvokeRpcGetApprovalList fetches approval numbers in [startTime, endTime].
+// startTime/endTime are unix timestamps (seconds). filters narrows the result;
+// pass nil to fetch everything. Each map entry maps to one item in the WeCom
+// "filters" array, e.g. {"key":"template_id","value":"..."} or
+// {"key":"sp_no","obj_value":{"new_id":"..."}}.
+func InvokeRpcGetApprovalList(startTime, endTime int64, filters []map[string]interface{}, ctx context.Context) ([]map[string]interface{}, error) {
+	map1 := map[string]interface{}{
+		"startTime": startTime,
+		"endTime":   endTime,
+		"filters":   filters,
+	}
+	toAny, err := utils.ParseMapToAny(map1)
 	if err != nil {
 		return nil, err
 	}
-	defer conn.Close()
-	rpcClient := wecom_rpc.NewWecomRPCClient(conn)
-	ao := &wecom_rpc.GetApprovalListAO{
-		StartTime: startTime,
-		EndTime:   endTime,
-	}
-	ctx, cancel := client.SetTimeout(ctx)
-	defer cancel()
-
-	vo, err := rpcClient.GetApprovalList(ctx, ao)
+	ao := &wecom_rpc.RequestAO{Map: toAny}
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetApprovalList", ao)
 	if err != nil {
 		return nil, err
 	}
 	mapList := utils.ParseAnyToMapList(vo.MapList)
 	return mapList, nil
-}
-
-func InvokeRpcCreateApproval(dataJson string, ctx context.Context) (map[string]interface{}, error) {
-	conn, err := client.InitWecomRpcClientConn()
-	if err != nil {
-		return nil, err
-	}
-	defer conn.Close()
-	rpcClient := wecom_rpc.NewWecomRPCClient(conn)
-	ao := &wecom_rpc.CreateApprovalAO{
-		DataJson: dataJson,
-	}
-	ctx, cancel := client.SetTimeout(ctx)
-	defer cancel()
-
-	vo, err := rpcClient.CreateApproval(ctx, ao)
-	if err != nil {
-		return nil, err
-	}
-	map1 := utils.ParseAnyToMap(vo.Map)
-	return map1, nil
-}
-
-func InvokeRpcGetApprovalTemplate(templateID string, ctx context.Context) (map[string]interface{}, error) {
-	conn, err := client.InitWecomRpcClientConn()
-	if err != nil {
-		return nil, err
-	}
-	defer conn.Close()
-	rpcClient := wecom_rpc.NewWecomRPCClient(conn)
-	ao := &wecom_rpc.GetApprovalTemplateAO{
-		TemplateID: templateID,
-	}
-	ctx, cancel := client.SetTimeout(ctx)
-	defer cancel()
-
-	vo, err := rpcClient.GetApprovalTemplate(ctx, ao)
-	if err != nil {
-		return nil, err
-	}
-	map1 := utils.ParseAnyToMap(vo.Map)
-	return map1, nil
 }

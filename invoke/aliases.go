@@ -54,7 +54,6 @@ var (
 	InvokeRPCQueryHalfDayLeaveMap                     = wecom.InvokeRPCQueryHalfDayLeaveMap
 	InvokeRPCSaveCustomerPointRecord                  = wecom.InvokeRPCSaveCustomerPointRecord
 	InvokeRpcAddCustomer                              = wecom.InvokeRpcAddCustomer
-	InvokeRpcCreateApproval                           = wecom.InvokeRpcCreateApproval
 	InvokeRpcFindAccountUserList                      = wecom.InvokeRpcFindAccountUserList
 	InvokeRpcFindCustomerCouldBeSelectedList          = wecom.InvokeRpcFindCustomerCouldBeSelectedList
 	InvokeRpcFindCustomerGroupList                    = wecom.InvokeRpcFindCustomerGroupList
@@ -69,7 +68,6 @@ var (
 	InvokeRpcGetAllUserList                           = wecom.InvokeRpcGetAllUserList
 	InvokeRpcGetApprovalDetail                        = wecom.InvokeRpcGetApprovalDetail
 	InvokeRpcGetApprovalList                          = wecom.InvokeRpcGetApprovalList
-	InvokeRpcGetApprovalTemplate                      = wecom.InvokeRpcGetApprovalTemplate
 	InvokeRpcGetBusinessCustomer                      = wecom.InvokeRpcGetBusinessCustomer
 	InvokeRpcGetCustomerGroup                         = wecom.InvokeRpcGetCustomerGroup
 	InvokeRpcGetCustomerGroupChat                     = wecom.InvokeRpcGetCustomerGroupChat
