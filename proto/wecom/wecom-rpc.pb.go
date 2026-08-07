@@ -1217,7 +1217,7 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\x15GetApprovalTemplateAO\x12\x1e\n" +
 	"\n" +
 	"templateID\x18\x01 \x01(\tR\n" +
-	"templateID2\xa3!\n" +
+	"templateID2\xa2!\n" +
 	"\bWecomRPC\x122\n" +
 	"\vGetUserList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x125\n" +
 	"\x0eGetAllUserList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x122\n" +
@@ -1271,8 +1271,8 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\x13GetBusinessCustomer\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12;\n" +
 	"\x14SyncBusinessCustomer\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12=\n" +
 	"\x16UpdateBusinessCustomer\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x125\n" +
-	"\x0eQueryFieldList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x123\n" +
-	"\fFindEnumList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x126\n" +
+	"\x0eQueryFieldList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x122\n" +
+	"\vFindEnumMap\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x126\n" +
 	"\x0fQueryNameByType\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12>\n" +
 	"\x17SaveCustomerPointRecord\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12=\n" +
 	"\x16GetCustomerPointRecord\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12>\n" +
@@ -1388,7 +1388,7 @@ var file_proto_wecom_wecom_rpc_proto_depIdxs = []int32{
 	12, // 58: wrpc.WecomRPC.SyncBusinessCustomer:input_type -> wrpc.RequestAO
 	12, // 59: wrpc.WecomRPC.UpdateBusinessCustomer:input_type -> wrpc.RequestAO
 	12, // 60: wrpc.WecomRPC.QueryFieldList:input_type -> wrpc.RequestAO
-	12, // 61: wrpc.WecomRPC.FindEnumList:input_type -> wrpc.RequestAO
+	12, // 61: wrpc.WecomRPC.FindEnumMap:input_type -> wrpc.RequestAO
 	12, // 62: wrpc.WecomRPC.QueryNameByType:input_type -> wrpc.RequestAO
 	12, // 63: wrpc.WecomRPC.SaveCustomerPointRecord:input_type -> wrpc.RequestAO
 	12, // 64: wrpc.WecomRPC.GetCustomerPointRecord:input_type -> wrpc.RequestAO
@@ -1459,7 +1459,7 @@ var file_proto_wecom_wecom_rpc_proto_depIdxs = []int32{
 	13, // 129: wrpc.WecomRPC.SyncBusinessCustomer:output_type -> wrpc.ResponseVO
 	13, // 130: wrpc.WecomRPC.UpdateBusinessCustomer:output_type -> wrpc.ResponseVO
 	13, // 131: wrpc.WecomRPC.QueryFieldList:output_type -> wrpc.ResponseVO
-	13, // 132: wrpc.WecomRPC.FindEnumList:output_type -> wrpc.ResponseVO
+	13, // 132: wrpc.WecomRPC.FindEnumMap:output_type -> wrpc.ResponseVO
 	13, // 133: wrpc.WecomRPC.QueryNameByType:output_type -> wrpc.ResponseVO
 	13, // 134: wrpc.WecomRPC.SaveCustomerPointRecord:output_type -> wrpc.ResponseVO
 	13, // 135: wrpc.WecomRPC.GetCustomerPointRecord:output_type -> wrpc.ResponseVO

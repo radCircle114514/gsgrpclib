@@ -87,7 +87,7 @@ const (
 	WecomRPC_SyncBusinessCustomer_FullMethodName            = "/wrpc.WecomRPC/SyncBusinessCustomer"
 	WecomRPC_UpdateBusinessCustomer_FullMethodName          = "/wrpc.WecomRPC/UpdateBusinessCustomer"
 	WecomRPC_QueryFieldList_FullMethodName                  = "/wrpc.WecomRPC/QueryFieldList"
-	WecomRPC_FindEnumList_FullMethodName                    = "/wrpc.WecomRPC/FindEnumList"
+	WecomRPC_FindEnumMap_FullMethodName                     = "/wrpc.WecomRPC/FindEnumMap"
 	WecomRPC_QueryNameByType_FullMethodName                 = "/wrpc.WecomRPC/QueryNameByType"
 	WecomRPC_SaveCustomerPointRecord_FullMethodName         = "/wrpc.WecomRPC/SaveCustomerPointRecord"
 	WecomRPC_GetCustomerPointRecord_FullMethodName          = "/wrpc.WecomRPC/GetCustomerPointRecord"
@@ -174,7 +174,7 @@ type WecomRPCClient interface {
 	UpdateBusinessCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Metadata Query
 	QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindEnumList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindEnumMap(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryNameByType(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Point and Workday
 	SaveCustomerPointRecord(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
@@ -728,10 +728,10 @@ func (c *wecomRPCClient) QueryFieldList(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
-func (c *wecomRPCClient) FindEnumList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *wecomRPCClient) FindEnumMap(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, WecomRPC_FindEnumList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, WecomRPC_FindEnumMap_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -984,7 +984,7 @@ type WecomRPCServer interface {
 	UpdateBusinessCustomer(context.Context, *RequestAO) (*ResponseVO, error)
 	// Metadata Query
 	QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error)
-	FindEnumList(context.Context, *RequestAO) (*ResponseVO, error)
+	FindEnumMap(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryNameByType(context.Context, *RequestAO) (*ResponseVO, error)
 	// Point and Workday
 	SaveCustomerPointRecord(context.Context, *RequestAO) (*ResponseVO, error)
@@ -1174,8 +1174,8 @@ func (UnimplementedWecomRPCServer) UpdateBusinessCustomer(context.Context, *Requ
 func (UnimplementedWecomRPCServer) QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryFieldList not implemented")
 }
-func (UnimplementedWecomRPCServer) FindEnumList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindEnumList not implemented")
+func (UnimplementedWecomRPCServer) FindEnumMap(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindEnumMap not implemented")
 }
 func (UnimplementedWecomRPCServer) QueryNameByType(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryNameByType not implemented")
@@ -2188,20 +2188,20 @@ func _WecomRPC_QueryFieldList_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _WecomRPC_FindEnumList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _WecomRPC_FindEnumMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WecomRPCServer).FindEnumList(ctx, in)
+		return srv.(WecomRPCServer).FindEnumMap(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: WecomRPC_FindEnumList_FullMethodName,
+		FullMethod: WecomRPC_FindEnumMap_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WecomRPCServer).FindEnumList(ctx, req.(*RequestAO))
+		return srv.(WecomRPCServer).FindEnumMap(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2746,8 +2746,8 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _WecomRPC_QueryFieldList_Handler,
 		},
 		{
-			MethodName: "FindEnumList",
-			Handler:    _WecomRPC_FindEnumList_Handler,
+			MethodName: "FindEnumMap",
+			Handler:    _WecomRPC_FindEnumMap_Handler,
 		},
 		{
 			MethodName: "QueryNameByType",

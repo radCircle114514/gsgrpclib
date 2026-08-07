@@ -30,13 +30,13 @@ func InvokeRpcWecomQueryFieldList(table, field, value, userID string, ctx contex
 	return dataList, nil
 }
 
-func InvokeRpcGetFindEnumList(type1 string, ctx context.Context) (map[string]interface{}, error) {
+func InvokeRpcGetFindEnumMap(type1 string, ctx context.Context) (map[string]interface{}, error) {
 	data, err := utils.ParseDataToAny(type1)
 	if err != nil {
 		return nil, err
 	}
 	ao := &wecom_rpc.RequestAO{Data: data}
-	vo, err := client.InvokeWecomRPCMethod(ctx, "FindEnumList", ao)
+	vo, err := client.InvokeWecomRPCMethod(ctx, "FindEnumMap", ao)
 	if err != nil {
 		return nil, err
 	}

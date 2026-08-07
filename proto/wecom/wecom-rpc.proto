@@ -93,7 +93,7 @@ service WecomRPC {
 
   // Metadata Query
   rpc QueryFieldList(RequestAO) returns (ResponseVO) {}
-  rpc FindEnumList(RequestAO) returns (ResponseVO) {}
+  rpc FindEnumMap(RequestAO) returns (ResponseVO) {}
   rpc QueryNameByType(RequestAO) returns (ResponseVO) {}
 
   // Point and Workday

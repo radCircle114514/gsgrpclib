@@ -76,7 +76,7 @@ var (
 	InvokeRpcGetCustomerInRobotChat                   = wecom.InvokeRpcGetCustomerInRobotChat
 	InvokeRpcGetCustomerPointRecord                   = wecom.InvokeRpcGetCustomerPointRecord
 	InvokeRpcGetDepartmentTree                        = wecom.InvokeRpcGetDepartmentTree
-	InvokeRpcGetFindEnumList                          = wecom.InvokeRpcGetFindEnumList
+	InvokeRpcGetFindEnumMap                           = wecom.InvokeRpcGetFindEnumMap
 	InvokeRpcGetOauthCallBackURL                      = wecom.InvokeRpcGetOauthCallBackURL
 	InvokeRpcGetRoleByUserID                          = wecom.InvokeRpcGetRoleByUserID
 	InvokeRpcGetRoleList                              = wecom.InvokeRpcGetRoleList
