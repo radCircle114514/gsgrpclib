@@ -106,6 +106,7 @@ const (
 	WecomRPC_QueryDataInTimeScope_FullMethodName            = "/wrpc.WecomRPC/QueryDataInTimeScope"
 	WecomRPC_GetApprovalDetail_FullMethodName               = "/wrpc.WecomRPC/GetApprovalDetail"
 	WecomRPC_GetApprovalList_FullMethodName                 = "/wrpc.WecomRPC/GetApprovalList"
+	WecomRPC_GetCheckInData_FullMethodName                  = "/wrpc.WecomRPC/GetCheckInData"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -198,6 +199,8 @@ type WecomRPCClient interface {
 	// Approval
 	GetApprovalDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetApprovalList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// CheckIN
+	GetCheckInData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -918,6 +921,16 @@ func (c *wecomRPCClient) GetApprovalList(ctx context.Context, in *RequestAO, opt
 	return out, nil
 }
 
+func (c *wecomRPCClient) GetCheckInData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetCheckInData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WecomRPCServer is the server API for WecomRPC service.
 // All implementations must embed UnimplementedWecomRPCServer
 // for forward compatibility.
@@ -1008,6 +1021,8 @@ type WecomRPCServer interface {
 	// Approval
 	GetApprovalDetail(context.Context, *RequestAO) (*ResponseVO, error)
 	GetApprovalList(context.Context, *RequestAO) (*ResponseVO, error)
+	// CheckIN
+	GetCheckInData(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1230,6 +1245,9 @@ func (UnimplementedWecomRPCServer) GetApprovalDetail(context.Context, *RequestAO
 }
 func (UnimplementedWecomRPCServer) GetApprovalList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetApprovalList not implemented")
+}
+func (UnimplementedWecomRPCServer) GetCheckInData(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCheckInData not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -2530,6 +2548,24 @@ func _WecomRPC_GetApprovalList_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_GetCheckInData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetCheckInData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetCheckInData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetCheckInData(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WecomRPC_ServiceDesc is the grpc.ServiceDesc for WecomRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2820,6 +2856,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetApprovalList",
 			Handler:    _WecomRPC_GetApprovalList_Handler,
+		},
+		{
+			MethodName: "GetCheckInData",
+			Handler:    _WecomRPC_GetCheckInData_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

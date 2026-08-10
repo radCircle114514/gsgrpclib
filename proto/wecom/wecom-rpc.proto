@@ -122,6 +122,9 @@ service WecomRPC {
   // Approval
   rpc GetApprovalDetail(RequestAO) returns (ResponseVO) {}
   rpc GetApprovalList(RequestAO) returns (ResponseVO) {}
+
+  // CheckIN
+  rpc GetCheckInData(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {

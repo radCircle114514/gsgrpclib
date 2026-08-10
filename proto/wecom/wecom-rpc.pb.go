@@ -1217,7 +1217,7 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\x15GetApprovalTemplateAO\x12\x1e\n" +
 	"\n" +
 	"templateID\x18\x01 \x01(\tR\n" +
-	"templateID2\xa2!\n" +
+	"templateID2\xd9!\n" +
 	"\bWecomRPC\x122\n" +
 	"\vGetUserList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x125\n" +
 	"\x0eGetAllUserList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x122\n" +
@@ -1291,7 +1291,8 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\x12SyncInternshipPlan\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x12;\n" +
 	"\x14QueryDataInTimeScope\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x128\n" +
 	"\x11GetApprovalDetail\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x126\n" +
-	"\x0fGetApprovalList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/wecom_rpcb\x06proto3"
+	"\x0fGetApprovalList\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00\x125\n" +
+	"\x0eGetCheckInData\x12\x0f.wrpc.RequestAO\x1a\x10.wrpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/wecom_rpcb\x06proto3"
 
 var (
 	file_proto_wecom_wecom_rpc_proto_rawDescOnce sync.Once
@@ -1407,79 +1408,81 @@ var file_proto_wecom_wecom_rpc_proto_depIdxs = []int32{
 	12, // 77: wrpc.WecomRPC.QueryDataInTimeScope:input_type -> wrpc.RequestAO
 	12, // 78: wrpc.WecomRPC.GetApprovalDetail:input_type -> wrpc.RequestAO
 	12, // 79: wrpc.WecomRPC.GetApprovalList:input_type -> wrpc.RequestAO
-	13, // 80: wrpc.WecomRPC.GetUserList:output_type -> wrpc.ResponseVO
-	13, // 81: wrpc.WecomRPC.GetAllUserList:output_type -> wrpc.ResponseVO
-	13, // 82: wrpc.WecomRPC.GetUserInfo:output_type -> wrpc.ResponseVO
-	13, // 83: wrpc.WecomRPC.SaveUserDetail:output_type -> wrpc.ResponseVO
-	13, // 84: wrpc.WecomRPC.GetUserDetailByUserID:output_type -> wrpc.ResponseVO
-	13, // 85: wrpc.WecomRPC.GetUserDetailList:output_type -> wrpc.ResponseVO
-	13, // 86: wrpc.WecomRPC.ListUserByCond:output_type -> wrpc.ResponseVO
-	13, // 87: wrpc.WecomRPC.UpdateUser:output_type -> wrpc.ResponseVO
-	13, // 88: wrpc.WecomRPC.GetDepartmentTree:output_type -> wrpc.ResponseVO
-	13, // 89: wrpc.WecomRPC.GetUserIdentity:output_type -> wrpc.ResponseVO
-	13, // 90: wrpc.WecomRPC.GetRoleList:output_type -> wrpc.ResponseVO
-	13, // 91: wrpc.WecomRPC.GetRoleByUserID:output_type -> wrpc.ResponseVO
-	13, // 92: wrpc.WecomRPC.GetUserByRoleName:output_type -> wrpc.ResponseVO
-	13, // 93: wrpc.WecomRPC.FindCustomerList:output_type -> wrpc.ResponseVO
-	13, // 94: wrpc.WecomRPC.FindCustomerCouldBeSelectedList:output_type -> wrpc.ResponseVO
-	13, // 95: wrpc.WecomRPC.AddCustomer:output_type -> wrpc.ResponseVO
-	13, // 96: wrpc.WecomRPC.UpdateCustomerRemark:output_type -> wrpc.ResponseVO
-	13, // 97: wrpc.WecomRPC.GetCustomerInRobotChat:output_type -> wrpc.ResponseVO
-	13, // 98: wrpc.WecomRPC.FlushCustomer:output_type -> wrpc.ResponseVO
-	13, // 99: wrpc.WecomRPC.GetNeedNotifyCustomerList:output_type -> wrpc.ResponseVO
-	13, // 100: wrpc.WecomRPC.FindClaimedCustomer:output_type -> wrpc.ResponseVO
-	13, // 101: wrpc.WecomRPC.FindCustomerGroupList:output_type -> wrpc.ResponseVO
-	13, // 102: wrpc.WecomRPC.GetCustomerGroup:output_type -> wrpc.ResponseVO
-	13, // 103: wrpc.WecomRPC.GetCustomerGroupList:output_type -> wrpc.ResponseVO
-	13, // 104: wrpc.WecomRPC.GetCustomerGroupChat:output_type -> wrpc.ResponseVO
-	13, // 105: wrpc.WecomRPC.GetCustomerGroupChatByChatID:output_type -> wrpc.ResponseVO
-	13, // 106: wrpc.WecomRPC.QueryCustomerGroupByCond:output_type -> wrpc.ResponseVO
-	13, // 107: wrpc.WecomRPC.SyncCustomerGroup:output_type -> wrpc.ResponseVO
-	13, // 108: wrpc.WecomRPC.FlushCustomerGroup:output_type -> wrpc.ResponseVO
-	13, // 109: wrpc.WecomRPC.FindAccountUserList:output_type -> wrpc.ResponseVO
-	13, // 110: wrpc.WecomRPC.GetAccountUserList:output_type -> wrpc.ResponseVO
-	13, // 111: wrpc.WecomRPC.GetAccountUserListByOpenIDList:output_type -> wrpc.ResponseVO
-	13, // 112: wrpc.WecomRPC.ModifyAccountUserRemark:output_type -> wrpc.ResponseVO
-	13, // 113: wrpc.WecomRPC.GetAccountTagList:output_type -> wrpc.ResponseVO
-	13, // 114: wrpc.WecomRPC.SyncAccountUser:output_type -> wrpc.ResponseVO
-	13, // 115: wrpc.WecomRPC.FlushAccountUser:output_type -> wrpc.ResponseVO
-	13, // 116: wrpc.WecomRPC.GetOauthCallBackURL:output_type -> wrpc.ResponseVO
-	13, // 117: wrpc.WecomRPC.SyncContactWayList:output_type -> wrpc.ResponseVO
-	13, // 118: wrpc.WecomRPC.FlushContactWay:output_type -> wrpc.ResponseVO
-	13, // 119: wrpc.WecomRPC.SendTextMsg:output_type -> wrpc.ResponseVO
-	13, // 120: wrpc.WecomRPC.SendWarnMsg:output_type -> wrpc.ResponseVO
-	13, // 121: wrpc.WecomRPC.SendAccountTrackMsg:output_type -> wrpc.ResponseVO
-	13, // 122: wrpc.WecomRPC.SendAccountProcMsg:output_type -> wrpc.ResponseVO
-	13, // 123: wrpc.WecomRPC.FindSupplierList:output_type -> wrpc.ResponseVO
-	13, // 124: wrpc.WecomRPC.QuerySupplierBySpNoList:output_type -> wrpc.ResponseVO
-	13, // 125: wrpc.WecomRPC.SyncSupplier:output_type -> wrpc.ResponseVO
-	13, // 126: wrpc.WecomRPC.UpdateSupplier:output_type -> wrpc.ResponseVO
-	13, // 127: wrpc.WecomRPC.FindBusinessCustomerList:output_type -> wrpc.ResponseVO
-	13, // 128: wrpc.WecomRPC.GetBusinessCustomer:output_type -> wrpc.ResponseVO
-	13, // 129: wrpc.WecomRPC.SyncBusinessCustomer:output_type -> wrpc.ResponseVO
-	13, // 130: wrpc.WecomRPC.UpdateBusinessCustomer:output_type -> wrpc.ResponseVO
-	13, // 131: wrpc.WecomRPC.QueryFieldList:output_type -> wrpc.ResponseVO
-	13, // 132: wrpc.WecomRPC.FindEnumMap:output_type -> wrpc.ResponseVO
-	13, // 133: wrpc.WecomRPC.QueryNameByType:output_type -> wrpc.ResponseVO
-	13, // 134: wrpc.WecomRPC.SaveCustomerPointRecord:output_type -> wrpc.ResponseVO
-	13, // 135: wrpc.WecomRPC.GetCustomerPointRecord:output_type -> wrpc.ResponseVO
-	13, // 136: wrpc.WecomRPC.ListCustomerPointRecord:output_type -> wrpc.ResponseVO
-	13, // 137: wrpc.WecomRPC.JudgeTodayIsWorkday:output_type -> wrpc.ResponseVO
-	13, // 138: wrpc.WecomRPC.QueryIndicatorCount:output_type -> wrpc.ResponseVO
-	13, // 139: wrpc.WecomRPC.QueryIndicatorDetail:output_type -> wrpc.ResponseVO
-	13, // 140: wrpc.WecomRPC.QueryIndicatorCountInBatch:output_type -> wrpc.ResponseVO
-	13, // 141: wrpc.WecomRPC.QueryHalfDayLeaveMap:output_type -> wrpc.ResponseVO
-	13, // 142: wrpc.WecomRPC.CalculateUserIndicator:output_type -> wrpc.ResponseVO
-	13, // 143: wrpc.WecomRPC.GenerateReportRecord:output_type -> wrpc.ResponseVO
-	13, // 144: wrpc.WecomRPC.SyncAcademy:output_type -> wrpc.ResponseVO
-	13, // 145: wrpc.WecomRPC.SyncTraining:output_type -> wrpc.ResponseVO
-	13, // 146: wrpc.WecomRPC.SyncCourse:output_type -> wrpc.ResponseVO
-	13, // 147: wrpc.WecomRPC.SyncInternshipPlan:output_type -> wrpc.ResponseVO
-	13, // 148: wrpc.WecomRPC.QueryDataInTimeScope:output_type -> wrpc.ResponseVO
-	13, // 149: wrpc.WecomRPC.GetApprovalDetail:output_type -> wrpc.ResponseVO
-	13, // 150: wrpc.WecomRPC.GetApprovalList:output_type -> wrpc.ResponseVO
-	80, // [80:151] is the sub-list for method output_type
-	9,  // [9:80] is the sub-list for method input_type
+	12, // 80: wrpc.WecomRPC.GetCheckInData:input_type -> wrpc.RequestAO
+	13, // 81: wrpc.WecomRPC.GetUserList:output_type -> wrpc.ResponseVO
+	13, // 82: wrpc.WecomRPC.GetAllUserList:output_type -> wrpc.ResponseVO
+	13, // 83: wrpc.WecomRPC.GetUserInfo:output_type -> wrpc.ResponseVO
+	13, // 84: wrpc.WecomRPC.SaveUserDetail:output_type -> wrpc.ResponseVO
+	13, // 85: wrpc.WecomRPC.GetUserDetailByUserID:output_type -> wrpc.ResponseVO
+	13, // 86: wrpc.WecomRPC.GetUserDetailList:output_type -> wrpc.ResponseVO
+	13, // 87: wrpc.WecomRPC.ListUserByCond:output_type -> wrpc.ResponseVO
+	13, // 88: wrpc.WecomRPC.UpdateUser:output_type -> wrpc.ResponseVO
+	13, // 89: wrpc.WecomRPC.GetDepartmentTree:output_type -> wrpc.ResponseVO
+	13, // 90: wrpc.WecomRPC.GetUserIdentity:output_type -> wrpc.ResponseVO
+	13, // 91: wrpc.WecomRPC.GetRoleList:output_type -> wrpc.ResponseVO
+	13, // 92: wrpc.WecomRPC.GetRoleByUserID:output_type -> wrpc.ResponseVO
+	13, // 93: wrpc.WecomRPC.GetUserByRoleName:output_type -> wrpc.ResponseVO
+	13, // 94: wrpc.WecomRPC.FindCustomerList:output_type -> wrpc.ResponseVO
+	13, // 95: wrpc.WecomRPC.FindCustomerCouldBeSelectedList:output_type -> wrpc.ResponseVO
+	13, // 96: wrpc.WecomRPC.AddCustomer:output_type -> wrpc.ResponseVO
+	13, // 97: wrpc.WecomRPC.UpdateCustomerRemark:output_type -> wrpc.ResponseVO
+	13, // 98: wrpc.WecomRPC.GetCustomerInRobotChat:output_type -> wrpc.ResponseVO
+	13, // 99: wrpc.WecomRPC.FlushCustomer:output_type -> wrpc.ResponseVO
+	13, // 100: wrpc.WecomRPC.GetNeedNotifyCustomerList:output_type -> wrpc.ResponseVO
+	13, // 101: wrpc.WecomRPC.FindClaimedCustomer:output_type -> wrpc.ResponseVO
+	13, // 102: wrpc.WecomRPC.FindCustomerGroupList:output_type -> wrpc.ResponseVO
+	13, // 103: wrpc.WecomRPC.GetCustomerGroup:output_type -> wrpc.ResponseVO
+	13, // 104: wrpc.WecomRPC.GetCustomerGroupList:output_type -> wrpc.ResponseVO
+	13, // 105: wrpc.WecomRPC.GetCustomerGroupChat:output_type -> wrpc.ResponseVO
+	13, // 106: wrpc.WecomRPC.GetCustomerGroupChatByChatID:output_type -> wrpc.ResponseVO
+	13, // 107: wrpc.WecomRPC.QueryCustomerGroupByCond:output_type -> wrpc.ResponseVO
+	13, // 108: wrpc.WecomRPC.SyncCustomerGroup:output_type -> wrpc.ResponseVO
+	13, // 109: wrpc.WecomRPC.FlushCustomerGroup:output_type -> wrpc.ResponseVO
+	13, // 110: wrpc.WecomRPC.FindAccountUserList:output_type -> wrpc.ResponseVO
+	13, // 111: wrpc.WecomRPC.GetAccountUserList:output_type -> wrpc.ResponseVO
+	13, // 112: wrpc.WecomRPC.GetAccountUserListByOpenIDList:output_type -> wrpc.ResponseVO
+	13, // 113: wrpc.WecomRPC.ModifyAccountUserRemark:output_type -> wrpc.ResponseVO
+	13, // 114: wrpc.WecomRPC.GetAccountTagList:output_type -> wrpc.ResponseVO
+	13, // 115: wrpc.WecomRPC.SyncAccountUser:output_type -> wrpc.ResponseVO
+	13, // 116: wrpc.WecomRPC.FlushAccountUser:output_type -> wrpc.ResponseVO
+	13, // 117: wrpc.WecomRPC.GetOauthCallBackURL:output_type -> wrpc.ResponseVO
+	13, // 118: wrpc.WecomRPC.SyncContactWayList:output_type -> wrpc.ResponseVO
+	13, // 119: wrpc.WecomRPC.FlushContactWay:output_type -> wrpc.ResponseVO
+	13, // 120: wrpc.WecomRPC.SendTextMsg:output_type -> wrpc.ResponseVO
+	13, // 121: wrpc.WecomRPC.SendWarnMsg:output_type -> wrpc.ResponseVO
+	13, // 122: wrpc.WecomRPC.SendAccountTrackMsg:output_type -> wrpc.ResponseVO
+	13, // 123: wrpc.WecomRPC.SendAccountProcMsg:output_type -> wrpc.ResponseVO
+	13, // 124: wrpc.WecomRPC.FindSupplierList:output_type -> wrpc.ResponseVO
+	13, // 125: wrpc.WecomRPC.QuerySupplierBySpNoList:output_type -> wrpc.ResponseVO
+	13, // 126: wrpc.WecomRPC.SyncSupplier:output_type -> wrpc.ResponseVO
+	13, // 127: wrpc.WecomRPC.UpdateSupplier:output_type -> wrpc.ResponseVO
+	13, // 128: wrpc.WecomRPC.FindBusinessCustomerList:output_type -> wrpc.ResponseVO
+	13, // 129: wrpc.WecomRPC.GetBusinessCustomer:output_type -> wrpc.ResponseVO
+	13, // 130: wrpc.WecomRPC.SyncBusinessCustomer:output_type -> wrpc.ResponseVO
+	13, // 131: wrpc.WecomRPC.UpdateBusinessCustomer:output_type -> wrpc.ResponseVO
+	13, // 132: wrpc.WecomRPC.QueryFieldList:output_type -> wrpc.ResponseVO
+	13, // 133: wrpc.WecomRPC.FindEnumMap:output_type -> wrpc.ResponseVO
+	13, // 134: wrpc.WecomRPC.QueryNameByType:output_type -> wrpc.ResponseVO
+	13, // 135: wrpc.WecomRPC.SaveCustomerPointRecord:output_type -> wrpc.ResponseVO
+	13, // 136: wrpc.WecomRPC.GetCustomerPointRecord:output_type -> wrpc.ResponseVO
+	13, // 137: wrpc.WecomRPC.ListCustomerPointRecord:output_type -> wrpc.ResponseVO
+	13, // 138: wrpc.WecomRPC.JudgeTodayIsWorkday:output_type -> wrpc.ResponseVO
+	13, // 139: wrpc.WecomRPC.QueryIndicatorCount:output_type -> wrpc.ResponseVO
+	13, // 140: wrpc.WecomRPC.QueryIndicatorDetail:output_type -> wrpc.ResponseVO
+	13, // 141: wrpc.WecomRPC.QueryIndicatorCountInBatch:output_type -> wrpc.ResponseVO
+	13, // 142: wrpc.WecomRPC.QueryHalfDayLeaveMap:output_type -> wrpc.ResponseVO
+	13, // 143: wrpc.WecomRPC.CalculateUserIndicator:output_type -> wrpc.ResponseVO
+	13, // 144: wrpc.WecomRPC.GenerateReportRecord:output_type -> wrpc.ResponseVO
+	13, // 145: wrpc.WecomRPC.SyncAcademy:output_type -> wrpc.ResponseVO
+	13, // 146: wrpc.WecomRPC.SyncTraining:output_type -> wrpc.ResponseVO
+	13, // 147: wrpc.WecomRPC.SyncCourse:output_type -> wrpc.ResponseVO
+	13, // 148: wrpc.WecomRPC.SyncInternshipPlan:output_type -> wrpc.ResponseVO
+	13, // 149: wrpc.WecomRPC.QueryDataInTimeScope:output_type -> wrpc.ResponseVO
+	13, // 150: wrpc.WecomRPC.GetApprovalDetail:output_type -> wrpc.ResponseVO
+	13, // 151: wrpc.WecomRPC.GetApprovalList:output_type -> wrpc.ResponseVO
+	13, // 152: wrpc.WecomRPC.GetCheckInData:output_type -> wrpc.ResponseVO
+	81, // [81:153] is the sub-list for method output_type
+	9,  // [9:81] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name

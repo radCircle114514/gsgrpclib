@@ -69,6 +69,7 @@ var (
 	InvokeRpcGetApprovalDetail                        = wecom.InvokeRpcGetApprovalDetail
 	InvokeRpcGetApprovalList                          = wecom.InvokeRpcGetApprovalList
 	InvokeRpcGetBusinessCustomer                      = wecom.InvokeRpcGetBusinessCustomer
+	InvokeRpcGetCheckInData                           = wecom.InvokeRpcGetCheckInData
 	InvokeRpcGetCustomerGroup                         = wecom.InvokeRpcGetCustomerGroup
 	InvokeRpcGetCustomerGroupChat                     = wecom.InvokeRpcGetCustomerGroupChat
 	InvokeRpcGetCustomerGroupChatByChatID             = wecom.InvokeRpcGetCustomerGroupChatByChatID
