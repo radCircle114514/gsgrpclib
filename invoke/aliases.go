@@ -81,6 +81,8 @@ var (
 	InvokeRpcGetOauthCallBackURL                      = wecom.InvokeRpcGetOauthCallBackURL
 	InvokeRpcGetRoleByUserID                          = wecom.InvokeRpcGetRoleByUserID
 	InvokeRpcGetRoleList                              = wecom.InvokeRpcGetRoleList
+	InvokeRpcGetReportDetail                          = wecom.InvokeRpcGetReportDetail
+	InvokeRpcGetReportList                            = wecom.InvokeRpcGetReportList
 	InvokeRpcGetUserByRoleName                        = wecom.InvokeRpcGetUserByRoleName
 	InvokeRpcGetUserDetailByUserID                    = wecom.InvokeRpcGetUserDetailByUserID
 	InvokeRpcGetUserDetailList                        = wecom.InvokeRpcGetUserDetailList
