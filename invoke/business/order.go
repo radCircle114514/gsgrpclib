@@ -94,3 +94,30 @@ func InvokeRpcUpdateTrack(serialNumber, userID, trackMsg string, validTrackMsgLi
 	_, err = client.InvokeBusinessRPCMethod(ctx, "UpdateTrack", ao)
 	return err
 }
+
+// OrderFilterInAgent mirrors the filter bound by v1.FindOrder in
+// business-contact-back, but without the login/data-permission fields that
+// do not apply to agent callers.
+type OrderFilterInAgent struct {
+	CurrentPage  int    `json:"currentPage"`
+	PageSize     int    `json:"pageSize"`
+	Topic        string `json:"topic"`
+	G3Number     string `json:"g3Number"`
+	SerialNumber string `json:"serialNumber"`
+	Status       int    `json:"status"`
+}
+
+func InvokeRpcFindOrderInfoInAgent(filter OrderFilterInAgent, ctx context.Context) ([]map[string]interface{}, interface{}, error) {
+	toAny, err := utils.ParseDataToAny(filter)
+	if err != nil {
+		return nil, 0, err
+	}
+	ao := &business_rpc.RequestAO{Data: toAny}
+	vo, err := client.InvokeBusinessRPCMethod(ctx, "FindOrderInfoInAgent", ao)
+	if err != nil {
+		return nil, 0, err
+	}
+	mapList := utils.ParseAnyToMapList(vo.MapList)
+	count := utils.ParseAnyToData(vo.Data)
+	return mapList, count, nil
+}

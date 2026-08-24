@@ -30,9 +30,12 @@ service BusinessRPC {
   rpc GenerateOrder(RequestAO) returns (ResponseVO) {}
   rpc FindOrderInfo(RequestAO) returns (ResponseVO) {}
   rpc ListOrderInfo(RequestAO) returns (ResponseVO) {}
+  rpc FindOrderInfoInAgent(RequestAO) returns (ResponseVO) {}
 
   // Process
   rpc FindProcInstByChatID(RequestAO) returns (ResponseVO) {}
+  rpc FindOngoingProcessInfoInAgent(RequestAO) returns (ResponseVO) {}
+  rpc FindFinishedProcessInfoInAgent(RequestAO) returns (ResponseVO) {}
 
   // Track
   rpc UpdateTrack(RequestAO) returns (ResponseVO) {}
@@ -54,6 +57,7 @@ service BusinessRPC {
 
   // Profit Sync
   rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
+
 }
 
 message IdentityLink {

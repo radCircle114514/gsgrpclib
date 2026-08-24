@@ -8,6 +8,12 @@ import (
 )
 
 // Re-exports for backwards compatibility. Prefer importing the subpackages directly.
+
+type (
+	OrderFilterInAgent   = business.OrderFilterInAgent
+	ProcessFilterInAgent = business.ProcessFilterInAgent
+)
+
 var (
 	InvokeBookingRPCCalculateUserIndicator            = booking.InvokeBookingRPCCalculateUserIndicator
 	InvokeBookingRPCQueryDataInTimeScope              = booking.InvokeBookingRPCQueryDataInTimeScope
@@ -30,7 +36,10 @@ var (
 	InvokeRpcBusinessUpdateMiniAndAccount             = business.InvokeRpcBusinessUpdateMiniAndAccount
 	InvokeRpcBusinessUpdateNotifyMode                 = business.InvokeRpcBusinessUpdateNotifyMode
 	InvokeRpcFindContentNoList                        = business.InvokeRpcFindContentNoList
+	InvokeRpcFindFinishedProcessInfoInAgent           = business.InvokeRpcFindFinishedProcessInfoInAgent
+	InvokeRpcFindOngoingProcessInfoInAgent            = business.InvokeRpcFindOngoingProcessInfoInAgent
 	InvokeRpcFindOrderInfo                            = business.InvokeRpcFindOrderInfo
+	InvokeRpcFindOrderInfoInAgent                     = business.InvokeRpcFindOrderInfoInAgent
 	InvokeRpcGenerateOrder                            = business.InvokeRpcGenerateOrder
 	InvokeRpcUpdateTrack                              = business.InvokeRpcUpdateTrack
 	GenerateRequestAO                                 = track.GenerateRequestAO
