@@ -58,6 +58,9 @@ service BusinessRPC {
   // Profit Sync
   rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
 
+  // Auth
+  rpc Whoami(RequestAO) returns (ResponseVO) {}
+
 }
 
 message IdentityLink {

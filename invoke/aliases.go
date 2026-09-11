@@ -42,6 +42,7 @@ var (
 	InvokeRpcFindOrderInfoInAgent                     = business.InvokeRpcFindOrderInfoInAgent
 	InvokeRpcGenerateOrder                            = business.InvokeRpcGenerateOrder
 	InvokeRpcUpdateTrack                              = business.InvokeRpcUpdateTrack
+	InvokeRpcWhoami                                   = business.InvokeRpcWhoami
 	GenerateRequestAO                                 = track.GenerateRequestAO
 	InvokeRPCTrackFindTrackList                       = track.InvokeRPCTrackFindTrackList
 	InvokeRpcTrackFindContentNoListBySerialNumberList = track.InvokeRpcTrackFindContentNoListBySerialNumberList

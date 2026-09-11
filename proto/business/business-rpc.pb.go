@@ -664,7 +664,7 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x0eprocInstVOList\x18\a \x03(\v2\x10.brpc.ProcInstVOR\x0eprocInstVOList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xc8\b\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xf7\b\n" +
 	"\vBusinessRPC\x124\n" +
 	"\rGenerateOrder\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
 	"\rFindOrderInfo\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
@@ -683,7 +683,8 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x1aQueryIndicatorCountInBatch\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12=\n" +
 	"\x16CalculateUserIndicator\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12<\n" +
 	"\x15GenerateRecordInMonth\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x126\n" +
-	"\x0fSyncOrderProfit\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00B!Z\x1fgithub.com/iznilul/business_rpcb\x06proto3"
+	"\x0fSyncOrderProfit\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12-\n" +
+	"\x06Whoami\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00B!Z\x1fgithub.com/iznilul/business_rpcb\x06proto3"
 
 var (
 	file_proto_business_business_rpc_proto_rawDescOnce sync.Once
@@ -740,26 +741,28 @@ var file_proto_business_business_rpc_proto_depIdxs = []int32{
 	4,  // 28: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
 	4,  // 29: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
 	4,  // 30: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
-	5,  // 31: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
-	5,  // 32: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 33: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 34: brpc.BusinessRPC.FindOrderInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 35: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
-	5,  // 36: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 37: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 38: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
-	5,  // 39: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
-	5,  // 40: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
-	5,  // 41: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
-	5,  // 42: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
-	5,  // 43: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
-	5,  // 44: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
-	5,  // 45: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
-	5,  // 46: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
-	5,  // 47: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
-	5,  // 48: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
-	31, // [31:49] is the sub-list for method output_type
-	13, // [13:31] is the sub-list for method input_type
+	4,  // 31: brpc.BusinessRPC.Whoami:input_type -> brpc.RequestAO
+	5,  // 32: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
+	5,  // 33: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 34: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 35: brpc.BusinessRPC.FindOrderInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 36: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
+	5,  // 37: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 38: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 39: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
+	5,  // 40: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
+	5,  // 41: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
+	5,  // 42: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
+	5,  // 43: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
+	5,  // 44: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
+	5,  // 45: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
+	5,  // 46: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
+	5,  // 47: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
+	5,  // 48: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
+	5,  // 49: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
+	5,  // 50: brpc.BusinessRPC.Whoami:output_type -> brpc.ResponseVO
+	32, // [32:51] is the sub-list for method output_type
+	13, // [13:32] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name

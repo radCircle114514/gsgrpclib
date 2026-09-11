@@ -53,6 +53,7 @@ const (
 	BusinessRPC_CalculateUserIndicator_FullMethodName         = "/brpc.BusinessRPC/CalculateUserIndicator"
 	BusinessRPC_GenerateRecordInMonth_FullMethodName          = "/brpc.BusinessRPC/GenerateRecordInMonth"
 	BusinessRPC_SyncOrderProfit_FullMethodName                = "/brpc.BusinessRPC/SyncOrderProfit"
+	BusinessRPC_Whoami_FullMethodName                         = "/brpc.BusinessRPC/Whoami"
 )
 
 // BusinessRPCClient is the client API for BusinessRPC service.
@@ -86,6 +87,8 @@ type BusinessRPCClient interface {
 	GenerateRecordInMonth(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Auth
+	Whoami(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type businessRPCClient struct {
@@ -276,6 +279,16 @@ func (c *businessRPCClient) SyncOrderProfit(ctx context.Context, in *RequestAO, 
 	return out, nil
 }
 
+func (c *businessRPCClient) Whoami(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_Whoami_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BusinessRPCServer is the server API for BusinessRPC service.
 // All implementations must embed UnimplementedBusinessRPCServer
 // for forward compatibility.
@@ -307,6 +320,8 @@ type BusinessRPCServer interface {
 	GenerateRecordInMonth(context.Context, *RequestAO) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error)
+	// Auth
+	Whoami(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedBusinessRPCServer()
 }
 
@@ -370,6 +385,9 @@ func (UnimplementedBusinessRPCServer) GenerateRecordInMonth(context.Context, *Re
 }
 func (UnimplementedBusinessRPCServer) SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncOrderProfit not implemented")
+}
+func (UnimplementedBusinessRPCServer) Whoami(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method Whoami not implemented")
 }
 func (UnimplementedBusinessRPCServer) mustEmbedUnimplementedBusinessRPCServer() {}
 func (UnimplementedBusinessRPCServer) testEmbeddedByValue()                     {}
@@ -716,6 +734,24 @@ func _BusinessRPC_SyncOrderProfit_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BusinessRPC_Whoami_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).Whoami(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_Whoami_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).Whoami(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BusinessRPC_ServiceDesc is the grpc.ServiceDesc for BusinessRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -794,6 +830,10 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SyncOrderProfit",
 			Handler:    _BusinessRPC_SyncOrderProfit_Handler,
+		},
+		{
+			MethodName: "Whoami",
+			Handler:    _BusinessRPC_Whoami_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
