@@ -125,6 +125,12 @@ service WecomRPC {
 
   // CheckIN
   rpc GetCheckInData(RequestAO) returns (ResponseVO) {}
+
+  // Journal
+  rpc GetReportList(RequestAO) returns (ResponseVO) {}
+  rpc GetReportDetail(RequestAO) returns (ResponseVO) {}
+  rpc GetReportStatList(RequestAO) returns (ResponseVO) {}
+  rpc GetJournalData(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {

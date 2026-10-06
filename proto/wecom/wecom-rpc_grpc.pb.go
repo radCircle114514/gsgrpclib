@@ -107,6 +107,10 @@ const (
 	WecomRPC_GetApprovalDetail_FullMethodName               = "/wrpc.WecomRPC/GetApprovalDetail"
 	WecomRPC_GetApprovalList_FullMethodName                 = "/wrpc.WecomRPC/GetApprovalList"
 	WecomRPC_GetCheckInData_FullMethodName                  = "/wrpc.WecomRPC/GetCheckInData"
+	WecomRPC_GetReportList_FullMethodName                   = "/wrpc.WecomRPC/GetReportList"
+	WecomRPC_GetReportDetail_FullMethodName                 = "/wrpc.WecomRPC/GetReportDetail"
+	WecomRPC_GetReportStatList_FullMethodName               = "/wrpc.WecomRPC/GetReportStatList"
+	WecomRPC_GetJournalData_FullMethodName                  = "/wrpc.WecomRPC/GetJournalData"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -201,6 +205,11 @@ type WecomRPCClient interface {
 	GetApprovalList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// CheckIN
 	GetCheckInData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Journal
+	GetReportList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetReportDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetReportStatList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetJournalData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -931,6 +940,46 @@ func (c *wecomRPCClient) GetCheckInData(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
+func (c *wecomRPCClient) GetReportList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetReportList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetReportDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetReportDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetReportStatList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetReportStatList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetJournalData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetJournalData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WecomRPCServer is the server API for WecomRPC service.
 // All implementations must embed UnimplementedWecomRPCServer
 // for forward compatibility.
@@ -1023,6 +1072,11 @@ type WecomRPCServer interface {
 	GetApprovalList(context.Context, *RequestAO) (*ResponseVO, error)
 	// CheckIN
 	GetCheckInData(context.Context, *RequestAO) (*ResponseVO, error)
+	// Journal
+	GetReportList(context.Context, *RequestAO) (*ResponseVO, error)
+	GetReportDetail(context.Context, *RequestAO) (*ResponseVO, error)
+	GetReportStatList(context.Context, *RequestAO) (*ResponseVO, error)
+	GetJournalData(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1248,6 +1302,18 @@ func (UnimplementedWecomRPCServer) GetApprovalList(context.Context, *RequestAO) 
 }
 func (UnimplementedWecomRPCServer) GetCheckInData(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetCheckInData not implemented")
+}
+func (UnimplementedWecomRPCServer) GetReportList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetReportList not implemented")
+}
+func (UnimplementedWecomRPCServer) GetReportDetail(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetReportDetail not implemented")
+}
+func (UnimplementedWecomRPCServer) GetReportStatList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetReportStatList not implemented")
+}
+func (UnimplementedWecomRPCServer) GetJournalData(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetJournalData not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -2566,6 +2632,78 @@ func _WecomRPC_GetCheckInData_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_GetReportList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetReportList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetReportList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetReportList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetReportDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetReportDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetReportDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetReportDetail(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetReportStatList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetReportStatList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetReportStatList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetReportStatList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetJournalData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetJournalData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetJournalData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetJournalData(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WecomRPC_ServiceDesc is the grpc.ServiceDesc for WecomRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2860,6 +2998,22 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCheckInData",
 			Handler:    _WecomRPC_GetCheckInData_Handler,
+		},
+		{
+			MethodName: "GetReportList",
+			Handler:    _WecomRPC_GetReportList_Handler,
+		},
+		{
+			MethodName: "GetReportDetail",
+			Handler:    _WecomRPC_GetReportDetail_Handler,
+		},
+		{
+			MethodName: "GetReportStatList",
+			Handler:    _WecomRPC_GetReportStatList_Handler,
+		},
+		{
+			MethodName: "GetJournalData",
+			Handler:    _WecomRPC_GetJournalData_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
