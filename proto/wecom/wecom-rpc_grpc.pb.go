@@ -111,6 +111,9 @@ const (
 	WecomRPC_GetReportDetail_FullMethodName                 = "/wrpc.WecomRPC/GetReportDetail"
 	WecomRPC_GetReportStatList_FullMethodName               = "/wrpc.WecomRPC/GetReportStatList"
 	WecomRPC_GetJournalData_FullMethodName                  = "/wrpc.WecomRPC/GetJournalData"
+	WecomRPC_GetHRFields_FullMethodName                     = "/wrpc.WecomRPC/GetHRFields"
+	WecomRPC_GetHRStaffInfo_FullMethodName                  = "/wrpc.WecomRPC/GetHRStaffInfo"
+	WecomRPC_UpdateHRStaffInfo_FullMethodName               = "/wrpc.WecomRPC/UpdateHRStaffInfo"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -210,6 +213,10 @@ type WecomRPCClient interface {
 	GetReportDetail(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetReportStatList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetJournalData(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// HR
+	GetHRFields(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UpdateHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -980,6 +987,36 @@ func (c *wecomRPCClient) GetJournalData(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
+func (c *wecomRPCClient) GetHRFields(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetHRFields_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetHRStaffInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) UpdateHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UpdateHRStaffInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WecomRPCServer is the server API for WecomRPC service.
 // All implementations must embed UnimplementedWecomRPCServer
 // for forward compatibility.
@@ -1077,6 +1114,10 @@ type WecomRPCServer interface {
 	GetReportDetail(context.Context, *RequestAO) (*ResponseVO, error)
 	GetReportStatList(context.Context, *RequestAO) (*ResponseVO, error)
 	GetJournalData(context.Context, *RequestAO) (*ResponseVO, error)
+	// HR
+	GetHRFields(context.Context, *RequestAO) (*ResponseVO, error)
+	GetHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error)
+	UpdateHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1314,6 +1355,15 @@ func (UnimplementedWecomRPCServer) GetReportStatList(context.Context, *RequestAO
 }
 func (UnimplementedWecomRPCServer) GetJournalData(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetJournalData not implemented")
+}
+func (UnimplementedWecomRPCServer) GetHRFields(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetHRFields not implemented")
+}
+func (UnimplementedWecomRPCServer) GetHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetHRStaffInfo not implemented")
+}
+func (UnimplementedWecomRPCServer) UpdateHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateHRStaffInfo not implemented")
 }
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
@@ -2704,6 +2754,60 @@ func _WecomRPC_GetJournalData_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_GetHRFields_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetHRFields(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetHRFields_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetHRFields(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetHRStaffInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetHRStaffInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetHRStaffInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetHRStaffInfo(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_UpdateHRStaffInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UpdateHRStaffInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UpdateHRStaffInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UpdateHRStaffInfo(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WecomRPC_ServiceDesc is the grpc.ServiceDesc for WecomRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -3014,6 +3118,18 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetJournalData",
 			Handler:    _WecomRPC_GetJournalData_Handler,
+		},
+		{
+			MethodName: "GetHRFields",
+			Handler:    _WecomRPC_GetHRFields_Handler,
+		},
+		{
+			MethodName: "GetHRStaffInfo",
+			Handler:    _WecomRPC_GetHRStaffInfo_Handler,
+		},
+		{
+			MethodName: "UpdateHRStaffInfo",
+			Handler:    _WecomRPC_UpdateHRStaffInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

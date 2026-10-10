@@ -44,6 +44,38 @@ func InvokeRpcFindOrderInfo(openID string, currentPage, pageSize int, ctx contex
 	return vo, count, nil
 }
 
+// OrderFilterInAgent 是 Agent 侧查询订单列表的过滤条件，作为
+// FindOrderInfoInAgent 的 Data（JSON）载荷。用户身份不在此传递，
+// 由服务端从 gRPC metadata 中的认证信息解析，防止越权冒充。
+type OrderFilterInAgent struct {
+	CurrentPage  int    `json:"currentPage"`
+	PageSize     int    `json:"pageSize"`
+	Topic        string `json:"topic"`
+	G3Number     string `json:"g3Number"`
+	SerialNumber string `json:"serialNumber"`
+	Status       int    `json:"status"`
+}
+
+// InvokeRpcFindOrderInfoInAgent 供 Agent 调用，按过滤条件分页查询当前
+// 认证用户可见的订单列表，返回订单行与总条数。行级数据权限由服务端
+// 依据 metadata 中的 userID 对应权限校验，调用方无法自行扩大可见范围。
+func InvokeRpcFindOrderInfoInAgent(filter OrderFilterInAgent, ctx context.Context) ([]map[string]interface{}, int64, error) {
+	toAny, err := utils.ParseDataToAny(filter)
+	if err != nil {
+		return nil, 0, err
+	}
+	ao := &business_rpc.RequestAO{
+		Data: toAny,
+	}
+	vo, err := client.InvokeBusinessRPCMethod(ctx, "FindOrderInfoInAgent", ao)
+	if err != nil {
+		return nil, 0, err
+	}
+	mapList := utils.ParseAnyToMapList(vo.MapList)
+	count, _ := utils.ParseAnyToData(vo.Data).(int64)
+	return mapList, count, nil
+}
+
 func InvokeRpcGenerateOrder(inquiry map[string]interface{}, ctx context.Context) error {
 	toAny, _ := utils.ParseMapToAny(inquiry)
 	ao := &business_rpc.RequestAO{

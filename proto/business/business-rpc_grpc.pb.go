@@ -38,6 +38,7 @@ const (
 	BusinessRPC_GenerateOrder_FullMethodName              = "/brpc.BusinessRPC/GenerateOrder"
 	BusinessRPC_FindOrderInfo_FullMethodName              = "/brpc.BusinessRPC/FindOrderInfo"
 	BusinessRPC_ListOrderInfo_FullMethodName              = "/brpc.BusinessRPC/ListOrderInfo"
+	BusinessRPC_FindOrderInfoInAgent_FullMethodName       = "/brpc.BusinessRPC/FindOrderInfoInAgent"
 	BusinessRPC_FindProcInstByChatID_FullMethodName       = "/brpc.BusinessRPC/FindProcInstByChatID"
 	BusinessRPC_UpdateTrack_FullMethodName                = "/brpc.BusinessRPC/UpdateTrack"
 	BusinessRPC_FindContentNoList_FullMethodName          = "/brpc.BusinessRPC/FindContentNoList"
@@ -62,6 +63,7 @@ type BusinessRPCClient interface {
 	GenerateOrder(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindOrderInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	ListOrderInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindOrderInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Process
 	FindProcInstByChatID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Track
@@ -114,6 +116,16 @@ func (c *businessRPCClient) ListOrderInfo(ctx context.Context, in *RequestAO, op
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, BusinessRPC_ListOrderInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindOrderInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindOrderInfoInAgent_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -250,6 +262,7 @@ type BusinessRPCServer interface {
 	GenerateOrder(context.Context, *RequestAO) (*ResponseVO, error)
 	FindOrderInfo(context.Context, *RequestAO) (*ResponseVO, error)
 	ListOrderInfo(context.Context, *RequestAO) (*ResponseVO, error)
+	FindOrderInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Process
 	FindProcInstByChatID(context.Context, *RequestAO) (*ResponseVO, error)
 	// Track
@@ -286,6 +299,9 @@ func (UnimplementedBusinessRPCServer) FindOrderInfo(context.Context, *RequestAO)
 }
 func (UnimplementedBusinessRPCServer) ListOrderInfo(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListOrderInfo not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindOrderInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindOrderInfoInAgent not implemented")
 }
 func (UnimplementedBusinessRPCServer) FindProcInstByChatID(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindProcInstByChatID not implemented")
@@ -394,6 +410,24 @@ func _BusinessRPC_ListOrderInfo_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BusinessRPCServer).ListOrderInfo(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindOrderInfoInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindOrderInfoInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindOrderInfoInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindOrderInfoInAgent(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -632,6 +666,10 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListOrderInfo",
 			Handler:    _BusinessRPC_ListOrderInfo_Handler,
+		},
+		{
+			MethodName: "FindOrderInfoInAgent",
+			Handler:    _BusinessRPC_FindOrderInfoInAgent_Handler,
 		},
 		{
 			MethodName: "FindProcInstByChatID",

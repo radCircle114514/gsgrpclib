@@ -664,11 +664,12 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x0eprocInstVOList\x18\a \x03(\v2\x10.brpc.ProcInstVOR\x0eprocInstVOList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xfe\x06\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xbb\a\n" +
 	"\vBusinessRPC\x124\n" +
 	"\rGenerateOrder\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
 	"\rFindOrderInfo\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
 	"\rListOrderInfo\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12;\n" +
+	"\x14FindOrderInfoInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12;\n" +
 	"\x14FindProcInstByChatID\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x122\n" +
 	"\vUpdateTrack\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x128\n" +
 	"\x11FindContentNoList\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x127\n" +
@@ -722,35 +723,37 @@ var file_proto_business_business_rpc_proto_depIdxs = []int32{
 	4,  // 13: brpc.BusinessRPC.GenerateOrder:input_type -> brpc.RequestAO
 	4,  // 14: brpc.BusinessRPC.FindOrderInfo:input_type -> brpc.RequestAO
 	4,  // 15: brpc.BusinessRPC.ListOrderInfo:input_type -> brpc.RequestAO
-	4,  // 16: brpc.BusinessRPC.FindProcInstByChatID:input_type -> brpc.RequestAO
-	4,  // 17: brpc.BusinessRPC.UpdateTrack:input_type -> brpc.RequestAO
-	4,  // 18: brpc.BusinessRPC.FindContentNoList:input_type -> brpc.RequestAO
-	4,  // 19: brpc.BusinessRPC.UpdateNotifyMode:input_type -> brpc.RequestAO
-	4,  // 20: brpc.BusinessRPC.UpdateCustomerRemark:input_type -> brpc.RequestAO
-	4,  // 21: brpc.BusinessRPC.UpdateMiniAndAccount:input_type -> brpc.RequestAO
-	4,  // 22: brpc.BusinessRPC.QueryIndicatorCount:input_type -> brpc.RequestAO
-	4,  // 23: brpc.BusinessRPC.QueryIndicatorDetail:input_type -> brpc.RequestAO
-	4,  // 24: brpc.BusinessRPC.QueryIndicatorCountInBatch:input_type -> brpc.RequestAO
-	4,  // 25: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
-	4,  // 26: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
-	4,  // 27: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
-	5,  // 28: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
-	5,  // 29: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 30: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 31: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
-	5,  // 32: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
-	5,  // 33: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
-	5,  // 34: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
-	5,  // 35: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
-	5,  // 36: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
-	5,  // 37: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
-	5,  // 38: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
-	5,  // 39: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
-	5,  // 40: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
-	5,  // 41: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
-	5,  // 42: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
-	28, // [28:43] is the sub-list for method output_type
-	13, // [13:28] is the sub-list for method input_type
+	4,  // 16: brpc.BusinessRPC.FindOrderInfoInAgent:input_type -> brpc.RequestAO
+	4,  // 17: brpc.BusinessRPC.FindProcInstByChatID:input_type -> brpc.RequestAO
+	4,  // 18: brpc.BusinessRPC.UpdateTrack:input_type -> brpc.RequestAO
+	4,  // 19: brpc.BusinessRPC.FindContentNoList:input_type -> brpc.RequestAO
+	4,  // 20: brpc.BusinessRPC.UpdateNotifyMode:input_type -> brpc.RequestAO
+	4,  // 21: brpc.BusinessRPC.UpdateCustomerRemark:input_type -> brpc.RequestAO
+	4,  // 22: brpc.BusinessRPC.UpdateMiniAndAccount:input_type -> brpc.RequestAO
+	4,  // 23: brpc.BusinessRPC.QueryIndicatorCount:input_type -> brpc.RequestAO
+	4,  // 24: brpc.BusinessRPC.QueryIndicatorDetail:input_type -> brpc.RequestAO
+	4,  // 25: brpc.BusinessRPC.QueryIndicatorCountInBatch:input_type -> brpc.RequestAO
+	4,  // 26: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
+	4,  // 27: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
+	4,  // 28: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
+	5,  // 29: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
+	5,  // 30: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 31: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 32: brpc.BusinessRPC.FindOrderInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 33: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
+	5,  // 34: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
+	5,  // 35: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
+	5,  // 36: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
+	5,  // 37: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
+	5,  // 38: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
+	5,  // 39: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
+	5,  // 40: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
+	5,  // 41: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
+	5,  // 42: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
+	5,  // 43: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
+	5,  // 44: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
+	29, // [29:45] is the sub-list for method output_type
+	13, // [13:29] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name

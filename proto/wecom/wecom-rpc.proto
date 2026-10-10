@@ -131,6 +131,11 @@ service WecomRPC {
   rpc GetReportDetail(RequestAO) returns (ResponseVO) {}
   rpc GetReportStatList(RequestAO) returns (ResponseVO) {}
   rpc GetJournalData(RequestAO) returns (ResponseVO) {}
+
+  // HR
+  rpc GetHRFields(RequestAO) returns (ResponseVO) {}
+  rpc GetHRStaffInfo(RequestAO) returns (ResponseVO) {}
+  rpc UpdateHRStaffInfo(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {

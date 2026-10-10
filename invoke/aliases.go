@@ -78,6 +78,8 @@ var (
 	InvokeRpcGetCustomerPointRecord                   = wecom.InvokeRpcGetCustomerPointRecord
 	InvokeRpcGetDepartmentTree                        = wecom.InvokeRpcGetDepartmentTree
 	InvokeRpcGetFindEnumMap                           = wecom.InvokeRpcGetFindEnumMap
+	InvokeRpcGetHRFields                              = wecom.InvokeRpcGetHRFields
+	InvokeRpcGetHRStaffInfo                           = wecom.InvokeRpcGetHRStaffInfo
 	InvokeRpcGetJournalData                           = wecom.InvokeRpcGetJournalData
 	InvokeRpcGetOauthCallBackURL                      = wecom.InvokeRpcGetOauthCallBackURL
 	InvokeRpcGetReportDetail                          = wecom.InvokeRpcGetReportDetail
@@ -107,6 +109,7 @@ var (
 	InvokeRpcSyncTraining                             = wecom.InvokeRpcSyncTraining
 	InvokeRpcUpdateCustomerRemark                     = wecom.InvokeRpcUpdateCustomerRemark
 	InvokeRpcUpdateSupplier                           = wecom.InvokeRpcUpdateSupplier
+	InvokeRpcUpdateHRStaffInfo                        = wecom.InvokeRpcUpdateHRStaffInfo
 	InvokeRpcWecomFindBusinessCustomerList            = wecom.InvokeRpcWecomFindBusinessCustomerList
 	InvokeRpcWecomFindSupplierList                    = wecom.InvokeRpcWecomFindSupplierList
 	InvokeRpcWecomQueryFieldList                      = wecom.InvokeRpcWecomQueryFieldList
