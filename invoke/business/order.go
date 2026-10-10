@@ -56,10 +56,10 @@ type OrderFilterInAgent struct {
 	Status       int    `json:"status"`
 }
 
-// InvokeRpcFindOrderInfoInAgent 供 Agent 调用，按过滤条件分页查询当前
+// InvokeRpcFindOrderListInAgent 供 Agent 调用，按过滤条件分页查询当前
 // 认证用户可见的订单列表，返回订单行与总条数。行级数据权限由服务端
 // 依据 metadata 中的 userID 对应权限校验，调用方无法自行扩大可见范围。
-func InvokeRpcFindOrderInfoInAgent(filter OrderFilterInAgent, ctx context.Context) ([]map[string]interface{}, int64, error) {
+func InvokeRpcFindOrderListInAgent(filter OrderFilterInAgent, ctx context.Context) ([]map[string]interface{}, int64, error) {
 	toAny, err := utils.ParseDataToAny(filter)
 	if err != nil {
 		return nil, 0, err
@@ -67,13 +67,42 @@ func InvokeRpcFindOrderInfoInAgent(filter OrderFilterInAgent, ctx context.Contex
 	ao := &business_rpc.RequestAO{
 		Data: toAny,
 	}
-	vo, err := client.InvokeBusinessRPCMethod(ctx, "FindOrderInfoInAgent", ao)
+	vo, err := client.InvokeBusinessRPCMethod(ctx, "FindOrderListInAgent", ao)
 	if err != nil {
 		return nil, 0, err
 	}
 	mapList := utils.ParseAnyToMapList(vo.MapList)
 	count, _ := utils.ParseAnyToData(vo.Data).(int64)
 	return mapList, count, nil
+}
+
+// OrderDetailInAgent 是 Agent 侧查询订单详情的请求参数，作为
+// DetailOrderInfoInAgent 的 Data（JSON）载荷。用户身份由服务端从
+// gRPC metadata 中的认证信息解析，不在此传递，防止越权冒充。
+// 三个定位字段优先级为 SerialNumber > G3Number；SerialNumber 支持
+// 只传序列号末尾 6 位（如 "150405"），服务端按后缀匹配。
+type OrderDetailInAgent struct {
+	SerialNumber string `json:"serialNumber"`
+	G3Number     string `json:"g3Number"`
+}
+
+// InvokeRpcDetailOrderInfoInAgent 供 Agent 调用，按序列号（支持末 6 位
+// 后缀匹配）或 G3 单号定位当前认证用户可见的订单，返回订单详情
+// （含附件、更新记录、绑定用户等），详情结构与 HTTP /v1/order/:id
+// 接口一致，位于响应的 Map 字段。
+func InvokeRpcDetailOrderInfoInAgent(filter OrderDetailInAgent, ctx context.Context) (map[string]interface{}, error) {
+	toAny, err := utils.ParseDataToAny(filter)
+	if err != nil {
+		return nil, err
+	}
+	ao := &business_rpc.RequestAO{
+		Data: toAny,
+	}
+	vo, err := client.InvokeBusinessRPCMethod(ctx, "DetailOrderInfoInAgent", ao)
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMap(vo.Map), nil
 }
 
 func InvokeRpcGenerateOrder(inquiry map[string]interface{}, ctx context.Context) error {
