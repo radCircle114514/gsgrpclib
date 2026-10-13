@@ -19,8 +19,9 @@ type ServerConfig struct {
 	RpcServerPort      string
 	RpcWecomHost       string
 	RpcBusinessHost    string
-	RpcBookingHost    string
+	RpcBookingHost     string
 	RpcTrackHost       string
+	RpcWorkBuddyHost   string
 	Tls                bool
 	CertFile           string
 	KeyFile            string
@@ -55,7 +56,23 @@ func init() {
 	Config = conf
 }
 
+// SetTimeout bounds an RPC call when the caller passed a deadline-free context.
+//
+// If ctx already carries a deadline, the caller has deliberately bounded the
+// call (e.g. the MCP server sets a configurable per-call downstream timeout of
+// 60s in business/downstream.go); return it unchanged. Wrapping such a context
+// in another WithTimeout would silently clamp the call to the 10s default
+// below in test/prod, because nested deadlines resolve to the earlier one.
+//
+// When there is no deadline (the service-to-service callers all pass
+// context.Background()), apply the legacy default safety net.
 func SetTimeout(ctx context.Context) (context.Context, context.CancelFunc) {
+	if ctx == nil {
+		ctx = context.Background()
+	}
+	if _, ok := ctx.Deadline(); ok {
+		return ctx, func() {}
+	}
 	var timeout time.Duration
 	if Mode == "dev" {
 		timeout = 114514 * time.Second

@@ -35,23 +35,27 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BusinessRPC_GenerateOrder_FullMethodName              = "/brpc.BusinessRPC/GenerateOrder"
-	BusinessRPC_FindOrderInfo_FullMethodName              = "/brpc.BusinessRPC/FindOrderInfo"
-	BusinessRPC_ListOrderInfo_FullMethodName              = "/brpc.BusinessRPC/ListOrderInfo"
-	BusinessRPC_FindOrderListInAgent_FullMethodName       = "/brpc.BusinessRPC/FindOrderListInAgent"
-	BusinessRPC_DetailOrderInfoInAgent_FullMethodName     = "/brpc.BusinessRPC/DetailOrderInfoInAgent"
-	BusinessRPC_FindProcInstByChatID_FullMethodName       = "/brpc.BusinessRPC/FindProcInstByChatID"
-	BusinessRPC_UpdateTrack_FullMethodName                = "/brpc.BusinessRPC/UpdateTrack"
-	BusinessRPC_FindContentNoList_FullMethodName          = "/brpc.BusinessRPC/FindContentNoList"
-	BusinessRPC_UpdateNotifyMode_FullMethodName           = "/brpc.BusinessRPC/UpdateNotifyMode"
-	BusinessRPC_UpdateCustomerRemark_FullMethodName       = "/brpc.BusinessRPC/UpdateCustomerRemark"
-	BusinessRPC_UpdateMiniAndAccount_FullMethodName       = "/brpc.BusinessRPC/UpdateMiniAndAccount"
-	BusinessRPC_QueryIndicatorCount_FullMethodName        = "/brpc.BusinessRPC/QueryIndicatorCount"
-	BusinessRPC_QueryIndicatorDetail_FullMethodName       = "/brpc.BusinessRPC/QueryIndicatorDetail"
-	BusinessRPC_QueryIndicatorCountInBatch_FullMethodName = "/brpc.BusinessRPC/QueryIndicatorCountInBatch"
-	BusinessRPC_CalculateUserIndicator_FullMethodName     = "/brpc.BusinessRPC/CalculateUserIndicator"
-	BusinessRPC_GenerateRecordInMonth_FullMethodName      = "/brpc.BusinessRPC/GenerateRecordInMonth"
-	BusinessRPC_SyncOrderProfit_FullMethodName            = "/brpc.BusinessRPC/SyncOrderProfit"
+	BusinessRPC_GenerateOrder_FullMethodName                  = "/brpc.BusinessRPC/GenerateOrder"
+	BusinessRPC_FindOrderInfo_FullMethodName                  = "/brpc.BusinessRPC/FindOrderInfo"
+	BusinessRPC_ListOrderInfo_FullMethodName                  = "/brpc.BusinessRPC/ListOrderInfo"
+	BusinessRPC_FindOrderListInAgent_FullMethodName           = "/brpc.BusinessRPC/FindOrderListInAgent"
+	BusinessRPC_DetailOrderInfoInAgent_FullMethodName         = "/brpc.BusinessRPC/DetailOrderInfoInAgent"
+	BusinessRPC_FindProcInstByChatID_FullMethodName           = "/brpc.BusinessRPC/FindProcInstByChatID"
+	BusinessRPC_FindOngoingProcessInfoInAgent_FullMethodName  = "/brpc.BusinessRPC/FindOngoingProcessInfoInAgent"
+	BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName = "/brpc.BusinessRPC/FindFinishedProcessInfoInAgent"
+	BusinessRPC_FindProcessOverviewInAgent_FullMethodName     = "/brpc.BusinessRPC/FindProcessOverviewInAgent"
+	BusinessRPC_FindProcessDetailInAgent_FullMethodName       = "/brpc.BusinessRPC/FindProcessDetailInAgent"
+	BusinessRPC_UpdateTrack_FullMethodName                    = "/brpc.BusinessRPC/UpdateTrack"
+	BusinessRPC_FindContentNoList_FullMethodName              = "/brpc.BusinessRPC/FindContentNoList"
+	BusinessRPC_UpdateNotifyMode_FullMethodName               = "/brpc.BusinessRPC/UpdateNotifyMode"
+	BusinessRPC_UpdateCustomerRemark_FullMethodName           = "/brpc.BusinessRPC/UpdateCustomerRemark"
+	BusinessRPC_UpdateMiniAndAccount_FullMethodName           = "/brpc.BusinessRPC/UpdateMiniAndAccount"
+	BusinessRPC_QueryIndicatorCount_FullMethodName            = "/brpc.BusinessRPC/QueryIndicatorCount"
+	BusinessRPC_QueryIndicatorDetail_FullMethodName           = "/brpc.BusinessRPC/QueryIndicatorDetail"
+	BusinessRPC_QueryIndicatorCountInBatch_FullMethodName     = "/brpc.BusinessRPC/QueryIndicatorCountInBatch"
+	BusinessRPC_CalculateUserIndicator_FullMethodName         = "/brpc.BusinessRPC/CalculateUserIndicator"
+	BusinessRPC_GenerateRecordInMonth_FullMethodName          = "/brpc.BusinessRPC/GenerateRecordInMonth"
+	BusinessRPC_SyncOrderProfit_FullMethodName                = "/brpc.BusinessRPC/SyncOrderProfit"
 )
 
 // BusinessRPCClient is the client API for BusinessRPC service.
@@ -68,6 +72,10 @@ type BusinessRPCClient interface {
 	DetailOrderInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Process
 	FindProcInstByChatID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindOngoingProcessInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindFinishedProcessInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindProcessOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindProcessDetailInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Track
 	UpdateTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Content
@@ -148,6 +156,46 @@ func (c *businessRPCClient) FindProcInstByChatID(ctx context.Context, in *Reques
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, BusinessRPC_FindProcInstByChatID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindOngoingProcessInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindOngoingProcessInfoInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindFinishedProcessInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindProcessOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindProcessOverviewInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindProcessDetailInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindProcessDetailInAgent_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -278,6 +326,10 @@ type BusinessRPCServer interface {
 	DetailOrderInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Process
 	FindProcInstByChatID(context.Context, *RequestAO) (*ResponseVO, error)
+	FindOngoingProcessInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error)
+	FindFinishedProcessInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error)
+	FindProcessOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error)
+	FindProcessDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Track
 	UpdateTrack(context.Context, *RequestAO) (*ResponseVO, error)
 	// Content
@@ -321,6 +373,18 @@ func (UnimplementedBusinessRPCServer) DetailOrderInfoInAgent(context.Context, *R
 }
 func (UnimplementedBusinessRPCServer) FindProcInstByChatID(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindProcInstByChatID not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindOngoingProcessInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindOngoingProcessInfoInAgent not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindFinishedProcessInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindFinishedProcessInfoInAgent not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindProcessOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindProcessOverviewInAgent not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindProcessDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindProcessDetailInAgent not implemented")
 }
 func (UnimplementedBusinessRPCServer) UpdateTrack(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateTrack not implemented")
@@ -480,6 +544,78 @@ func _BusinessRPC_FindProcInstByChatID_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BusinessRPCServer).FindProcInstByChatID(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindOngoingProcessInfoInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindOngoingProcessInfoInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindOngoingProcessInfoInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindOngoingProcessInfoInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindFinishedProcessInfoInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindFinishedProcessInfoInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindFinishedProcessInfoInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindProcessOverviewInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindProcessOverviewInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindProcessOverviewInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindProcessOverviewInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindProcessDetailInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindProcessDetailInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindProcessDetailInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindProcessDetailInAgent(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -712,6 +848,22 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindProcInstByChatID",
 			Handler:    _BusinessRPC_FindProcInstByChatID_Handler,
+		},
+		{
+			MethodName: "FindOngoingProcessInfoInAgent",
+			Handler:    _BusinessRPC_FindOngoingProcessInfoInAgent_Handler,
+		},
+		{
+			MethodName: "FindFinishedProcessInfoInAgent",
+			Handler:    _BusinessRPC_FindFinishedProcessInfoInAgent_Handler,
+		},
+		{
+			MethodName: "FindProcessOverviewInAgent",
+			Handler:    _BusinessRPC_FindProcessOverviewInAgent_Handler,
+		},
+		{
+			MethodName: "FindProcessDetailInAgent",
+			Handler:    _BusinessRPC_FindProcessDetailInAgent_Handler,
 		},
 		{
 			MethodName: "UpdateTrack",

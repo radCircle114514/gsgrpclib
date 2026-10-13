@@ -1,0 +1,58 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+import "proto/any.proto";
+option go_package = "github.com/iznilul/workbuddy_rpc";
+
+package wbrpc;
+
+// Interface exported by the server.
+service WorkBuddyRPC {
+  // 监控指标 Metrics
+  rpc GetMetrics(RequestAO) returns (ResponseVO);
+  rpc GetMetricsDownloadURL(RequestAO) returns (ResponseVO);
+  rpc GetMetricsDownloadURLV2(RequestAO) returns (ResponseVO);
+  rpc GetActivityAnalytics(RequestAO) returns (ResponseVO);
+  rpc GetDialogAnalytics(RequestAO) returns (ResponseVO);
+  rpc GetCompletionAnalytics(RequestAO) returns (ResponseVO);
+  rpc GetGenerationAnalytics(RequestAO) returns (ResponseVO);
+  rpc GetMemberData(RequestAO) returns (ResponseVO);
+
+  // 用量管理 Usage
+  rpc GetQuotaCycle(RequestAO) returns (ResponseVO);
+  rpc GetDefaultQuota(RequestAO) returns (ResponseVO);
+  rpc UpdateDefaultQuota(RequestAO) returns (ResponseVO);
+  rpc QueryMemberUsage(RequestAO) returns (ResponseVO);
+  rpc QueryMemberLimit(RequestAO) returns (ResponseVO);
+  rpc UpdateMemberQuota(RequestAO) returns (ResponseVO);
+  rpc UpdateDepartmentQuota(RequestAO) returns (ResponseVO);
+  rpc GetUsageMemberDetail(RequestAO) returns (ResponseVO);
+}
+
+message RequestAO {
+  google.protobuf.Any data = 1;
+  repeated google.protobuf.Any dataList = 2;
+  google.protobuf.Any map = 3;
+  repeated google.protobuf.Any mapList = 4;
+}
+
+message ResponseVO {
+  int32 code = 1;
+  string msg = 2;
+  google.protobuf.Any data = 3;
+  repeated google.protobuf.Any dataList = 4;
+  google.protobuf.Any map = 5;
+  repeated google.protobuf.Any mapList = 6;
+}

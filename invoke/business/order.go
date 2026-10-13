@@ -45,7 +45,7 @@ func InvokeRpcFindOrderInfo(openID string, currentPage, pageSize int, ctx contex
 }
 
 // OrderFilterInAgent 是 Agent 侧查询订单列表的过滤条件，作为
-// FindOrderInfoInAgent 的 Data（JSON）载荷。用户身份不在此传递，
+// FindOrderListInAgent 的 Data（JSON）载荷。用户身份不在此传递，
 // 由服务端从 gRPC metadata 中的认证信息解析，防止越权冒充。
 type OrderFilterInAgent struct {
 	CurrentPage  int    `json:"currentPage"`
