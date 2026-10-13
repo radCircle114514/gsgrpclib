@@ -39,6 +39,8 @@ service BusinessRPC {
   rpc FindFinishedProcessInfoInAgent(RequestAO) returns (ResponseVO) {}
   rpc FindProcessOverviewInAgent(RequestAO) returns (ResponseVO) {}
   rpc FindProcessDetailInAgent(RequestAO) returns (ResponseVO) {}
+  rpc FindTaskOverviewInAgent(RequestAO) returns (ResponseVO) {}
+  rpc FindTaskDetailInAgent(RequestAO) returns (ResponseVO) {}
 
   // Track
   rpc UpdateTrack(RequestAO) returns (ResponseVO) {}

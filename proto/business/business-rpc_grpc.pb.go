@@ -45,6 +45,8 @@ const (
 	BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName = "/brpc.BusinessRPC/FindFinishedProcessInfoInAgent"
 	BusinessRPC_FindProcessOverviewInAgent_FullMethodName     = "/brpc.BusinessRPC/FindProcessOverviewInAgent"
 	BusinessRPC_FindProcessDetailInAgent_FullMethodName       = "/brpc.BusinessRPC/FindProcessDetailInAgent"
+	BusinessRPC_FindTaskOverviewInAgent_FullMethodName        = "/brpc.BusinessRPC/FindTaskOverviewInAgent"
+	BusinessRPC_FindTaskDetailInAgent_FullMethodName          = "/brpc.BusinessRPC/FindTaskDetailInAgent"
 	BusinessRPC_UpdateTrack_FullMethodName                    = "/brpc.BusinessRPC/UpdateTrack"
 	BusinessRPC_FindContentNoList_FullMethodName              = "/brpc.BusinessRPC/FindContentNoList"
 	BusinessRPC_UpdateNotifyMode_FullMethodName               = "/brpc.BusinessRPC/UpdateNotifyMode"
@@ -76,6 +78,8 @@ type BusinessRPCClient interface {
 	FindFinishedProcessInfoInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindProcessOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindProcessDetailInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindTaskOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindTaskDetailInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Track
 	UpdateTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Content
@@ -196,6 +200,26 @@ func (c *businessRPCClient) FindProcessDetailInAgent(ctx context.Context, in *Re
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, BusinessRPC_FindProcessDetailInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindTaskOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindTaskOverviewInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindTaskDetailInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindTaskDetailInAgent_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -330,6 +354,8 @@ type BusinessRPCServer interface {
 	FindFinishedProcessInfoInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	FindProcessOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	FindProcessDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error)
+	FindTaskOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error)
+	FindTaskDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Track
 	UpdateTrack(context.Context, *RequestAO) (*ResponseVO, error)
 	// Content
@@ -385,6 +411,12 @@ func (UnimplementedBusinessRPCServer) FindProcessOverviewInAgent(context.Context
 }
 func (UnimplementedBusinessRPCServer) FindProcessDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindProcessDetailInAgent not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindTaskOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTaskOverviewInAgent not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindTaskDetailInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTaskDetailInAgent not implemented")
 }
 func (UnimplementedBusinessRPCServer) UpdateTrack(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateTrack not implemented")
@@ -616,6 +648,42 @@ func _BusinessRPC_FindProcessDetailInAgent_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BusinessRPCServer).FindProcessDetailInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindTaskOverviewInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindTaskOverviewInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindTaskOverviewInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindTaskOverviewInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindTaskDetailInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindTaskDetailInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindTaskDetailInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindTaskDetailInAgent(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -864,6 +932,14 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindProcessDetailInAgent",
 			Handler:    _BusinessRPC_FindProcessDetailInAgent_Handler,
+		},
+		{
+			MethodName: "FindTaskOverviewInAgent",
+			Handler:    _BusinessRPC_FindTaskOverviewInAgent_Handler,
+		},
+		{
+			MethodName: "FindTaskDetailInAgent",
+			Handler:    _BusinessRPC_FindTaskDetailInAgent_Handler,
 		},
 		{
 			MethodName: "UpdateTrack",

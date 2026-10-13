@@ -86,9 +86,10 @@ func InvokeRpcFindProcessOverviewInAgent(filter ProcessOverviewFilterInAgent, ct
 }
 
 // InvokeRpcFindProcessDetailInAgent 供 Agent 调用，按序列号或 G3 单号
-// 查询单条流程完整详情（主体、审批时间线、当前任务、表单变量）。结果放在
-// 响应的 ProcInstVOList 中（至多一条）。
-func InvokeRpcFindProcessDetailInAgent(filter ProcessDetailInAgent, ctx context.Context) (*business_rpc.ProcInstVO, error) {
+// 查询单条流程完整详情（主体、审批时间线、当前任务、表单变量），并内嵌
+// 同业务单号的订单详情 orderInfo。结果是响应 Map 字段里的复合对象：
+// {"procInst": {...}, "orderInfo": {...}}（无订单可见权限时缺省 orderInfo）。
+func InvokeRpcFindProcessDetailInAgent(filter ProcessDetailInAgent, ctx context.Context) (map[string]interface{}, error) {
 	toAny, err := utils.ParseDataToAny(filter)
 	if err != nil {
 		return nil, err
@@ -98,8 +99,5 @@ func InvokeRpcFindProcessDetailInAgent(filter ProcessDetailInAgent, ctx context.
 	if err != nil {
 		return nil, err
 	}
-	if len(vo.ProcInstVOList) == 0 {
-		return nil, nil
-	}
-	return vo.ProcInstVOList[0], nil
+	return utils.ParseAnyToMap(vo.Map), nil
 }

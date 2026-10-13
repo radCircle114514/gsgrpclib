@@ -682,8 +682,7 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x0eprocInstVOList\x18\a \x03(\v2\x10.brpc.ProcInstVOR\x0eprocInstVOList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\x8b\n" +
-	"\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\x89\v\n" +
 	"\vBusinessRPC\x124\n" +
 	"\rGenerateOrder\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
 	"\rFindOrderInfo\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
@@ -694,7 +693,9 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x1dFindOngoingProcessInfoInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12E\n" +
 	"\x1eFindFinishedProcessInfoInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12A\n" +
 	"\x1aFindProcessOverviewInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12?\n" +
-	"\x18FindProcessDetailInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x122\n" +
+	"\x18FindProcessDetailInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12>\n" +
+	"\x17FindTaskOverviewInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12<\n" +
+	"\x15FindTaskDetailInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x122\n" +
 	"\vUpdateTrack\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x128\n" +
 	"\x11FindContentNoList\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x127\n" +
 	"\x10UpdateNotifyMode\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12;\n" +
@@ -754,40 +755,44 @@ var file_proto_business_business_rpc_proto_depIdxs = []int32{
 	4,  // 20: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:input_type -> brpc.RequestAO
 	4,  // 21: brpc.BusinessRPC.FindProcessOverviewInAgent:input_type -> brpc.RequestAO
 	4,  // 22: brpc.BusinessRPC.FindProcessDetailInAgent:input_type -> brpc.RequestAO
-	4,  // 23: brpc.BusinessRPC.UpdateTrack:input_type -> brpc.RequestAO
-	4,  // 24: brpc.BusinessRPC.FindContentNoList:input_type -> brpc.RequestAO
-	4,  // 25: brpc.BusinessRPC.UpdateNotifyMode:input_type -> brpc.RequestAO
-	4,  // 26: brpc.BusinessRPC.UpdateCustomerRemark:input_type -> brpc.RequestAO
-	4,  // 27: brpc.BusinessRPC.UpdateMiniAndAccount:input_type -> brpc.RequestAO
-	4,  // 28: brpc.BusinessRPC.QueryIndicatorCount:input_type -> brpc.RequestAO
-	4,  // 29: brpc.BusinessRPC.QueryIndicatorDetail:input_type -> brpc.RequestAO
-	4,  // 30: brpc.BusinessRPC.QueryIndicatorCountInBatch:input_type -> brpc.RequestAO
-	4,  // 31: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
-	4,  // 32: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
-	4,  // 33: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
-	5,  // 34: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
-	5,  // 35: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 36: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 37: brpc.BusinessRPC.FindOrderListInAgent:output_type -> brpc.ResponseVO
-	5,  // 38: brpc.BusinessRPC.DetailOrderInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 39: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
-	5,  // 40: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 41: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 42: brpc.BusinessRPC.FindProcessOverviewInAgent:output_type -> brpc.ResponseVO
-	5,  // 43: brpc.BusinessRPC.FindProcessDetailInAgent:output_type -> brpc.ResponseVO
-	5,  // 44: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
-	5,  // 45: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
-	5,  // 46: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
-	5,  // 47: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
-	5,  // 48: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
-	5,  // 49: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
-	5,  // 50: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
-	5,  // 51: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
-	5,  // 52: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
-	5,  // 53: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
-	5,  // 54: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
-	34, // [34:55] is the sub-list for method output_type
-	13, // [13:34] is the sub-list for method input_type
+	4,  // 23: brpc.BusinessRPC.FindTaskOverviewInAgent:input_type -> brpc.RequestAO
+	4,  // 24: brpc.BusinessRPC.FindTaskDetailInAgent:input_type -> brpc.RequestAO
+	4,  // 25: brpc.BusinessRPC.UpdateTrack:input_type -> brpc.RequestAO
+	4,  // 26: brpc.BusinessRPC.FindContentNoList:input_type -> brpc.RequestAO
+	4,  // 27: brpc.BusinessRPC.UpdateNotifyMode:input_type -> brpc.RequestAO
+	4,  // 28: brpc.BusinessRPC.UpdateCustomerRemark:input_type -> brpc.RequestAO
+	4,  // 29: brpc.BusinessRPC.UpdateMiniAndAccount:input_type -> brpc.RequestAO
+	4,  // 30: brpc.BusinessRPC.QueryIndicatorCount:input_type -> brpc.RequestAO
+	4,  // 31: brpc.BusinessRPC.QueryIndicatorDetail:input_type -> brpc.RequestAO
+	4,  // 32: brpc.BusinessRPC.QueryIndicatorCountInBatch:input_type -> brpc.RequestAO
+	4,  // 33: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
+	4,  // 34: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
+	4,  // 35: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
+	5,  // 36: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
+	5,  // 37: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 38: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 39: brpc.BusinessRPC.FindOrderListInAgent:output_type -> brpc.ResponseVO
+	5,  // 40: brpc.BusinessRPC.DetailOrderInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 41: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
+	5,  // 42: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 43: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 44: brpc.BusinessRPC.FindProcessOverviewInAgent:output_type -> brpc.ResponseVO
+	5,  // 45: brpc.BusinessRPC.FindProcessDetailInAgent:output_type -> brpc.ResponseVO
+	5,  // 46: brpc.BusinessRPC.FindTaskOverviewInAgent:output_type -> brpc.ResponseVO
+	5,  // 47: brpc.BusinessRPC.FindTaskDetailInAgent:output_type -> brpc.ResponseVO
+	5,  // 48: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
+	5,  // 49: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
+	5,  // 50: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
+	5,  // 51: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
+	5,  // 52: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
+	5,  // 53: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
+	5,  // 54: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
+	5,  // 55: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
+	5,  // 56: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
+	5,  // 57: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
+	5,  // 58: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
+	36, // [36:59] is the sub-list for method output_type
+	13, // [13:36] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name
