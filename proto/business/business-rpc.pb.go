@@ -682,7 +682,7 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x0eprocInstVOList\x18\a \x03(\v2\x10.brpc.ProcInstVOR\x0eprocInstVOList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\x89\v\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xcb\v\n" +
 	"\vBusinessRPC\x124\n" +
 	"\rGenerateOrder\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
 	"\rFindOrderInfo\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x124\n" +
@@ -705,7 +705,8 @@ const file_proto_business_business_rpc_proto_rawDesc = "" +
 	"\x14QueryIndicatorDetail\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12A\n" +
 	"\x1aQueryIndicatorCountInBatch\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12=\n" +
 	"\x16CalculateUserIndicator\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12<\n" +
-	"\x15GenerateRecordInMonth\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x126\n" +
+	"\x15GenerateRecordInMonth\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x12@\n" +
+	"\x19FindReportOverviewInAgent\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00\x126\n" +
 	"\x0fSyncOrderProfit\x12\x0f.brpc.RequestAO\x1a\x10.brpc.ResponseVO\"\x00B!Z\x1fgithub.com/iznilul/business_rpcb\x06proto3"
 
 var (
@@ -767,32 +768,34 @@ var file_proto_business_business_rpc_proto_depIdxs = []int32{
 	4,  // 32: brpc.BusinessRPC.QueryIndicatorCountInBatch:input_type -> brpc.RequestAO
 	4,  // 33: brpc.BusinessRPC.CalculateUserIndicator:input_type -> brpc.RequestAO
 	4,  // 34: brpc.BusinessRPC.GenerateRecordInMonth:input_type -> brpc.RequestAO
-	4,  // 35: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
-	5,  // 36: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
-	5,  // 37: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 38: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
-	5,  // 39: brpc.BusinessRPC.FindOrderListInAgent:output_type -> brpc.ResponseVO
-	5,  // 40: brpc.BusinessRPC.DetailOrderInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 41: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
-	5,  // 42: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 43: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
-	5,  // 44: brpc.BusinessRPC.FindProcessOverviewInAgent:output_type -> brpc.ResponseVO
-	5,  // 45: brpc.BusinessRPC.FindProcessDetailInAgent:output_type -> brpc.ResponseVO
-	5,  // 46: brpc.BusinessRPC.FindTaskOverviewInAgent:output_type -> brpc.ResponseVO
-	5,  // 47: brpc.BusinessRPC.FindTaskDetailInAgent:output_type -> brpc.ResponseVO
-	5,  // 48: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
-	5,  // 49: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
-	5,  // 50: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
-	5,  // 51: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
-	5,  // 52: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
-	5,  // 53: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
-	5,  // 54: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
-	5,  // 55: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
-	5,  // 56: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
-	5,  // 57: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
-	5,  // 58: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
-	36, // [36:59] is the sub-list for method output_type
-	13, // [13:36] is the sub-list for method input_type
+	4,  // 35: brpc.BusinessRPC.FindReportOverviewInAgent:input_type -> brpc.RequestAO
+	4,  // 36: brpc.BusinessRPC.SyncOrderProfit:input_type -> brpc.RequestAO
+	5,  // 37: brpc.BusinessRPC.GenerateOrder:output_type -> brpc.ResponseVO
+	5,  // 38: brpc.BusinessRPC.FindOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 39: brpc.BusinessRPC.ListOrderInfo:output_type -> brpc.ResponseVO
+	5,  // 40: brpc.BusinessRPC.FindOrderListInAgent:output_type -> brpc.ResponseVO
+	5,  // 41: brpc.BusinessRPC.DetailOrderInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 42: brpc.BusinessRPC.FindProcInstByChatID:output_type -> brpc.ResponseVO
+	5,  // 43: brpc.BusinessRPC.FindOngoingProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 44: brpc.BusinessRPC.FindFinishedProcessInfoInAgent:output_type -> brpc.ResponseVO
+	5,  // 45: brpc.BusinessRPC.FindProcessOverviewInAgent:output_type -> brpc.ResponseVO
+	5,  // 46: brpc.BusinessRPC.FindProcessDetailInAgent:output_type -> brpc.ResponseVO
+	5,  // 47: brpc.BusinessRPC.FindTaskOverviewInAgent:output_type -> brpc.ResponseVO
+	5,  // 48: brpc.BusinessRPC.FindTaskDetailInAgent:output_type -> brpc.ResponseVO
+	5,  // 49: brpc.BusinessRPC.UpdateTrack:output_type -> brpc.ResponseVO
+	5,  // 50: brpc.BusinessRPC.FindContentNoList:output_type -> brpc.ResponseVO
+	5,  // 51: brpc.BusinessRPC.UpdateNotifyMode:output_type -> brpc.ResponseVO
+	5,  // 52: brpc.BusinessRPC.UpdateCustomerRemark:output_type -> brpc.ResponseVO
+	5,  // 53: brpc.BusinessRPC.UpdateMiniAndAccount:output_type -> brpc.ResponseVO
+	5,  // 54: brpc.BusinessRPC.QueryIndicatorCount:output_type -> brpc.ResponseVO
+	5,  // 55: brpc.BusinessRPC.QueryIndicatorDetail:output_type -> brpc.ResponseVO
+	5,  // 56: brpc.BusinessRPC.QueryIndicatorCountInBatch:output_type -> brpc.ResponseVO
+	5,  // 57: brpc.BusinessRPC.CalculateUserIndicator:output_type -> brpc.ResponseVO
+	5,  // 58: brpc.BusinessRPC.GenerateRecordInMonth:output_type -> brpc.ResponseVO
+	5,  // 59: brpc.BusinessRPC.FindReportOverviewInAgent:output_type -> brpc.ResponseVO
+	5,  // 60: brpc.BusinessRPC.SyncOrderProfit:output_type -> brpc.ResponseVO
+	37, // [37:61] is the sub-list for method output_type
+	13, // [13:37] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name

@@ -57,6 +57,7 @@ const (
 	BusinessRPC_QueryIndicatorCountInBatch_FullMethodName     = "/brpc.BusinessRPC/QueryIndicatorCountInBatch"
 	BusinessRPC_CalculateUserIndicator_FullMethodName         = "/brpc.BusinessRPC/CalculateUserIndicator"
 	BusinessRPC_GenerateRecordInMonth_FullMethodName          = "/brpc.BusinessRPC/GenerateRecordInMonth"
+	BusinessRPC_FindReportOverviewInAgent_FullMethodName      = "/brpc.BusinessRPC/FindReportOverviewInAgent"
 	BusinessRPC_SyncOrderProfit_FullMethodName                = "/brpc.BusinessRPC/SyncOrderProfit"
 )
 
@@ -94,6 +95,7 @@ type BusinessRPCClient interface {
 	QueryIndicatorCountInBatch(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	CalculateUserIndicator(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GenerateRecordInMonth(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindReportOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
@@ -326,6 +328,16 @@ func (c *businessRPCClient) GenerateRecordInMonth(ctx context.Context, in *Reque
 	return out, nil
 }
 
+func (c *businessRPCClient) FindReportOverviewInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindReportOverviewInAgent_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *businessRPCClient) SyncOrderProfit(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
@@ -370,6 +382,7 @@ type BusinessRPCServer interface {
 	QueryIndicatorCountInBatch(context.Context, *RequestAO) (*ResponseVO, error)
 	CalculateUserIndicator(context.Context, *RequestAO) (*ResponseVO, error)
 	GenerateRecordInMonth(context.Context, *RequestAO) (*ResponseVO, error)
+	FindReportOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedBusinessRPCServer()
@@ -447,6 +460,9 @@ func (UnimplementedBusinessRPCServer) CalculateUserIndicator(context.Context, *R
 }
 func (UnimplementedBusinessRPCServer) GenerateRecordInMonth(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GenerateRecordInMonth not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindReportOverviewInAgent(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindReportOverviewInAgent not implemented")
 }
 func (UnimplementedBusinessRPCServer) SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncOrderProfit not implemented")
@@ -868,6 +884,24 @@ func _BusinessRPC_GenerateRecordInMonth_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BusinessRPC_FindReportOverviewInAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindReportOverviewInAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindReportOverviewInAgent_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindReportOverviewInAgent(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BusinessRPC_SyncOrderProfit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -980,6 +1014,10 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateRecordInMonth",
 			Handler:    _BusinessRPC_GenerateRecordInMonth_Handler,
+		},
+		{
+			MethodName: "FindReportOverviewInAgent",
+			Handler:    _BusinessRPC_FindReportOverviewInAgent_Handler,
 		},
 		{
 			MethodName: "SyncOrderProfit",

@@ -59,6 +59,7 @@ service BusinessRPC {
   rpc QueryIndicatorCountInBatch(RequestAO) returns (ResponseVO) {}
   rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc GenerateRecordInMonth(RequestAO) returns (ResponseVO) {}
+  rpc FindReportOverviewInAgent(RequestAO) returns (ResponseVO) {}
 
   // Profit Sync
   rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
