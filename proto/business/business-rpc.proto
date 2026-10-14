@@ -60,6 +60,8 @@ service BusinessRPC {
   rpc CalculateUserIndicator(RequestAO) returns (ResponseVO) {}
   rpc GenerateRecordInMonth(RequestAO) returns (ResponseVO) {}
   rpc FindReportOverviewInAgent(RequestAO) returns (ResponseVO) {}
+  rpc FindOrderBillOverviewInAgent(RequestAO) returns (ResponseVO) {}
+  rpc DetailOrderBillInAgent(RequestAO) returns (ResponseVO) {}
 
   // Profit Sync
   rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
