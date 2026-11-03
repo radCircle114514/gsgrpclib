@@ -22,6 +22,7 @@ type ServerConfig struct {
 	RpcBookingHost     string
 	RpcTrackHost       string
 	RpcWorkBuddyHost   string
+	RpcAliyunHost      string
 	Tls                bool
 	CertFile           string
 	KeyFile            string
