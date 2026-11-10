@@ -34,13 +34,7 @@ var Mode string
 var Config *Configuration
 
 func init() {
-	if args := os.Args; len(args) > 1 && args[1] == "prod" {
-		Mode = PROD
-	} else if args := os.Args; len(args) > 1 && args[1] == "test" {
-		Mode = TEST
-	} else {
-		Mode = DEV
-	}
+	Mode = detectMode()
 	conf := new(Configuration)
 	viper.AddConfigPath("./conf")
 	viper.SetConfigName("config." + Mode)
@@ -55,6 +49,22 @@ func init() {
 		panic(errors.Wrap(err, "failed on unmarshal config file"))
 	}
 	Config = conf
+}
+
+// detectMode scans every process argument for an exact "prod"/"test" token.
+// Checking only os.Args[1] works for service binaries (wecomService prod) but
+// breaks under `go test ... -args prod`, where the leading args are -test.*
+// flags; scanning the full argument list covers both cases.
+func detectMode() string {
+	for _, arg := range os.Args[1:] {
+		switch arg {
+		case PROD:
+			return PROD
+		case TEST:
+			return TEST
+		}
+	}
+	return DEV
 }
 
 // SetTimeout bounds an RPC call when the caller passed a deadline-free context.

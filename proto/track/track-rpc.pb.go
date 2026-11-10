@@ -567,17 +567,18 @@ const file_proto_track_track_rpc_proto_rawDesc = "" +
 	"\amapList\x18\x06 \x03(\v2\x14.google.protobuf.AnyR\amapList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\x9a\x04\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xd1\x04\n" +
 	"\bTrackRPC\x125\n" +
 	"\x0eQueryFieldList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x126\n" +
-	"\x0fSendSyncRequest\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x126\n" +
-	"\x0fFindStationList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
-	"\x14FindOngoingTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x122\n" +
-	"\vFinishTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
-	"\x14FindHistoryTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x120\n" +
+	"\x0fFindStationList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x126\n" +
+	"\x0fSendSyncRequest\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
+	"\x14FindOngoingTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
+	"\x14FindHistoryTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x122\n" +
+	"\vFinishTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x120\n" +
 	"\tSyncTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12J\n" +
 	"#FindContentNoListBySerialNumberList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
-	"\x14QueryDataInTimeScope\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/track_rpcb\x06proto3"
+	"\x14QueryDataInTimeScope\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x125\n" +
+	"\x0eSubscribeTujun\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/track_rpcb\x06proto3"
 
 var (
 	file_proto_track_track_rpc_proto_rawDescOnce sync.Once
@@ -614,25 +615,27 @@ var file_proto_track_track_rpc_proto_depIdxs = []int32{
 	8,  // 7: trpc.ResponseVO.mapList:type_name -> google.protobuf.Any
 	8,  // 8: trpc.KeyValue.value:type_name -> google.protobuf.Any
 	5,  // 9: trpc.TrackRPC.QueryFieldList:input_type -> trpc.RequestAO
-	5,  // 10: trpc.TrackRPC.SendSyncRequest:input_type -> trpc.RequestAO
-	5,  // 11: trpc.TrackRPC.FindStationList:input_type -> trpc.RequestAO
+	5,  // 10: trpc.TrackRPC.FindStationList:input_type -> trpc.RequestAO
+	5,  // 11: trpc.TrackRPC.SendSyncRequest:input_type -> trpc.RequestAO
 	5,  // 12: trpc.TrackRPC.FindOngoingTrackList:input_type -> trpc.RequestAO
-	5,  // 13: trpc.TrackRPC.FinishTrack:input_type -> trpc.RequestAO
-	5,  // 14: trpc.TrackRPC.FindHistoryTrackList:input_type -> trpc.RequestAO
+	5,  // 13: trpc.TrackRPC.FindHistoryTrackList:input_type -> trpc.RequestAO
+	5,  // 14: trpc.TrackRPC.FinishTrack:input_type -> trpc.RequestAO
 	5,  // 15: trpc.TrackRPC.SyncTrack:input_type -> trpc.RequestAO
 	5,  // 16: trpc.TrackRPC.FindContentNoListBySerialNumberList:input_type -> trpc.RequestAO
 	5,  // 17: trpc.TrackRPC.QueryDataInTimeScope:input_type -> trpc.RequestAO
-	6,  // 18: trpc.TrackRPC.QueryFieldList:output_type -> trpc.ResponseVO
-	6,  // 19: trpc.TrackRPC.SendSyncRequest:output_type -> trpc.ResponseVO
+	5,  // 18: trpc.TrackRPC.SubscribeTujun:input_type -> trpc.RequestAO
+	6,  // 19: trpc.TrackRPC.QueryFieldList:output_type -> trpc.ResponseVO
 	6,  // 20: trpc.TrackRPC.FindStationList:output_type -> trpc.ResponseVO
-	6,  // 21: trpc.TrackRPC.FindOngoingTrackList:output_type -> trpc.ResponseVO
-	6,  // 22: trpc.TrackRPC.FinishTrack:output_type -> trpc.ResponseVO
+	6,  // 21: trpc.TrackRPC.SendSyncRequest:output_type -> trpc.ResponseVO
+	6,  // 22: trpc.TrackRPC.FindOngoingTrackList:output_type -> trpc.ResponseVO
 	6,  // 23: trpc.TrackRPC.FindHistoryTrackList:output_type -> trpc.ResponseVO
-	6,  // 24: trpc.TrackRPC.SyncTrack:output_type -> trpc.ResponseVO
-	6,  // 25: trpc.TrackRPC.FindContentNoListBySerialNumberList:output_type -> trpc.ResponseVO
-	6,  // 26: trpc.TrackRPC.QueryDataInTimeScope:output_type -> trpc.ResponseVO
-	18, // [18:27] is the sub-list for method output_type
-	9,  // [9:18] is the sub-list for method input_type
+	6,  // 24: trpc.TrackRPC.FinishTrack:output_type -> trpc.ResponseVO
+	6,  // 25: trpc.TrackRPC.SyncTrack:output_type -> trpc.ResponseVO
+	6,  // 26: trpc.TrackRPC.FindContentNoListBySerialNumberList:output_type -> trpc.ResponseVO
+	6,  // 27: trpc.TrackRPC.QueryDataInTimeScope:output_type -> trpc.ResponseVO
+	6,  // 28: trpc.TrackRPC.SubscribeTujun:output_type -> trpc.ResponseVO
+	19, // [19:29] is the sub-list for method output_type
+	9,  // [9:19] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name

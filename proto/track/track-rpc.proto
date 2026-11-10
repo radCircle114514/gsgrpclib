@@ -42,6 +42,9 @@ service TrackRPC {
 
   // Time Scope Query
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
+
+  // Tujun (途君 GPS) device subscription
+  rpc SubscribeTujun (RequestAO) returns (ResponseVO) {}
 }
 
 message NoParam {

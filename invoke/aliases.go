@@ -93,6 +93,7 @@ var (
 	InvokeRpcGetUserIdentity                          = wecom.InvokeRpcGetUserIdentity
 	InvokeRpcGetUserInfo                              = wecom.InvokeRpcGetUserInfo
 	InvokeRpcGetUserList                              = wecom.InvokeRpcGetUserList
+	InvokeRpcGetUserQrCodeList                        = wecom.InvokeRpcGetUserQrCodeList
 	InvokeRpcModifyAccountUserRemark                  = wecom.InvokeRpcModifyAccountUserRemark
 	InvokeRpcQueryCustomerGroupByCond                 = wecom.InvokeRpcQueryCustomerGroupByCond
 	InvokeRpcQueryNameByType                          = wecom.InvokeRpcQueryNameByType

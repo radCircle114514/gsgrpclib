@@ -44,6 +44,9 @@ import (
 
 func InitWecomRpcClientConn() (*grpc.ClientConn, error) {
 	var opts []grpc.DialOption
+	// WeDrive file uploads carry base64 payloads; allow messages up to 32MB
+	// instead of the gRPC default 4MB limit.
+	opts = append(opts, grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(32<<20), grpc.MaxCallSendMsgSize(32<<20)))
 	if Config.ServerConfig.Tls {
 		creds, err := credentials.NewClientTLSFromFile(Config.ServerConfig.CaFile, Config.ServerConfig.ServerNameOverride)
 		if err != nil {

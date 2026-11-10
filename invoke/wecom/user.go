@@ -67,6 +67,27 @@ func InvokeRpcGetUserDetailByUserID(userID string, ctx context.Context) (map[str
 	return map1, nil
 }
 
+// InvokeRpcGetUserQrCodeList fetches the personal qr_code URL stored in the
+// wecom service user_detail records for the given user IDs. It returns one map
+// per matched user: {"userID": <id>, "qrCode": <url>}.
+func InvokeRpcGetUserQrCodeList(userIDs []string, ctx context.Context) ([]map[string]interface{}, error) {
+	dataList := make([]interface{}, 0, len(userIDs))
+	for _, userID := range userIDs {
+		dataList = append(dataList, userID)
+	}
+	anyList, err := utils.ParseDataListToAnyList(dataList)
+	if err != nil {
+		return nil, err
+	}
+	ao := &wecom_rpc.RequestAO{DataList: anyList}
+	vo, err := client.InvokeWecomRPCMethod(ctx, "GetUserQrCodeList", ao)
+	if err != nil {
+		return nil, err
+	}
+	mapList := utils.ParseAnyToMapList(vo.MapList)
+	return mapList, nil
+}
+
 func InvokeRPCListUserByCond(map1 map[string]interface{}, ctx context.Context) ([]map[string]interface{}, interface{}, error) {
 	toMap, err := utils.ParseMapToAny(map1)
 	if err != nil {

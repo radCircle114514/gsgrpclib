@@ -41,6 +41,7 @@ const (
 	WecomRPC_SaveUserDetail_FullMethodName                  = "/wrpc.WecomRPC/SaveUserDetail"
 	WecomRPC_GetUserDetailByUserID_FullMethodName           = "/wrpc.WecomRPC/GetUserDetailByUserID"
 	WecomRPC_GetUserDetailList_FullMethodName               = "/wrpc.WecomRPC/GetUserDetailList"
+	WecomRPC_GetUserQrCodeList_FullMethodName               = "/wrpc.WecomRPC/GetUserQrCodeList"
 	WecomRPC_ListUserByCond_FullMethodName                  = "/wrpc.WecomRPC/ListUserByCond"
 	WecomRPC_UpdateUser_FullMethodName                      = "/wrpc.WecomRPC/UpdateUser"
 	WecomRPC_GetDepartmentTree_FullMethodName               = "/wrpc.WecomRPC/GetDepartmentTree"
@@ -114,6 +115,20 @@ const (
 	WecomRPC_GetHRFields_FullMethodName                     = "/wrpc.WecomRPC/GetHRFields"
 	WecomRPC_GetHRStaffInfo_FullMethodName                  = "/wrpc.WecomRPC/GetHRStaffInfo"
 	WecomRPC_UpdateHRStaffInfo_FullMethodName               = "/wrpc.WecomRPC/UpdateHRStaffInfo"
+	WecomRPC_CreateWeDriveSpace_FullMethodName              = "/wrpc.WecomRPC/CreateWeDriveSpace"
+	WecomRPC_AddWeDriveSpaceACL_FullMethodName              = "/wrpc.WecomRPC/AddWeDriveSpaceACL"
+	WecomRPC_ListWeDriveFiles_FullMethodName                = "/wrpc.WecomRPC/ListWeDriveFiles"
+	WecomRPC_RenameWeDriveFile_FullMethodName               = "/wrpc.WecomRPC/RenameWeDriveFile"
+	WecomRPC_DeleteWeDriveFiles_FullMethodName              = "/wrpc.WecomRPC/DeleteWeDriveFiles"
+	WecomRPC_UploadWeDriveFile_FullMethodName               = "/wrpc.WecomRPC/UploadWeDriveFile"
+	WecomRPC_InitWeDriveFileUpload_FullMethodName           = "/wrpc.WecomRPC/InitWeDriveFileUpload"
+	WecomRPC_UploadWeDriveFilePart_FullMethodName           = "/wrpc.WecomRPC/UploadWeDriveFilePart"
+	WecomRPC_FinishWeDriveFileUpload_FullMethodName         = "/wrpc.WecomRPC/FinishWeDriveFileUpload"
+	WecomRPC_RegisterWeDriveSpace_FullMethodName            = "/wrpc.WecomRPC/RegisterWeDriveSpace"
+	WecomRPC_DismissWeDriveSpace_FullMethodName             = "/wrpc.WecomRPC/DismissWeDriveSpace"
+	WecomRPC_GetDefaultWeDriveSpace_FullMethodName          = "/wrpc.WecomRPC/GetDefaultWeDriveSpace"
+	WecomRPC_ClearWeDriveSpaceFiles_FullMethodName          = "/wrpc.WecomRPC/ClearWeDriveSpaceFiles"
+	WecomRPC_UploadWeDriveQRImage_FullMethodName            = "/wrpc.WecomRPC/UploadWeDriveQRImage"
 )
 
 // WecomRPCClient is the client API for WecomRPC service.
@@ -129,6 +144,7 @@ type WecomRPCClient interface {
 	SaveUserDetail(ctx context.Context, in *UserDetailAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserDetailByUserID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetUserDetailList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetUserQrCodeList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	ListUserByCond(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateUser(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetDepartmentTree(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
@@ -217,6 +233,22 @@ type WecomRPCClient interface {
 	GetHRFields(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateHRStaffInfo(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// WeDrive (微盘)
+	CreateWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	AddWeDriveSpaceACL(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	ListWeDriveFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	RenameWeDriveFile(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	DeleteWeDriveFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UploadWeDriveFile(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	InitWeDriveFileUpload(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UploadWeDriveFilePart(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FinishWeDriveFileUpload(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// WeDrive space management (persisted) and QR image batch pipeline
+	RegisterWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	DismissWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetDefaultWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	ClearWeDriveSpaceFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	UploadWeDriveQRImage(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type wecomRPCClient struct {
@@ -281,6 +313,16 @@ func (c *wecomRPCClient) GetUserDetailList(ctx context.Context, in *RequestAO, o
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_GetUserDetailList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetUserQrCodeList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetUserQrCodeList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1017,6 +1059,146 @@ func (c *wecomRPCClient) UpdateHRStaffInfo(ctx context.Context, in *RequestAO, o
 	return out, nil
 }
 
+func (c *wecomRPCClient) CreateWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_CreateWeDriveSpace_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) AddWeDriveSpaceACL(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_AddWeDriveSpaceACL_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) ListWeDriveFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_ListWeDriveFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) RenameWeDriveFile(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_RenameWeDriveFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) DeleteWeDriveFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_DeleteWeDriveFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) UploadWeDriveFile(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UploadWeDriveFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) InitWeDriveFileUpload(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_InitWeDriveFileUpload_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) UploadWeDriveFilePart(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UploadWeDriveFilePart_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) FinishWeDriveFileUpload(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FinishWeDriveFileUpload_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) RegisterWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_RegisterWeDriveSpace_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) DismissWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_DismissWeDriveSpace_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) GetDefaultWeDriveSpace(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_GetDefaultWeDriveSpace_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) ClearWeDriveSpaceFiles(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_ClearWeDriveSpaceFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) UploadWeDriveQRImage(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_UploadWeDriveQRImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WecomRPCServer is the server API for WecomRPC service.
 // All implementations must embed UnimplementedWecomRPCServer
 // for forward compatibility.
@@ -1030,6 +1212,7 @@ type WecomRPCServer interface {
 	SaveUserDetail(context.Context, *UserDetailAO) (*ResponseVO, error)
 	GetUserDetailByUserID(context.Context, *RequestAO) (*ResponseVO, error)
 	GetUserDetailList(context.Context, *RequestAO) (*ResponseVO, error)
+	GetUserQrCodeList(context.Context, *RequestAO) (*ResponseVO, error)
 	ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateUser(context.Context, *RequestAO) (*ResponseVO, error)
 	GetDepartmentTree(context.Context, *RequestAO) (*ResponseVO, error)
@@ -1118,6 +1301,22 @@ type WecomRPCServer interface {
 	GetHRFields(context.Context, *RequestAO) (*ResponseVO, error)
 	GetHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error)
+	// WeDrive (微盘)
+	CreateWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error)
+	AddWeDriveSpaceACL(context.Context, *RequestAO) (*ResponseVO, error)
+	ListWeDriveFiles(context.Context, *RequestAO) (*ResponseVO, error)
+	RenameWeDriveFile(context.Context, *RequestAO) (*ResponseVO, error)
+	DeleteWeDriveFiles(context.Context, *RequestAO) (*ResponseVO, error)
+	UploadWeDriveFile(context.Context, *RequestAO) (*ResponseVO, error)
+	InitWeDriveFileUpload(context.Context, *RequestAO) (*ResponseVO, error)
+	UploadWeDriveFilePart(context.Context, *RequestAO) (*ResponseVO, error)
+	FinishWeDriveFileUpload(context.Context, *RequestAO) (*ResponseVO, error)
+	// WeDrive space management (persisted) and QR image batch pipeline
+	RegisterWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error)
+	DismissWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error)
+	GetDefaultWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error)
+	ClearWeDriveSpaceFiles(context.Context, *RequestAO) (*ResponseVO, error)
+	UploadWeDriveQRImage(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedWecomRPCServer()
 }
 
@@ -1145,6 +1344,9 @@ func (UnimplementedWecomRPCServer) GetUserDetailByUserID(context.Context, *Reque
 }
 func (UnimplementedWecomRPCServer) GetUserDetailList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUserDetailList not implemented")
+}
+func (UnimplementedWecomRPCServer) GetUserQrCodeList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserQrCodeList not implemented")
 }
 func (UnimplementedWecomRPCServer) ListUserByCond(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListUserByCond not implemented")
@@ -1365,6 +1567,48 @@ func (UnimplementedWecomRPCServer) GetHRStaffInfo(context.Context, *RequestAO) (
 func (UnimplementedWecomRPCServer) UpdateHRStaffInfo(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateHRStaffInfo not implemented")
 }
+func (UnimplementedWecomRPCServer) CreateWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateWeDriveSpace not implemented")
+}
+func (UnimplementedWecomRPCServer) AddWeDriveSpaceACL(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddWeDriveSpaceACL not implemented")
+}
+func (UnimplementedWecomRPCServer) ListWeDriveFiles(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListWeDriveFiles not implemented")
+}
+func (UnimplementedWecomRPCServer) RenameWeDriveFile(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method RenameWeDriveFile not implemented")
+}
+func (UnimplementedWecomRPCServer) DeleteWeDriveFiles(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteWeDriveFiles not implemented")
+}
+func (UnimplementedWecomRPCServer) UploadWeDriveFile(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UploadWeDriveFile not implemented")
+}
+func (UnimplementedWecomRPCServer) InitWeDriveFileUpload(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method InitWeDriveFileUpload not implemented")
+}
+func (UnimplementedWecomRPCServer) UploadWeDriveFilePart(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UploadWeDriveFilePart not implemented")
+}
+func (UnimplementedWecomRPCServer) FinishWeDriveFileUpload(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FinishWeDriveFileUpload not implemented")
+}
+func (UnimplementedWecomRPCServer) RegisterWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method RegisterWeDriveSpace not implemented")
+}
+func (UnimplementedWecomRPCServer) DismissWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method DismissWeDriveSpace not implemented")
+}
+func (UnimplementedWecomRPCServer) GetDefaultWeDriveSpace(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetDefaultWeDriveSpace not implemented")
+}
+func (UnimplementedWecomRPCServer) ClearWeDriveSpaceFiles(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method ClearWeDriveSpaceFiles not implemented")
+}
+func (UnimplementedWecomRPCServer) UploadWeDriveQRImage(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method UploadWeDriveQRImage not implemented")
+}
 func (UnimplementedWecomRPCServer) mustEmbedUnimplementedWecomRPCServer() {}
 func (UnimplementedWecomRPCServer) testEmbeddedByValue()                  {}
 
@@ -1490,6 +1734,24 @@ func _WecomRPC_GetUserDetailList_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).GetUserDetailList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetUserQrCodeList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetUserQrCodeList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetUserQrCodeList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetUserQrCodeList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2808,6 +3070,258 @@ func _WecomRPC_UpdateHRStaffInfo_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WecomRPC_CreateWeDriveSpace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).CreateWeDriveSpace(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_CreateWeDriveSpace_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).CreateWeDriveSpace(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_AddWeDriveSpaceACL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).AddWeDriveSpaceACL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_AddWeDriveSpaceACL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).AddWeDriveSpaceACL(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_ListWeDriveFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).ListWeDriveFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_ListWeDriveFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).ListWeDriveFiles(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_RenameWeDriveFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).RenameWeDriveFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_RenameWeDriveFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).RenameWeDriveFile(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_DeleteWeDriveFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).DeleteWeDriveFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_DeleteWeDriveFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).DeleteWeDriveFiles(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_UploadWeDriveFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UploadWeDriveFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UploadWeDriveFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UploadWeDriveFile(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_InitWeDriveFileUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).InitWeDriveFileUpload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_InitWeDriveFileUpload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).InitWeDriveFileUpload(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_UploadWeDriveFilePart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UploadWeDriveFilePart(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UploadWeDriveFilePart_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UploadWeDriveFilePart(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_FinishWeDriveFileUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FinishWeDriveFileUpload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FinishWeDriveFileUpload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FinishWeDriveFileUpload(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_RegisterWeDriveSpace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).RegisterWeDriveSpace(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_RegisterWeDriveSpace_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).RegisterWeDriveSpace(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_DismissWeDriveSpace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).DismissWeDriveSpace(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_DismissWeDriveSpace_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).DismissWeDriveSpace(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_GetDefaultWeDriveSpace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).GetDefaultWeDriveSpace(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_GetDefaultWeDriveSpace_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).GetDefaultWeDriveSpace(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_ClearWeDriveSpaceFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).ClearWeDriveSpaceFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_ClearWeDriveSpaceFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).ClearWeDriveSpaceFiles(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_UploadWeDriveQRImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).UploadWeDriveQRImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_UploadWeDriveQRImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).UploadWeDriveQRImage(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WecomRPC_ServiceDesc is the grpc.ServiceDesc for WecomRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2838,6 +3352,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserDetailList",
 			Handler:    _WecomRPC_GetUserDetailList_Handler,
+		},
+		{
+			MethodName: "GetUserQrCodeList",
+			Handler:    _WecomRPC_GetUserQrCodeList_Handler,
 		},
 		{
 			MethodName: "ListUserByCond",
@@ -3130,6 +3648,62 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateHRStaffInfo",
 			Handler:    _WecomRPC_UpdateHRStaffInfo_Handler,
+		},
+		{
+			MethodName: "CreateWeDriveSpace",
+			Handler:    _WecomRPC_CreateWeDriveSpace_Handler,
+		},
+		{
+			MethodName: "AddWeDriveSpaceACL",
+			Handler:    _WecomRPC_AddWeDriveSpaceACL_Handler,
+		},
+		{
+			MethodName: "ListWeDriveFiles",
+			Handler:    _WecomRPC_ListWeDriveFiles_Handler,
+		},
+		{
+			MethodName: "RenameWeDriveFile",
+			Handler:    _WecomRPC_RenameWeDriveFile_Handler,
+		},
+		{
+			MethodName: "DeleteWeDriveFiles",
+			Handler:    _WecomRPC_DeleteWeDriveFiles_Handler,
+		},
+		{
+			MethodName: "UploadWeDriveFile",
+			Handler:    _WecomRPC_UploadWeDriveFile_Handler,
+		},
+		{
+			MethodName: "InitWeDriveFileUpload",
+			Handler:    _WecomRPC_InitWeDriveFileUpload_Handler,
+		},
+		{
+			MethodName: "UploadWeDriveFilePart",
+			Handler:    _WecomRPC_UploadWeDriveFilePart_Handler,
+		},
+		{
+			MethodName: "FinishWeDriveFileUpload",
+			Handler:    _WecomRPC_FinishWeDriveFileUpload_Handler,
+		},
+		{
+			MethodName: "RegisterWeDriveSpace",
+			Handler:    _WecomRPC_RegisterWeDriveSpace_Handler,
+		},
+		{
+			MethodName: "DismissWeDriveSpace",
+			Handler:    _WecomRPC_DismissWeDriveSpace_Handler,
+		},
+		{
+			MethodName: "GetDefaultWeDriveSpace",
+			Handler:    _WecomRPC_GetDefaultWeDriveSpace_Handler,
+		},
+		{
+			MethodName: "ClearWeDriveSpaceFiles",
+			Handler:    _WecomRPC_ClearWeDriveSpaceFiles_Handler,
+		},
+		{
+			MethodName: "UploadWeDriveQRImage",
+			Handler:    _WecomRPC_UploadWeDriveQRImage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

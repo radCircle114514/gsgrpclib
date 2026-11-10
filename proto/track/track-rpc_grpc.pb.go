@@ -36,14 +36,15 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	TrackRPC_QueryFieldList_FullMethodName                      = "/trpc.TrackRPC/QueryFieldList"
-	TrackRPC_SendSyncRequest_FullMethodName                     = "/trpc.TrackRPC/SendSyncRequest"
 	TrackRPC_FindStationList_FullMethodName                     = "/trpc.TrackRPC/FindStationList"
+	TrackRPC_SendSyncRequest_FullMethodName                     = "/trpc.TrackRPC/SendSyncRequest"
 	TrackRPC_FindOngoingTrackList_FullMethodName                = "/trpc.TrackRPC/FindOngoingTrackList"
-	TrackRPC_FinishTrack_FullMethodName                         = "/trpc.TrackRPC/FinishTrack"
 	TrackRPC_FindHistoryTrackList_FullMethodName                = "/trpc.TrackRPC/FindHistoryTrackList"
+	TrackRPC_FinishTrack_FullMethodName                         = "/trpc.TrackRPC/FinishTrack"
 	TrackRPC_SyncTrack_FullMethodName                           = "/trpc.TrackRPC/SyncTrack"
 	TrackRPC_FindContentNoListBySerialNumberList_FullMethodName = "/trpc.TrackRPC/FindContentNoListBySerialNumberList"
 	TrackRPC_QueryDataInTimeScope_FullMethodName                = "/trpc.TrackRPC/QueryDataInTimeScope"
+	TrackRPC_SubscribeTujun_FullMethodName                      = "/trpc.TrackRPC/SubscribeTujun"
 )
 
 // TrackRPCClient is the client API for TrackRPC service.
@@ -52,15 +53,21 @@ const (
 //
 // Interface exported by the server.
 type TrackRPCClient interface {
+	// Basic Query
 	QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Track Lifecycle
+	SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindOngoingTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Content Query
 	FindContentNoListBySerialNumberList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Time Scope Query
 	QueryDataInTimeScope(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Tujun (途君 GPS) device subscription
+	SubscribeTujun(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type trackRPCClient struct {
@@ -81,20 +88,20 @@ func (c *trackRPCClient) QueryFieldList(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
-func (c *trackRPCClient) SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_SendSyncRequest_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindStationList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FindStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindStationList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_SendSyncRequest_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -111,20 +118,20 @@ func (c *trackRPCClient) FindOngoingTrackList(ctx context.Context, in *RequestAO
 	return out, nil
 }
 
-func (c *trackRPCClient) FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FinishTrack_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindHistoryTrackList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FindHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindHistoryTrackList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FinishTrack_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -161,21 +168,37 @@ func (c *trackRPCClient) QueryDataInTimeScope(ctx context.Context, in *RequestAO
 	return out, nil
 }
 
+func (c *trackRPCClient) SubscribeTujun(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_SubscribeTujun_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TrackRPCServer is the server API for TrackRPC service.
 // All implementations must embed UnimplementedTrackRPCServer
 // for forward compatibility.
 //
 // Interface exported by the server.
 type TrackRPCServer interface {
+	// Basic Query
 	QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error)
-	SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error)
 	FindStationList(context.Context, *RequestAO) (*ResponseVO, error)
+	// Track Lifecycle
+	SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error)
 	FindOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error)
-	FinishTrack(context.Context, *RequestAO) (*ResponseVO, error)
 	FindHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error)
+	FinishTrack(context.Context, *RequestAO) (*ResponseVO, error)
 	SyncTrack(context.Context, *RequestAO) (*ResponseVO, error)
+	// Content Query
 	FindContentNoListBySerialNumberList(context.Context, *RequestAO) (*ResponseVO, error)
+	// Time Scope Query
 	QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error)
+	// Tujun (途君 GPS) device subscription
+	SubscribeTujun(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedTrackRPCServer()
 }
 
@@ -189,20 +212,20 @@ type UnimplementedTrackRPCServer struct{}
 func (UnimplementedTrackRPCServer) QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryFieldList not implemented")
 }
-func (UnimplementedTrackRPCServer) SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SendSyncRequest not implemented")
-}
 func (UnimplementedTrackRPCServer) FindStationList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindStationList not implemented")
+}
+func (UnimplementedTrackRPCServer) SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendSyncRequest not implemented")
 }
 func (UnimplementedTrackRPCServer) FindOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindOngoingTrackList not implemented")
 }
-func (UnimplementedTrackRPCServer) FinishTrack(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FinishTrack not implemented")
-}
 func (UnimplementedTrackRPCServer) FindHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindHistoryTrackList not implemented")
+}
+func (UnimplementedTrackRPCServer) FinishTrack(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FinishTrack not implemented")
 }
 func (UnimplementedTrackRPCServer) SyncTrack(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncTrack not implemented")
@@ -212,6 +235,9 @@ func (UnimplementedTrackRPCServer) FindContentNoListBySerialNumberList(context.C
 }
 func (UnimplementedTrackRPCServer) QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryDataInTimeScope not implemented")
+}
+func (UnimplementedTrackRPCServer) SubscribeTujun(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SubscribeTujun not implemented")
 }
 func (UnimplementedTrackRPCServer) mustEmbedUnimplementedTrackRPCServer() {}
 func (UnimplementedTrackRPCServer) testEmbeddedByValue()                  {}
@@ -252,24 +278,6 @@ func _TrackRPC_QueryFieldList_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_SendSyncRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrackRPCServer).SendSyncRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TrackRPC_SendSyncRequest_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).SendSyncRequest(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _TrackRPC_FindStationList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -284,6 +292,24 @@ func _TrackRPC_FindStationList_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrackRPCServer).FindStationList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_SendSyncRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).SendSyncRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_SendSyncRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).SendSyncRequest(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -306,24 +332,6 @@ func _TrackRPC_FindOngoingTrackList_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FinishTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestAO)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrackRPCServer).FinishTrack(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TrackRPC_FinishTrack_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FinishTrack(ctx, req.(*RequestAO))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _TrackRPC_FindHistoryTrackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
@@ -338,6 +346,24 @@ func _TrackRPC_FindHistoryTrackList_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrackRPCServer).FindHistoryTrackList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_FinishTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FinishTrack(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FinishTrack_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FinishTrack(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -396,6 +422,24 @@ func _TrackRPC_QueryDataInTimeScope_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TrackRPC_SubscribeTujun_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).SubscribeTujun(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_SubscribeTujun_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).SubscribeTujun(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TrackRPC_ServiceDesc is the grpc.ServiceDesc for TrackRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -408,24 +452,24 @@ var TrackRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrackRPC_QueryFieldList_Handler,
 		},
 		{
-			MethodName: "SendSyncRequest",
-			Handler:    _TrackRPC_SendSyncRequest_Handler,
-		},
-		{
 			MethodName: "FindStationList",
 			Handler:    _TrackRPC_FindStationList_Handler,
+		},
+		{
+			MethodName: "SendSyncRequest",
+			Handler:    _TrackRPC_SendSyncRequest_Handler,
 		},
 		{
 			MethodName: "FindOngoingTrackList",
 			Handler:    _TrackRPC_FindOngoingTrackList_Handler,
 		},
 		{
-			MethodName: "FinishTrack",
-			Handler:    _TrackRPC_FinishTrack_Handler,
-		},
-		{
 			MethodName: "FindHistoryTrackList",
 			Handler:    _TrackRPC_FindHistoryTrackList_Handler,
+		},
+		{
+			MethodName: "FinishTrack",
+			Handler:    _TrackRPC_FinishTrack_Handler,
 		},
 		{
 			MethodName: "SyncTrack",
@@ -438,6 +482,10 @@ var TrackRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "QueryDataInTimeScope",
 			Handler:    _TrackRPC_QueryDataInTimeScope_Handler,
+		},
+		{
+			MethodName: "SubscribeTujun",
+			Handler:    _TrackRPC_SubscribeTujun_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

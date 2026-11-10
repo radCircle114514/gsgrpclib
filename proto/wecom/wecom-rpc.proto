@@ -33,6 +33,7 @@ service WecomRPC {
   rpc SaveUserDetail(UserDetailAO) returns (ResponseVO) {}
   rpc GetUserDetailByUserID(RequestAO) returns (ResponseVO) {}
   rpc GetUserDetailList(RequestAO) returns (ResponseVO) {}
+  rpc GetUserQrCodeList(RequestAO) returns (ResponseVO) {}
   rpc ListUserByCond(RequestAO) returns (ResponseVO) {}
   rpc UpdateUser(RequestAO) returns (ResponseVO) {}
   rpc GetDepartmentTree(RequestAO) returns (ResponseVO) {}
@@ -136,6 +137,24 @@ service WecomRPC {
   rpc GetHRFields(RequestAO) returns (ResponseVO) {}
   rpc GetHRStaffInfo(RequestAO) returns (ResponseVO) {}
   rpc UpdateHRStaffInfo(RequestAO) returns (ResponseVO) {}
+
+  // WeDrive (微盘)
+  rpc CreateWeDriveSpace(RequestAO) returns (ResponseVO) {}
+  rpc AddWeDriveSpaceACL(RequestAO) returns (ResponseVO) {}
+  rpc ListWeDriveFiles(RequestAO) returns (ResponseVO) {}
+  rpc RenameWeDriveFile(RequestAO) returns (ResponseVO) {}
+  rpc DeleteWeDriveFiles(RequestAO) returns (ResponseVO) {}
+  rpc UploadWeDriveFile(RequestAO) returns (ResponseVO) {}
+  rpc InitWeDriveFileUpload(RequestAO) returns (ResponseVO) {}
+  rpc UploadWeDriveFilePart(RequestAO) returns (ResponseVO) {}
+  rpc FinishWeDriveFileUpload(RequestAO) returns (ResponseVO) {}
+
+  // WeDrive space management (persisted) and QR image batch pipeline
+  rpc RegisterWeDriveSpace(RequestAO) returns (ResponseVO) {}
+  rpc DismissWeDriveSpace(RequestAO) returns (ResponseVO) {}
+  rpc GetDefaultWeDriveSpace(RequestAO) returns (ResponseVO) {}
+  rpc ClearWeDriveSpaceFiles(RequestAO) returns (ResponseVO) {}
+  rpc UploadWeDriveQRImage(RequestAO) returns (ResponseVO) {}
 }
 
 message MessageAO {
