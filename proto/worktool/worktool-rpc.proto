@@ -1,0 +1,51 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+import "proto/any.proto";
+option go_package = "github.com/iznilul/worktool_rpc";
+
+package wtrpc;
+
+service WorkToolRPC {
+  rpc SendTextMessage(RequestAO) returns (ResponseVO);
+  rpc AddCustomer(RequestAO) returns (ResponseVO);
+  rpc UpdateCustomerRemark(RequestAO) returns (ResponseVO);
+  rpc QueryCommandResults(RequestAO) returns (ResponseVO);
+  rpc QueryCommandResultByMessageID(RequestAO) returns (ResponseVO);
+  rpc SyncCommandResults(RequestAO) returns (ResponseVO);
+  rpc SaveCommandResults(RequestAO) returns (ResponseVO);
+  rpc ListPendingResults(RequestAO) returns (ResponseVO);
+  rpc ClearReplyNumber(RequestAO) returns (ResponseVO);
+  rpc ReceiveCallback(RequestAO) returns (ResponseVO);
+  rpc ReceiveResultCallback(RequestAO) returns (ResponseVO);
+  rpc ReceiveOnlineCallback(RequestAO) returns (ResponseVO);
+  rpc ReceiveOfflineCallback(RequestAO) returns (ResponseVO);
+}
+
+message RequestAO {
+  google.protobuf.Any data = 1;
+  repeated google.protobuf.Any dataList = 2;
+  google.protobuf.Any map = 3;
+  repeated google.protobuf.Any mapList = 4;
+}
+
+message ResponseVO {
+  int32 code = 1;
+  string msg = 2;
+  google.protobuf.Any data = 3;
+  repeated google.protobuf.Any dataList = 4;
+  google.protobuf.Any map = 5;
+  repeated google.protobuf.Any mapList = 6;
+}

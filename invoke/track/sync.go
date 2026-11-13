@@ -11,17 +11,17 @@ import (
 	"github.com/pkg/errors"
 )
 
-func InvokeRpcTrackSendSyncRequest(comment map[string]interface{}, userID string, inst map[string]string, ctx context.Context) error {
-	// 判断这个任务节点是否包括API请求的字段
-	startStation := comment["task_start_station_autocomplete"]
+func InvokeRpcTrackSendWcwSyncRequest(comment map[string]interface{}, userID string, inst map[string]string, ctx context.Context) error {
+	// 判断这个任务节点是否包括物畅网（WCW）API 请求的字段
+	startStation := comment["wcw_start_station_autocomplete"]
 	if startStation == nil {
 		return nil
 	}
-	endStation := comment["task_end_station_autocomplete"]
+	endStation := comment["wcw_end_station_autocomplete"]
 	if endStation == nil {
 		return nil
 	}
-	departureDirection := comment["departure_direction"]
+	departureDirection := comment["wcw_departure_direction"]
 	if departureDirection == nil {
 		return nil
 	}
@@ -81,7 +81,7 @@ func InvokeRpcTrackSendSyncRequest(comment map[string]interface{}, userID string
 		Map: toAny,
 	}
 
-	_, err = client.InvokeTrackRPCMethod(ctx, "SendSyncRequest", ao)
+	_, err = client.InvokeTrackRPCMethod(ctx, "SendWcwSyncRequest", ao)
 	if err != nil {
 		return err
 	}

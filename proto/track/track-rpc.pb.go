@@ -74,254 +74,6 @@ func (*NoParam) Descriptor() ([]byte, []int) {
 	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{0}
 }
 
-type ContentNoAO struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ContentNo     string                 `protobuf:"bytes,1,opt,name=contentNo,proto3" json:"contentNo,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ContentNoAO) Reset() {
-	*x = ContentNoAO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ContentNoAO) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ContentNoAO) ProtoMessage() {}
-
-func (x *ContentNoAO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ContentNoAO.ProtoReflect.Descriptor instead.
-func (*ContentNoAO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ContentNoAO) GetContentNo() string {
-	if x != nil {
-		return x.ContentNo
-	}
-	return ""
-}
-
-type SyncAO struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	ContentNoList    []string               `protobuf:"bytes,1,rep,name=contentNoList,proto3" json:"contentNoList,omitempty"`
-	StartStation     string                 `protobuf:"bytes,2,opt,name=startStation,proto3" json:"startStation,omitempty"`
-	StartStationName string                 `protobuf:"bytes,3,opt,name=startStationName,proto3" json:"startStationName,omitempty"`
-	EndStation       string                 `protobuf:"bytes,4,opt,name=endStation,proto3" json:"endStation,omitempty"`
-	EndStationName   string                 `protobuf:"bytes,5,opt,name=endStationName,proto3" json:"endStationName,omitempty"`
-	SerialNumber     string                 `protobuf:"bytes,6,opt,name=serialNumber,proto3" json:"serialNumber,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
-func (x *SyncAO) Reset() {
-	*x = SyncAO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SyncAO) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SyncAO) ProtoMessage() {}
-
-func (x *SyncAO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SyncAO.ProtoReflect.Descriptor instead.
-func (*SyncAO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *SyncAO) GetContentNoList() []string {
-	if x != nil {
-		return x.ContentNoList
-	}
-	return nil
-}
-
-func (x *SyncAO) GetStartStation() string {
-	if x != nil {
-		return x.StartStation
-	}
-	return ""
-}
-
-func (x *SyncAO) GetStartStationName() string {
-	if x != nil {
-		return x.StartStationName
-	}
-	return ""
-}
-
-func (x *SyncAO) GetEndStation() string {
-	if x != nil {
-		return x.EndStation
-	}
-	return ""
-}
-
-func (x *SyncAO) GetEndStationName() string {
-	if x != nil {
-		return x.EndStationName
-	}
-	return ""
-}
-
-func (x *SyncAO) GetSerialNumber() string {
-	if x != nil {
-		return x.SerialNumber
-	}
-	return ""
-}
-
-type QueryAO struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Table         string                 `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
-	Field         string                 `protobuf:"bytes,2,opt,name=field,proto3" json:"field,omitempty"`
-	Value         string                 `protobuf:"bytes,3,opt,name=value,proto3" json:"value,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *QueryAO) Reset() {
-	*x = QueryAO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *QueryAO) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*QueryAO) ProtoMessage() {}
-
-func (x *QueryAO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use QueryAO.ProtoReflect.Descriptor instead.
-func (*QueryAO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *QueryAO) GetTable() string {
-	if x != nil {
-		return x.Table
-	}
-	return ""
-}
-
-func (x *QueryAO) GetField() string {
-	if x != nil {
-		return x.Field
-	}
-	return ""
-}
-
-func (x *QueryAO) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
-type FindStationAO struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
-	CurrentPage   int32                  `protobuf:"varint,2,opt,name=currentPage,proto3" json:"currentPage,omitempty"`
-	PageSize      int32                  `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *FindStationAO) Reset() {
-	*x = FindStationAO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FindStationAO) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindStationAO) ProtoMessage() {}
-
-func (x *FindStationAO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindStationAO.ProtoReflect.Descriptor instead.
-func (*FindStationAO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *FindStationAO) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
-func (x *FindStationAO) GetCurrentPage() int32 {
-	if x != nil {
-		return x.CurrentPage
-	}
-	return 0
-}
-
-func (x *FindStationAO) GetPageSize() int32 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
 type RequestAO struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Data          *anypb.Any             `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
@@ -334,7 +86,7 @@ type RequestAO struct {
 
 func (x *RequestAO) Reset() {
 	*x = RequestAO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[5]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -346,7 +98,7 @@ func (x *RequestAO) String() string {
 func (*RequestAO) ProtoMessage() {}
 
 func (x *RequestAO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[5]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -359,7 +111,7 @@ func (x *RequestAO) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RequestAO.ProtoReflect.Descriptor instead.
 func (*RequestAO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{5}
+	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RequestAO) GetData() *anypb.Any {
@@ -405,7 +157,7 @@ type ResponseVO struct {
 
 func (x *ResponseVO) Reset() {
 	*x = ResponseVO{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[6]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -417,7 +169,7 @@ func (x *ResponseVO) String() string {
 func (*ResponseVO) ProtoMessage() {}
 
 func (x *ResponseVO) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[6]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -430,7 +182,7 @@ func (x *ResponseVO) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResponseVO.ProtoReflect.Descriptor instead.
 func (*ResponseVO) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{6}
+	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ResponseVO) GetCode() int32 {
@@ -485,7 +237,7 @@ type KeyValue struct {
 
 func (x *KeyValue) Reset() {
 	*x = KeyValue{}
-	mi := &file_proto_track_track_rpc_proto_msgTypes[7]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -497,7 +249,7 @@ func (x *KeyValue) String() string {
 func (*KeyValue) ProtoMessage() {}
 
 func (x *KeyValue) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_track_track_rpc_proto_msgTypes[7]
+	mi := &file_proto_track_track_rpc_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +262,7 @@ func (x *KeyValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KeyValue.ProtoReflect.Descriptor instead.
 func (*KeyValue) Descriptor() ([]byte, []int) {
-	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{7}
+	return file_proto_track_track_rpc_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *KeyValue) GetKey() string {
@@ -532,26 +284,7 @@ var File_proto_track_track_rpc_proto protoreflect.FileDescriptor
 const file_proto_track_track_rpc_proto_rawDesc = "" +
 	"\n" +
 	"\x1bproto/track/track-rpc.proto\x12\x04trpc\x1a\x0fproto/any.proto\"\t\n" +
-	"\aNoParam\"+\n" +
-	"\vContentNoAO\x12\x1c\n" +
-	"\tcontentNo\x18\x01 \x01(\tR\tcontentNo\"\xea\x01\n" +
-	"\x06SyncAO\x12$\n" +
-	"\rcontentNoList\x18\x01 \x03(\tR\rcontentNoList\x12\"\n" +
-	"\fstartStation\x18\x02 \x01(\tR\fstartStation\x12*\n" +
-	"\x10startStationName\x18\x03 \x01(\tR\x10startStationName\x12\x1e\n" +
-	"\n" +
-	"endStation\x18\x04 \x01(\tR\n" +
-	"endStation\x12&\n" +
-	"\x0eendStationName\x18\x05 \x01(\tR\x0eendStationName\x12\"\n" +
-	"\fserialNumber\x18\x06 \x01(\tR\fserialNumber\"K\n" +
-	"\aQueryAO\x12\x14\n" +
-	"\x05table\x18\x01 \x01(\tR\x05table\x12\x14\n" +
-	"\x05field\x18\x02 \x01(\tR\x05field\x12\x14\n" +
-	"\x05value\x18\x03 \x01(\tR\x05value\"c\n" +
-	"\rFindStationAO\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\tR\x05value\x12 \n" +
-	"\vcurrentPage\x18\x02 \x01(\x05R\vcurrentPage\x12\x1a\n" +
-	"\bpageSize\x18\x03 \x01(\x05R\bpageSize\"\xbf\x01\n" +
+	"\aNoParam\"\xbf\x01\n" +
 	"\tRequestAO\x12(\n" +
 	"\x04data\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x04data\x120\n" +
 	"\bdataList\x18\x02 \x03(\v2\x14.google.protobuf.AnyR\bdataList\x12&\n" +
@@ -567,18 +300,24 @@ const file_proto_track_track_rpc_proto_rawDesc = "" +
 	"\amapList\x18\x06 \x03(\v2\x14.google.protobuf.AnyR\amapList\"H\n" +
 	"\bKeyValue\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xd1\x04\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value2\xec\a\n" +
 	"\bTrackRPC\x125\n" +
-	"\x0eQueryFieldList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x126\n" +
-	"\x0fFindStationList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x126\n" +
-	"\x0fSendSyncRequest\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
-	"\x14FindOngoingTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
-	"\x14FindHistoryTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x122\n" +
-	"\vFinishTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x120\n" +
-	"\tSyncTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12J\n" +
-	"#FindContentNoListBySerialNumberList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
+	"\x0eQueryFieldList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x129\n" +
+	"\x12FindWcwStationList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x129\n" +
+	"\x12SendWcwSyncRequest\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12>\n" +
+	"\x17FindWcwOngoingTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12>\n" +
+	"\x17FindWcwHistoryTrackList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x125\n" +
+	"\x0eFinishWcwTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x123\n" +
+	"\fSyncWcwTrack\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12M\n" +
+	"&FindWcwContentNoListBySerialNumberList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12;\n" +
 	"\x14QueryDataInTimeScope\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x125\n" +
-	"\x0eSubscribeTujun\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/track_rpcb\x06proto3"
+	"\x0eSubscribeTujun\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12:\n" +
+	"\x13FinishTujunLocation\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12<\n" +
+	"\x15FindTujunLocationList\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x128\n" +
+	"\x11SyncTujunLocation\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12C\n" +
+	"\x1cFindTujunUnsubscribedDevices\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12A\n" +
+	"\x1aFindTujunSubscribedDevices\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00\x12H\n" +
+	"!FindTujunHistorySubscribedDevices\x12\x0f.trpc.RequestAO\x1a\x10.trpc.ResponseVO\"\x00B\x1eZ\x1cgithub.com/iznilul/track_rpcb\x06proto3"
 
 var (
 	file_proto_track_track_rpc_proto_rawDescOnce sync.Once
@@ -592,50 +331,58 @@ func file_proto_track_track_rpc_proto_rawDescGZIP() []byte {
 	return file_proto_track_track_rpc_proto_rawDescData
 }
 
-var file_proto_track_track_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_proto_track_track_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_track_track_rpc_proto_goTypes = []any{
-	(*NoParam)(nil),       // 0: trpc.NoParam
-	(*ContentNoAO)(nil),   // 1: trpc.ContentNoAO
-	(*SyncAO)(nil),        // 2: trpc.SyncAO
-	(*QueryAO)(nil),       // 3: trpc.QueryAO
-	(*FindStationAO)(nil), // 4: trpc.FindStationAO
-	(*RequestAO)(nil),     // 5: trpc.RequestAO
-	(*ResponseVO)(nil),    // 6: trpc.ResponseVO
-	(*KeyValue)(nil),      // 7: trpc.KeyValue
-	(*anypb.Any)(nil),     // 8: google.protobuf.Any
+	(*NoParam)(nil),    // 0: trpc.NoParam
+	(*RequestAO)(nil),  // 1: trpc.RequestAO
+	(*ResponseVO)(nil), // 2: trpc.ResponseVO
+	(*KeyValue)(nil),   // 3: trpc.KeyValue
+	(*anypb.Any)(nil),  // 4: google.protobuf.Any
 }
 var file_proto_track_track_rpc_proto_depIdxs = []int32{
-	8,  // 0: trpc.RequestAO.data:type_name -> google.protobuf.Any
-	8,  // 1: trpc.RequestAO.dataList:type_name -> google.protobuf.Any
-	8,  // 2: trpc.RequestAO.map:type_name -> google.protobuf.Any
-	8,  // 3: trpc.RequestAO.mapList:type_name -> google.protobuf.Any
-	8,  // 4: trpc.ResponseVO.data:type_name -> google.protobuf.Any
-	8,  // 5: trpc.ResponseVO.dataList:type_name -> google.protobuf.Any
-	8,  // 6: trpc.ResponseVO.map:type_name -> google.protobuf.Any
-	8,  // 7: trpc.ResponseVO.mapList:type_name -> google.protobuf.Any
-	8,  // 8: trpc.KeyValue.value:type_name -> google.protobuf.Any
-	5,  // 9: trpc.TrackRPC.QueryFieldList:input_type -> trpc.RequestAO
-	5,  // 10: trpc.TrackRPC.FindStationList:input_type -> trpc.RequestAO
-	5,  // 11: trpc.TrackRPC.SendSyncRequest:input_type -> trpc.RequestAO
-	5,  // 12: trpc.TrackRPC.FindOngoingTrackList:input_type -> trpc.RequestAO
-	5,  // 13: trpc.TrackRPC.FindHistoryTrackList:input_type -> trpc.RequestAO
-	5,  // 14: trpc.TrackRPC.FinishTrack:input_type -> trpc.RequestAO
-	5,  // 15: trpc.TrackRPC.SyncTrack:input_type -> trpc.RequestAO
-	5,  // 16: trpc.TrackRPC.FindContentNoListBySerialNumberList:input_type -> trpc.RequestAO
-	5,  // 17: trpc.TrackRPC.QueryDataInTimeScope:input_type -> trpc.RequestAO
-	5,  // 18: trpc.TrackRPC.SubscribeTujun:input_type -> trpc.RequestAO
-	6,  // 19: trpc.TrackRPC.QueryFieldList:output_type -> trpc.ResponseVO
-	6,  // 20: trpc.TrackRPC.FindStationList:output_type -> trpc.ResponseVO
-	6,  // 21: trpc.TrackRPC.SendSyncRequest:output_type -> trpc.ResponseVO
-	6,  // 22: trpc.TrackRPC.FindOngoingTrackList:output_type -> trpc.ResponseVO
-	6,  // 23: trpc.TrackRPC.FindHistoryTrackList:output_type -> trpc.ResponseVO
-	6,  // 24: trpc.TrackRPC.FinishTrack:output_type -> trpc.ResponseVO
-	6,  // 25: trpc.TrackRPC.SyncTrack:output_type -> trpc.ResponseVO
-	6,  // 26: trpc.TrackRPC.FindContentNoListBySerialNumberList:output_type -> trpc.ResponseVO
-	6,  // 27: trpc.TrackRPC.QueryDataInTimeScope:output_type -> trpc.ResponseVO
-	6,  // 28: trpc.TrackRPC.SubscribeTujun:output_type -> trpc.ResponseVO
-	19, // [19:29] is the sub-list for method output_type
-	9,  // [9:19] is the sub-list for method input_type
+	4,  // 0: trpc.RequestAO.data:type_name -> google.protobuf.Any
+	4,  // 1: trpc.RequestAO.dataList:type_name -> google.protobuf.Any
+	4,  // 2: trpc.RequestAO.map:type_name -> google.protobuf.Any
+	4,  // 3: trpc.RequestAO.mapList:type_name -> google.protobuf.Any
+	4,  // 4: trpc.ResponseVO.data:type_name -> google.protobuf.Any
+	4,  // 5: trpc.ResponseVO.dataList:type_name -> google.protobuf.Any
+	4,  // 6: trpc.ResponseVO.map:type_name -> google.protobuf.Any
+	4,  // 7: trpc.ResponseVO.mapList:type_name -> google.protobuf.Any
+	4,  // 8: trpc.KeyValue.value:type_name -> google.protobuf.Any
+	1,  // 9: trpc.TrackRPC.QueryFieldList:input_type -> trpc.RequestAO
+	1,  // 10: trpc.TrackRPC.FindWcwStationList:input_type -> trpc.RequestAO
+	1,  // 11: trpc.TrackRPC.SendWcwSyncRequest:input_type -> trpc.RequestAO
+	1,  // 12: trpc.TrackRPC.FindWcwOngoingTrackList:input_type -> trpc.RequestAO
+	1,  // 13: trpc.TrackRPC.FindWcwHistoryTrackList:input_type -> trpc.RequestAO
+	1,  // 14: trpc.TrackRPC.FinishWcwTrack:input_type -> trpc.RequestAO
+	1,  // 15: trpc.TrackRPC.SyncWcwTrack:input_type -> trpc.RequestAO
+	1,  // 16: trpc.TrackRPC.FindWcwContentNoListBySerialNumberList:input_type -> trpc.RequestAO
+	1,  // 17: trpc.TrackRPC.QueryDataInTimeScope:input_type -> trpc.RequestAO
+	1,  // 18: trpc.TrackRPC.SubscribeTujun:input_type -> trpc.RequestAO
+	1,  // 19: trpc.TrackRPC.FinishTujunLocation:input_type -> trpc.RequestAO
+	1,  // 20: trpc.TrackRPC.FindTujunLocationList:input_type -> trpc.RequestAO
+	1,  // 21: trpc.TrackRPC.SyncTujunLocation:input_type -> trpc.RequestAO
+	1,  // 22: trpc.TrackRPC.FindTujunUnsubscribedDevices:input_type -> trpc.RequestAO
+	1,  // 23: trpc.TrackRPC.FindTujunSubscribedDevices:input_type -> trpc.RequestAO
+	1,  // 24: trpc.TrackRPC.FindTujunHistorySubscribedDevices:input_type -> trpc.RequestAO
+	2,  // 25: trpc.TrackRPC.QueryFieldList:output_type -> trpc.ResponseVO
+	2,  // 26: trpc.TrackRPC.FindWcwStationList:output_type -> trpc.ResponseVO
+	2,  // 27: trpc.TrackRPC.SendWcwSyncRequest:output_type -> trpc.ResponseVO
+	2,  // 28: trpc.TrackRPC.FindWcwOngoingTrackList:output_type -> trpc.ResponseVO
+	2,  // 29: trpc.TrackRPC.FindWcwHistoryTrackList:output_type -> trpc.ResponseVO
+	2,  // 30: trpc.TrackRPC.FinishWcwTrack:output_type -> trpc.ResponseVO
+	2,  // 31: trpc.TrackRPC.SyncWcwTrack:output_type -> trpc.ResponseVO
+	2,  // 32: trpc.TrackRPC.FindWcwContentNoListBySerialNumberList:output_type -> trpc.ResponseVO
+	2,  // 33: trpc.TrackRPC.QueryDataInTimeScope:output_type -> trpc.ResponseVO
+	2,  // 34: trpc.TrackRPC.SubscribeTujun:output_type -> trpc.ResponseVO
+	2,  // 35: trpc.TrackRPC.FinishTujunLocation:output_type -> trpc.ResponseVO
+	2,  // 36: trpc.TrackRPC.FindTujunLocationList:output_type -> trpc.ResponseVO
+	2,  // 37: trpc.TrackRPC.SyncTujunLocation:output_type -> trpc.ResponseVO
+	2,  // 38: trpc.TrackRPC.FindTujunUnsubscribedDevices:output_type -> trpc.ResponseVO
+	2,  // 39: trpc.TrackRPC.FindTujunSubscribedDevices:output_type -> trpc.ResponseVO
+	2,  // 40: trpc.TrackRPC.FindTujunHistorySubscribedDevices:output_type -> trpc.ResponseVO
+	25, // [25:41] is the sub-list for method output_type
+	9,  // [9:25] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name
@@ -652,7 +399,7 @@ func file_proto_track_track_rpc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_track_track_rpc_proto_rawDesc), len(file_proto_track_track_rpc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

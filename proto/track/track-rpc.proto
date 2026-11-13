@@ -26,53 +26,47 @@ package trpc;
 
 // Interface exported by the server.
 service TrackRPC {
-  // Basic Query
+  // Basic Query (shared generic data-query surface)
   rpc QueryFieldList (RequestAO) returns (ResponseVO) {}
-  rpc FindStationList (RequestAO) returns (ResponseVO) {}
 
-  // Track Lifecycle
-  rpc SendSyncRequest (RequestAO) returns (ResponseVO) {}
-  rpc FindOngoingTrackList (RequestAO) returns (ResponseVO) {}
-  rpc FindHistoryTrackList (RequestAO) returns (ResponseVO) {}
-  rpc FinishTrack (RequestAO) returns (ResponseVO) {}
-  rpc SyncTrack (RequestAO) returns (ResponseVO) {}
+  // WCW (物畅网) station & track lifecycle
+  rpc FindWcwStationList (RequestAO) returns (ResponseVO) {}
+  rpc SendWcwSyncRequest (RequestAO) returns (ResponseVO) {}
+  rpc FindWcwOngoingTrackList (RequestAO) returns (ResponseVO) {}
+  rpc FindWcwHistoryTrackList (RequestAO) returns (ResponseVO) {}
+  rpc FinishWcwTrack (RequestAO) returns (ResponseVO) {}
+  rpc SyncWcwTrack (RequestAO) returns (ResponseVO) {}
 
-  // Content Query
-  rpc FindContentNoListBySerialNumberList (RequestAO) returns (ResponseVO) {}
+  // WCW content query
+  rpc FindWcwContentNoListBySerialNumberList (RequestAO) returns (ResponseVO) {}
 
-  // Time Scope Query
+  // Time Scope Query (shared generic data-query surface)
   rpc QueryDataInTimeScope(RequestAO) returns (ResponseVO) {}
 
   // Tujun (途君 GPS) device subscription
   rpc SubscribeTujun (RequestAO) returns (ResponseVO) {}
+
+  // Tujun location lifecycle and lookup
+  // FinishTujunLocation stops syncing one device (sn) and moves its subscribe
+  // record and stored location points into the history tables.
+  rpc FinishTujunLocation (RequestAO) returns (ResponseVO) {}
+  // FindTujunLocationList returns stored location points for one sn (mode:
+  // ongoing -> live table, history -> history table).
+  rpc FindTujunLocationList (RequestAO) returns (ResponseVO) {}
+  // SyncTujunLocation manually triggers a single-device location pull.
+  rpc SyncTujunLocation (RequestAO) returns (ResponseVO) {}
+  // FindTujunUnsubscribedDevices returns active devices that have no live
+  // subscribe record, optionally filtered by a sn substring.
+  rpc FindTujunUnsubscribedDevices (RequestAO) returns (ResponseVO) {}
+  // FindTujunSubscribedDevices returns live subscribed devices that drive the
+  // business "途骏-定位" tab SN search, optionally filtered by a sn substring.
+  rpc FindTujunSubscribedDevices (RequestAO) returns (ResponseVO) {}
+  // FindTujunHistorySubscribedDevices returns archived (finished) subscribed
+  // devices that drive the business "途骏-历史定位" tab SN search.
+  rpc FindTujunHistorySubscribedDevices (RequestAO) returns (ResponseVO) {}
 }
 
 message NoParam {
-}
-
-message ContentNoAO {
-  string contentNo = 1;
-}
-
-message SyncAO {
-  repeated string contentNoList = 1;
-  string startStation = 2;
-  string startStationName = 3;
-  string endStation = 4;
-  string endStationName = 5;
-  string serialNumber = 6;
-}
-
-message QueryAO {
-  string table = 1;
-  string field = 2;
-  string value = 3;
-}
-
-message FindStationAO {
-  string value = 1;
-  int32 currentPage = 2;
-  int32 pageSize = 3;
 }
 
 message RequestAO {

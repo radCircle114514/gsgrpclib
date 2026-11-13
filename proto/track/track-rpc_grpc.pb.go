@@ -35,16 +35,22 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TrackRPC_QueryFieldList_FullMethodName                      = "/trpc.TrackRPC/QueryFieldList"
-	TrackRPC_FindStationList_FullMethodName                     = "/trpc.TrackRPC/FindStationList"
-	TrackRPC_SendSyncRequest_FullMethodName                     = "/trpc.TrackRPC/SendSyncRequest"
-	TrackRPC_FindOngoingTrackList_FullMethodName                = "/trpc.TrackRPC/FindOngoingTrackList"
-	TrackRPC_FindHistoryTrackList_FullMethodName                = "/trpc.TrackRPC/FindHistoryTrackList"
-	TrackRPC_FinishTrack_FullMethodName                         = "/trpc.TrackRPC/FinishTrack"
-	TrackRPC_SyncTrack_FullMethodName                           = "/trpc.TrackRPC/SyncTrack"
-	TrackRPC_FindContentNoListBySerialNumberList_FullMethodName = "/trpc.TrackRPC/FindContentNoListBySerialNumberList"
-	TrackRPC_QueryDataInTimeScope_FullMethodName                = "/trpc.TrackRPC/QueryDataInTimeScope"
-	TrackRPC_SubscribeTujun_FullMethodName                      = "/trpc.TrackRPC/SubscribeTujun"
+	TrackRPC_QueryFieldList_FullMethodName                         = "/trpc.TrackRPC/QueryFieldList"
+	TrackRPC_FindWcwStationList_FullMethodName                     = "/trpc.TrackRPC/FindWcwStationList"
+	TrackRPC_SendWcwSyncRequest_FullMethodName                     = "/trpc.TrackRPC/SendWcwSyncRequest"
+	TrackRPC_FindWcwOngoingTrackList_FullMethodName                = "/trpc.TrackRPC/FindWcwOngoingTrackList"
+	TrackRPC_FindWcwHistoryTrackList_FullMethodName                = "/trpc.TrackRPC/FindWcwHistoryTrackList"
+	TrackRPC_FinishWcwTrack_FullMethodName                         = "/trpc.TrackRPC/FinishWcwTrack"
+	TrackRPC_SyncWcwTrack_FullMethodName                           = "/trpc.TrackRPC/SyncWcwTrack"
+	TrackRPC_FindWcwContentNoListBySerialNumberList_FullMethodName = "/trpc.TrackRPC/FindWcwContentNoListBySerialNumberList"
+	TrackRPC_QueryDataInTimeScope_FullMethodName                   = "/trpc.TrackRPC/QueryDataInTimeScope"
+	TrackRPC_SubscribeTujun_FullMethodName                         = "/trpc.TrackRPC/SubscribeTujun"
+	TrackRPC_FinishTujunLocation_FullMethodName                    = "/trpc.TrackRPC/FinishTujunLocation"
+	TrackRPC_FindTujunLocationList_FullMethodName                  = "/trpc.TrackRPC/FindTujunLocationList"
+	TrackRPC_SyncTujunLocation_FullMethodName                      = "/trpc.TrackRPC/SyncTujunLocation"
+	TrackRPC_FindTujunUnsubscribedDevices_FullMethodName           = "/trpc.TrackRPC/FindTujunUnsubscribedDevices"
+	TrackRPC_FindTujunSubscribedDevices_FullMethodName             = "/trpc.TrackRPC/FindTujunSubscribedDevices"
+	TrackRPC_FindTujunHistorySubscribedDevices_FullMethodName      = "/trpc.TrackRPC/FindTujunHistorySubscribedDevices"
 )
 
 // TrackRPCClient is the client API for TrackRPC service.
@@ -53,21 +59,39 @@ const (
 //
 // Interface exported by the server.
 type TrackRPCClient interface {
-	// Basic Query
+	// Basic Query (shared generic data-query surface)
 	QueryFieldList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	// Track Lifecycle
-	SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindOngoingTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FindHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	SyncTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	// Content Query
-	FindContentNoListBySerialNumberList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
-	// Time Scope Query
+	// WCW (物畅网) station & track lifecycle
+	FindWcwStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	SendWcwSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindWcwOngoingTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindWcwHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FinishWcwTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	SyncWcwTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// WCW content query
+	FindWcwContentNoListBySerialNumberList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Time Scope Query (shared generic data-query surface)
 	QueryDataInTimeScope(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Tujun (途君 GPS) device subscription
 	SubscribeTujun(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// Tujun location lifecycle and lookup
+	// FinishTujunLocation stops syncing one device (sn) and moves its subscribe
+	// record and stored location points into the history tables.
+	FinishTujunLocation(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// FindTujunLocationList returns stored location points for one sn (mode:
+	// ongoing -> live table, history -> history table).
+	FindTujunLocationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// SyncTujunLocation manually triggers a single-device location pull.
+	SyncTujunLocation(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// FindTujunUnsubscribedDevices returns active devices that have no live
+	// subscribe record, optionally filtered by a sn substring.
+	FindTujunUnsubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// FindTujunSubscribedDevices returns live subscribed devices that drive the
+	// business "途骏-定位" tab SN search, optionally filtered by a sn substring.
+	FindTujunSubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// FindTujunHistorySubscribedDevices returns archived (finished) subscribed
+	// devices that drive the business "途骏-历史定位" tab SN search.
+	FindTujunHistorySubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type trackRPCClient struct {
@@ -88,70 +112,70 @@ func (c *trackRPCClient) QueryFieldList(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
-func (c *trackRPCClient) FindStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindWcwStationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindStationList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindWcwStationList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) SendSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) SendWcwSyncRequest(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_SendSyncRequest_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_SendWcwSyncRequest_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FindOngoingTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindWcwOngoingTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindOngoingTrackList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindWcwOngoingTrackList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FindHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindWcwHistoryTrackList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindHistoryTrackList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindWcwHistoryTrackList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FinishTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FinishWcwTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FinishTrack_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FinishWcwTrack_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) SyncTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) SyncWcwTrack(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_SyncTrack_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_SyncWcwTrack_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trackRPCClient) FindContentNoListBySerialNumberList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+func (c *trackRPCClient) FindWcwContentNoListBySerialNumberList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
-	err := c.cc.Invoke(ctx, TrackRPC_FindContentNoListBySerialNumberList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, TrackRPC_FindWcwContentNoListBySerialNumberList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -178,27 +202,105 @@ func (c *trackRPCClient) SubscribeTujun(ctx context.Context, in *RequestAO, opts
 	return out, nil
 }
 
+func (c *trackRPCClient) FinishTujunLocation(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_FinishTujunLocation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trackRPCClient) FindTujunLocationList(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_FindTujunLocationList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trackRPCClient) SyncTujunLocation(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_SyncTujunLocation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trackRPCClient) FindTujunUnsubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_FindTujunUnsubscribedDevices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trackRPCClient) FindTujunSubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_FindTujunSubscribedDevices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trackRPCClient) FindTujunHistorySubscribedDevices(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, TrackRPC_FindTujunHistorySubscribedDevices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TrackRPCServer is the server API for TrackRPC service.
 // All implementations must embed UnimplementedTrackRPCServer
 // for forward compatibility.
 //
 // Interface exported by the server.
 type TrackRPCServer interface {
-	// Basic Query
+	// Basic Query (shared generic data-query surface)
 	QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error)
-	FindStationList(context.Context, *RequestAO) (*ResponseVO, error)
-	// Track Lifecycle
-	SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error)
-	FindOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error)
-	FindHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error)
-	FinishTrack(context.Context, *RequestAO) (*ResponseVO, error)
-	SyncTrack(context.Context, *RequestAO) (*ResponseVO, error)
-	// Content Query
-	FindContentNoListBySerialNumberList(context.Context, *RequestAO) (*ResponseVO, error)
-	// Time Scope Query
+	// WCW (物畅网) station & track lifecycle
+	FindWcwStationList(context.Context, *RequestAO) (*ResponseVO, error)
+	SendWcwSyncRequest(context.Context, *RequestAO) (*ResponseVO, error)
+	FindWcwOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error)
+	FindWcwHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error)
+	FinishWcwTrack(context.Context, *RequestAO) (*ResponseVO, error)
+	SyncWcwTrack(context.Context, *RequestAO) (*ResponseVO, error)
+	// WCW content query
+	FindWcwContentNoListBySerialNumberList(context.Context, *RequestAO) (*ResponseVO, error)
+	// Time Scope Query (shared generic data-query surface)
 	QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error)
 	// Tujun (途君 GPS) device subscription
 	SubscribeTujun(context.Context, *RequestAO) (*ResponseVO, error)
+	// Tujun location lifecycle and lookup
+	// FinishTujunLocation stops syncing one device (sn) and moves its subscribe
+	// record and stored location points into the history tables.
+	FinishTujunLocation(context.Context, *RequestAO) (*ResponseVO, error)
+	// FindTujunLocationList returns stored location points for one sn (mode:
+	// ongoing -> live table, history -> history table).
+	FindTujunLocationList(context.Context, *RequestAO) (*ResponseVO, error)
+	// SyncTujunLocation manually triggers a single-device location pull.
+	SyncTujunLocation(context.Context, *RequestAO) (*ResponseVO, error)
+	// FindTujunUnsubscribedDevices returns active devices that have no live
+	// subscribe record, optionally filtered by a sn substring.
+	FindTujunUnsubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error)
+	// FindTujunSubscribedDevices returns live subscribed devices that drive the
+	// business "途骏-定位" tab SN search, optionally filtered by a sn substring.
+	FindTujunSubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error)
+	// FindTujunHistorySubscribedDevices returns archived (finished) subscribed
+	// devices that drive the business "途骏-历史定位" tab SN search.
+	FindTujunHistorySubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedTrackRPCServer()
 }
 
@@ -212,32 +314,50 @@ type UnimplementedTrackRPCServer struct{}
 func (UnimplementedTrackRPCServer) QueryFieldList(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryFieldList not implemented")
 }
-func (UnimplementedTrackRPCServer) FindStationList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindStationList not implemented")
+func (UnimplementedTrackRPCServer) FindWcwStationList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindWcwStationList not implemented")
 }
-func (UnimplementedTrackRPCServer) SendSyncRequest(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SendSyncRequest not implemented")
+func (UnimplementedTrackRPCServer) SendWcwSyncRequest(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendWcwSyncRequest not implemented")
 }
-func (UnimplementedTrackRPCServer) FindOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindOngoingTrackList not implemented")
+func (UnimplementedTrackRPCServer) FindWcwOngoingTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindWcwOngoingTrackList not implemented")
 }
-func (UnimplementedTrackRPCServer) FindHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindHistoryTrackList not implemented")
+func (UnimplementedTrackRPCServer) FindWcwHistoryTrackList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindWcwHistoryTrackList not implemented")
 }
-func (UnimplementedTrackRPCServer) FinishTrack(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FinishTrack not implemented")
+func (UnimplementedTrackRPCServer) FinishWcwTrack(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FinishWcwTrack not implemented")
 }
-func (UnimplementedTrackRPCServer) SyncTrack(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method SyncTrack not implemented")
+func (UnimplementedTrackRPCServer) SyncWcwTrack(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SyncWcwTrack not implemented")
 }
-func (UnimplementedTrackRPCServer) FindContentNoListBySerialNumberList(context.Context, *RequestAO) (*ResponseVO, error) {
-	return nil, status.Error(codes.Unimplemented, "method FindContentNoListBySerialNumberList not implemented")
+func (UnimplementedTrackRPCServer) FindWcwContentNoListBySerialNumberList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindWcwContentNoListBySerialNumberList not implemented")
 }
 func (UnimplementedTrackRPCServer) QueryDataInTimeScope(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryDataInTimeScope not implemented")
 }
 func (UnimplementedTrackRPCServer) SubscribeTujun(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SubscribeTujun not implemented")
+}
+func (UnimplementedTrackRPCServer) FinishTujunLocation(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FinishTujunLocation not implemented")
+}
+func (UnimplementedTrackRPCServer) FindTujunLocationList(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTujunLocationList not implemented")
+}
+func (UnimplementedTrackRPCServer) SyncTujunLocation(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method SyncTujunLocation not implemented")
+}
+func (UnimplementedTrackRPCServer) FindTujunUnsubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTujunUnsubscribedDevices not implemented")
+}
+func (UnimplementedTrackRPCServer) FindTujunSubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTujunSubscribedDevices not implemented")
+}
+func (UnimplementedTrackRPCServer) FindTujunHistorySubscribedDevices(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindTujunHistorySubscribedDevices not implemented")
 }
 func (UnimplementedTrackRPCServer) mustEmbedUnimplementedTrackRPCServer() {}
 func (UnimplementedTrackRPCServer) testEmbeddedByValue()                  {}
@@ -278,128 +398,128 @@ func _TrackRPC_QueryFieldList_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FindStationList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_FindWcwStationList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).FindStationList(ctx, in)
+		return srv.(TrackRPCServer).FindWcwStationList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_FindStationList_FullMethodName,
+		FullMethod: TrackRPC_FindWcwStationList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FindStationList(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).FindWcwStationList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_SendSyncRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_SendWcwSyncRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).SendSyncRequest(ctx, in)
+		return srv.(TrackRPCServer).SendWcwSyncRequest(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_SendSyncRequest_FullMethodName,
+		FullMethod: TrackRPC_SendWcwSyncRequest_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).SendSyncRequest(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).SendWcwSyncRequest(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FindOngoingTrackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_FindWcwOngoingTrackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).FindOngoingTrackList(ctx, in)
+		return srv.(TrackRPCServer).FindWcwOngoingTrackList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_FindOngoingTrackList_FullMethodName,
+		FullMethod: TrackRPC_FindWcwOngoingTrackList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FindOngoingTrackList(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).FindWcwOngoingTrackList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FindHistoryTrackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_FindWcwHistoryTrackList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).FindHistoryTrackList(ctx, in)
+		return srv.(TrackRPCServer).FindWcwHistoryTrackList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_FindHistoryTrackList_FullMethodName,
+		FullMethod: TrackRPC_FindWcwHistoryTrackList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FindHistoryTrackList(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).FindWcwHistoryTrackList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FinishTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_FinishWcwTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).FinishTrack(ctx, in)
+		return srv.(TrackRPCServer).FinishWcwTrack(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_FinishTrack_FullMethodName,
+		FullMethod: TrackRPC_FinishWcwTrack_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FinishTrack(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).FinishWcwTrack(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_SyncTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_SyncWcwTrack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).SyncTrack(ctx, in)
+		return srv.(TrackRPCServer).SyncWcwTrack(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_SyncTrack_FullMethodName,
+		FullMethod: TrackRPC_SyncWcwTrack_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).SyncTrack(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).SyncWcwTrack(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrackRPC_FindContentNoListBySerialNumberList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TrackRPC_FindWcwContentNoListBySerialNumberList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RequestAO)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrackRPCServer).FindContentNoListBySerialNumberList(ctx, in)
+		return srv.(TrackRPCServer).FindWcwContentNoListBySerialNumberList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TrackRPC_FindContentNoListBySerialNumberList_FullMethodName,
+		FullMethod: TrackRPC_FindWcwContentNoListBySerialNumberList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrackRPCServer).FindContentNoListBySerialNumberList(ctx, req.(*RequestAO))
+		return srv.(TrackRPCServer).FindWcwContentNoListBySerialNumberList(ctx, req.(*RequestAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -440,6 +560,114 @@ func _TrackRPC_SubscribeTujun_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TrackRPC_FinishTujunLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FinishTujunLocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FinishTujunLocation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FinishTujunLocation(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_FindTujunLocationList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FindTujunLocationList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FindTujunLocationList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FindTujunLocationList(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_SyncTujunLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).SyncTujunLocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_SyncTujunLocation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).SyncTujunLocation(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_FindTujunUnsubscribedDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FindTujunUnsubscribedDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FindTujunUnsubscribedDevices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FindTujunUnsubscribedDevices(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_FindTujunSubscribedDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FindTujunSubscribedDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FindTujunSubscribedDevices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FindTujunSubscribedDevices(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrackRPC_FindTujunHistorySubscribedDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrackRPCServer).FindTujunHistorySubscribedDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TrackRPC_FindTujunHistorySubscribedDevices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrackRPCServer).FindTujunHistorySubscribedDevices(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TrackRPC_ServiceDesc is the grpc.ServiceDesc for TrackRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -452,32 +680,32 @@ var TrackRPC_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrackRPC_QueryFieldList_Handler,
 		},
 		{
-			MethodName: "FindStationList",
-			Handler:    _TrackRPC_FindStationList_Handler,
+			MethodName: "FindWcwStationList",
+			Handler:    _TrackRPC_FindWcwStationList_Handler,
 		},
 		{
-			MethodName: "SendSyncRequest",
-			Handler:    _TrackRPC_SendSyncRequest_Handler,
+			MethodName: "SendWcwSyncRequest",
+			Handler:    _TrackRPC_SendWcwSyncRequest_Handler,
 		},
 		{
-			MethodName: "FindOngoingTrackList",
-			Handler:    _TrackRPC_FindOngoingTrackList_Handler,
+			MethodName: "FindWcwOngoingTrackList",
+			Handler:    _TrackRPC_FindWcwOngoingTrackList_Handler,
 		},
 		{
-			MethodName: "FindHistoryTrackList",
-			Handler:    _TrackRPC_FindHistoryTrackList_Handler,
+			MethodName: "FindWcwHistoryTrackList",
+			Handler:    _TrackRPC_FindWcwHistoryTrackList_Handler,
 		},
 		{
-			MethodName: "FinishTrack",
-			Handler:    _TrackRPC_FinishTrack_Handler,
+			MethodName: "FinishWcwTrack",
+			Handler:    _TrackRPC_FinishWcwTrack_Handler,
 		},
 		{
-			MethodName: "SyncTrack",
-			Handler:    _TrackRPC_SyncTrack_Handler,
+			MethodName: "SyncWcwTrack",
+			Handler:    _TrackRPC_SyncWcwTrack_Handler,
 		},
 		{
-			MethodName: "FindContentNoListBySerialNumberList",
-			Handler:    _TrackRPC_FindContentNoListBySerialNumberList_Handler,
+			MethodName: "FindWcwContentNoListBySerialNumberList",
+			Handler:    _TrackRPC_FindWcwContentNoListBySerialNumberList_Handler,
 		},
 		{
 			MethodName: "QueryDataInTimeScope",
@@ -486,6 +714,30 @@ var TrackRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SubscribeTujun",
 			Handler:    _TrackRPC_SubscribeTujun_Handler,
+		},
+		{
+			MethodName: "FinishTujunLocation",
+			Handler:    _TrackRPC_FinishTujunLocation_Handler,
+		},
+		{
+			MethodName: "FindTujunLocationList",
+			Handler:    _TrackRPC_FindTujunLocationList_Handler,
+		},
+		{
+			MethodName: "SyncTujunLocation",
+			Handler:    _TrackRPC_SyncTujunLocation_Handler,
+		},
+		{
+			MethodName: "FindTujunUnsubscribedDevices",
+			Handler:    _TrackRPC_FindTujunUnsubscribedDevices_Handler,
+		},
+		{
+			MethodName: "FindTujunSubscribedDevices",
+			Handler:    _TrackRPC_FindTujunSubscribedDevices_Handler,
+		},
+		{
+			MethodName: "FindTujunHistorySubscribedDevices",
+			Handler:    _TrackRPC_FindTujunHistorySubscribedDevices_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

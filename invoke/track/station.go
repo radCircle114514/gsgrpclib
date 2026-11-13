@@ -9,7 +9,7 @@ import (
 	"github.com/mumushuiding/util"
 )
 
-func InvokeRpcTrackFindStationList(value string, pageSize, currentPage int, ctx context.Context) ([]map[string]interface{}, interface{}, error) {
+func InvokeRpcTrackFindWcwStationList(value string, pageSize, currentPage int, ctx context.Context) ([]map[string]interface{}, interface{}, error) {
 	map1 := map[string]interface{}{
 		"value":       value,
 		"pageSize":    pageSize,
@@ -22,7 +22,7 @@ func InvokeRpcTrackFindStationList(value string, pageSize, currentPage int, ctx 
 	ao := &track_rpc.RequestAO{
 		Map: toAny,
 	}
-	vo, err := client.InvokeTrackRPCMethod(ctx, "FindStationList", ao)
+	vo, err := client.InvokeTrackRPCMethod(ctx, "FindWcwStationList", ao)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -31,7 +31,7 @@ func InvokeRpcTrackFindStationList(value string, pageSize, currentPage int, ctx 
 	return mapList, data, nil
 }
 
-func InvokeRpcTrackFindContentNoListBySerialNumberList(serialNumberList []string, ctx context.Context) ([]string, error) {
+func InvokeRpcTrackFindWcwContentNoListBySerialNumberList(serialNumberList []string, ctx context.Context) ([]string, error) {
 	jsonStr, _ := util.ToJSONStr(serialNumberList)
 	anyList, err := utils.ParseJsonStrToAnyList(jsonStr)
 	if err != nil {
@@ -40,7 +40,7 @@ func InvokeRpcTrackFindContentNoListBySerialNumberList(serialNumberList []string
 	ao := &track_rpc.RequestAO{
 		DataList: anyList,
 	}
-	vo, err := client.InvokeTrackRPCMethod(ctx, "FindContentNoListBySerialNumberList", ao)
+	vo, err := client.InvokeTrackRPCMethod(ctx, "FindWcwContentNoListBySerialNumberList", ao)
 	if err != nil {
 		return nil, err
 	}
