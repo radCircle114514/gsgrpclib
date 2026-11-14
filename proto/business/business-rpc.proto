@@ -65,6 +65,17 @@ service BusinessRPC {
 
   // Profit Sync
   rpc SyncOrderProfit(RequestAO) returns (ResponseVO) {}
+
+  // WorkTool Chatbot Read APIs
+  rpc FindChatbotOngoingInsts(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotHistoryInsts(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotProcInstIDBySerialNumber(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotIdentityLinksByProcInstID(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotIdentityLinkByID(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotBoxInfos(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotTraceInfos(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotInspectionInfos(RequestAO) returns (ResponseVO) {}
+  rpc FindChatbotFormItems(RequestAO) returns (ResponseVO) {}
 }
 
 message IdentityLink {

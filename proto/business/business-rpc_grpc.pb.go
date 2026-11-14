@@ -35,32 +35,41 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BusinessRPC_GenerateOrder_FullMethodName                  = "/brpc.BusinessRPC/GenerateOrder"
-	BusinessRPC_FindOrderInfo_FullMethodName                  = "/brpc.BusinessRPC/FindOrderInfo"
-	BusinessRPC_ListOrderInfo_FullMethodName                  = "/brpc.BusinessRPC/ListOrderInfo"
-	BusinessRPC_FindOrderListInAgent_FullMethodName           = "/brpc.BusinessRPC/FindOrderListInAgent"
-	BusinessRPC_DetailOrderInfoInAgent_FullMethodName         = "/brpc.BusinessRPC/DetailOrderInfoInAgent"
-	BusinessRPC_FindProcInstByChatID_FullMethodName           = "/brpc.BusinessRPC/FindProcInstByChatID"
-	BusinessRPC_FindOngoingProcessInfoInAgent_FullMethodName  = "/brpc.BusinessRPC/FindOngoingProcessInfoInAgent"
-	BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName = "/brpc.BusinessRPC/FindFinishedProcessInfoInAgent"
-	BusinessRPC_FindProcessOverviewInAgent_FullMethodName     = "/brpc.BusinessRPC/FindProcessOverviewInAgent"
-	BusinessRPC_FindProcessDetailInAgent_FullMethodName       = "/brpc.BusinessRPC/FindProcessDetailInAgent"
-	BusinessRPC_FindTaskOverviewInAgent_FullMethodName        = "/brpc.BusinessRPC/FindTaskOverviewInAgent"
-	BusinessRPC_FindTaskDetailInAgent_FullMethodName          = "/brpc.BusinessRPC/FindTaskDetailInAgent"
-	BusinessRPC_UpdateTrack_FullMethodName                    = "/brpc.BusinessRPC/UpdateTrack"
-	BusinessRPC_FindContentNoList_FullMethodName              = "/brpc.BusinessRPC/FindContentNoList"
-	BusinessRPC_UpdateNotifyMode_FullMethodName               = "/brpc.BusinessRPC/UpdateNotifyMode"
-	BusinessRPC_UpdateCustomerRemark_FullMethodName           = "/brpc.BusinessRPC/UpdateCustomerRemark"
-	BusinessRPC_UpdateMiniAndAccount_FullMethodName           = "/brpc.BusinessRPC/UpdateMiniAndAccount"
-	BusinessRPC_QueryIndicatorCount_FullMethodName            = "/brpc.BusinessRPC/QueryIndicatorCount"
-	BusinessRPC_QueryIndicatorDetail_FullMethodName           = "/brpc.BusinessRPC/QueryIndicatorDetail"
-	BusinessRPC_QueryIndicatorCountInBatch_FullMethodName     = "/brpc.BusinessRPC/QueryIndicatorCountInBatch"
-	BusinessRPC_CalculateUserIndicator_FullMethodName         = "/brpc.BusinessRPC/CalculateUserIndicator"
-	BusinessRPC_GenerateRecordInMonth_FullMethodName          = "/brpc.BusinessRPC/GenerateRecordInMonth"
-	BusinessRPC_FindReportOverviewInAgent_FullMethodName      = "/brpc.BusinessRPC/FindReportOverviewInAgent"
-	BusinessRPC_FindOrderBillOverviewInAgent_FullMethodName   = "/brpc.BusinessRPC/FindOrderBillOverviewInAgent"
-	BusinessRPC_DetailOrderBillInAgent_FullMethodName         = "/brpc.BusinessRPC/DetailOrderBillInAgent"
-	BusinessRPC_SyncOrderProfit_FullMethodName                = "/brpc.BusinessRPC/SyncOrderProfit"
+	BusinessRPC_GenerateOrder_FullMethodName                        = "/brpc.BusinessRPC/GenerateOrder"
+	BusinessRPC_FindOrderInfo_FullMethodName                        = "/brpc.BusinessRPC/FindOrderInfo"
+	BusinessRPC_ListOrderInfo_FullMethodName                        = "/brpc.BusinessRPC/ListOrderInfo"
+	BusinessRPC_FindOrderListInAgent_FullMethodName                 = "/brpc.BusinessRPC/FindOrderListInAgent"
+	BusinessRPC_DetailOrderInfoInAgent_FullMethodName               = "/brpc.BusinessRPC/DetailOrderInfoInAgent"
+	BusinessRPC_FindProcInstByChatID_FullMethodName                 = "/brpc.BusinessRPC/FindProcInstByChatID"
+	BusinessRPC_FindOngoingProcessInfoInAgent_FullMethodName        = "/brpc.BusinessRPC/FindOngoingProcessInfoInAgent"
+	BusinessRPC_FindFinishedProcessInfoInAgent_FullMethodName       = "/brpc.BusinessRPC/FindFinishedProcessInfoInAgent"
+	BusinessRPC_FindProcessOverviewInAgent_FullMethodName           = "/brpc.BusinessRPC/FindProcessOverviewInAgent"
+	BusinessRPC_FindProcessDetailInAgent_FullMethodName             = "/brpc.BusinessRPC/FindProcessDetailInAgent"
+	BusinessRPC_FindTaskOverviewInAgent_FullMethodName              = "/brpc.BusinessRPC/FindTaskOverviewInAgent"
+	BusinessRPC_FindTaskDetailInAgent_FullMethodName                = "/brpc.BusinessRPC/FindTaskDetailInAgent"
+	BusinessRPC_UpdateTrack_FullMethodName                          = "/brpc.BusinessRPC/UpdateTrack"
+	BusinessRPC_FindContentNoList_FullMethodName                    = "/brpc.BusinessRPC/FindContentNoList"
+	BusinessRPC_UpdateNotifyMode_FullMethodName                     = "/brpc.BusinessRPC/UpdateNotifyMode"
+	BusinessRPC_UpdateCustomerRemark_FullMethodName                 = "/brpc.BusinessRPC/UpdateCustomerRemark"
+	BusinessRPC_UpdateMiniAndAccount_FullMethodName                 = "/brpc.BusinessRPC/UpdateMiniAndAccount"
+	BusinessRPC_QueryIndicatorCount_FullMethodName                  = "/brpc.BusinessRPC/QueryIndicatorCount"
+	BusinessRPC_QueryIndicatorDetail_FullMethodName                 = "/brpc.BusinessRPC/QueryIndicatorDetail"
+	BusinessRPC_QueryIndicatorCountInBatch_FullMethodName           = "/brpc.BusinessRPC/QueryIndicatorCountInBatch"
+	BusinessRPC_CalculateUserIndicator_FullMethodName               = "/brpc.BusinessRPC/CalculateUserIndicator"
+	BusinessRPC_GenerateRecordInMonth_FullMethodName                = "/brpc.BusinessRPC/GenerateRecordInMonth"
+	BusinessRPC_FindReportOverviewInAgent_FullMethodName            = "/brpc.BusinessRPC/FindReportOverviewInAgent"
+	BusinessRPC_FindOrderBillOverviewInAgent_FullMethodName         = "/brpc.BusinessRPC/FindOrderBillOverviewInAgent"
+	BusinessRPC_DetailOrderBillInAgent_FullMethodName               = "/brpc.BusinessRPC/DetailOrderBillInAgent"
+	BusinessRPC_SyncOrderProfit_FullMethodName                      = "/brpc.BusinessRPC/SyncOrderProfit"
+	BusinessRPC_FindChatbotOngoingInsts_FullMethodName              = "/brpc.BusinessRPC/FindChatbotOngoingInsts"
+	BusinessRPC_FindChatbotHistoryInsts_FullMethodName              = "/brpc.BusinessRPC/FindChatbotHistoryInsts"
+	BusinessRPC_FindChatbotProcInstIDBySerialNumber_FullMethodName  = "/brpc.BusinessRPC/FindChatbotProcInstIDBySerialNumber"
+	BusinessRPC_FindChatbotIdentityLinksByProcInstID_FullMethodName = "/brpc.BusinessRPC/FindChatbotIdentityLinksByProcInstID"
+	BusinessRPC_FindChatbotIdentityLinkByID_FullMethodName          = "/brpc.BusinessRPC/FindChatbotIdentityLinkByID"
+	BusinessRPC_FindChatbotBoxInfos_FullMethodName                  = "/brpc.BusinessRPC/FindChatbotBoxInfos"
+	BusinessRPC_FindChatbotTraceInfos_FullMethodName                = "/brpc.BusinessRPC/FindChatbotTraceInfos"
+	BusinessRPC_FindChatbotInspectionInfos_FullMethodName           = "/brpc.BusinessRPC/FindChatbotInspectionInfos"
+	BusinessRPC_FindChatbotFormItems_FullMethodName                 = "/brpc.BusinessRPC/FindChatbotFormItems"
 )
 
 // BusinessRPCClient is the client API for BusinessRPC service.
@@ -102,6 +111,16 @@ type BusinessRPCClient interface {
 	DetailOrderBillInAgent(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// WorkTool Chatbot Read APIs
+	FindChatbotOngoingInsts(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotHistoryInsts(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotProcInstIDBySerialNumber(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotIdentityLinksByProcInstID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotIdentityLinkByID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotBoxInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotTraceInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotInspectionInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindChatbotFormItems(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type businessRPCClient struct {
@@ -372,6 +391,96 @@ func (c *businessRPCClient) SyncOrderProfit(ctx context.Context, in *RequestAO, 
 	return out, nil
 }
 
+func (c *businessRPCClient) FindChatbotOngoingInsts(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotOngoingInsts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotHistoryInsts(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotHistoryInsts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotProcInstIDBySerialNumber(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotProcInstIDBySerialNumber_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotIdentityLinksByProcInstID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotIdentityLinksByProcInstID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotIdentityLinkByID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotIdentityLinkByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotBoxInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotBoxInfos_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotTraceInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotTraceInfos_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotInspectionInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotInspectionInfos_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *businessRPCClient) FindChatbotFormItems(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_FindChatbotFormItems_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BusinessRPCServer is the server API for BusinessRPC service.
 // All implementations must embed UnimplementedBusinessRPCServer
 // for forward compatibility.
@@ -411,6 +520,16 @@ type BusinessRPCServer interface {
 	DetailOrderBillInAgent(context.Context, *RequestAO) (*ResponseVO, error)
 	// Profit Sync
 	SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error)
+	// WorkTool Chatbot Read APIs
+	FindChatbotOngoingInsts(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotHistoryInsts(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotProcInstIDBySerialNumber(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotIdentityLinksByProcInstID(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotIdentityLinkByID(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotBoxInfos(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotTraceInfos(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotInspectionInfos(context.Context, *RequestAO) (*ResponseVO, error)
+	FindChatbotFormItems(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedBusinessRPCServer()
 }
 
@@ -498,6 +617,33 @@ func (UnimplementedBusinessRPCServer) DetailOrderBillInAgent(context.Context, *R
 }
 func (UnimplementedBusinessRPCServer) SyncOrderProfit(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncOrderProfit not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotOngoingInsts(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotOngoingInsts not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotHistoryInsts(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotHistoryInsts not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotProcInstIDBySerialNumber(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotProcInstIDBySerialNumber not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotIdentityLinksByProcInstID(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotIdentityLinksByProcInstID not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotIdentityLinkByID(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotIdentityLinkByID not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotBoxInfos(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotBoxInfos not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotTraceInfos(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotTraceInfos not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotInspectionInfos(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotInspectionInfos not implemented")
+}
+func (UnimplementedBusinessRPCServer) FindChatbotFormItems(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindChatbotFormItems not implemented")
 }
 func (UnimplementedBusinessRPCServer) mustEmbedUnimplementedBusinessRPCServer() {}
 func (UnimplementedBusinessRPCServer) testEmbeddedByValue()                     {}
@@ -988,6 +1134,168 @@ func _BusinessRPC_SyncOrderProfit_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BusinessRPC_FindChatbotOngoingInsts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotOngoingInsts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotOngoingInsts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotOngoingInsts(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotHistoryInsts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotHistoryInsts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotHistoryInsts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotHistoryInsts(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotProcInstIDBySerialNumber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotProcInstIDBySerialNumber(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotProcInstIDBySerialNumber_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotProcInstIDBySerialNumber(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotIdentityLinksByProcInstID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotIdentityLinksByProcInstID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotIdentityLinksByProcInstID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotIdentityLinksByProcInstID(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotIdentityLinkByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotIdentityLinkByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotIdentityLinkByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotIdentityLinkByID(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotBoxInfos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotBoxInfos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotBoxInfos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotBoxInfos(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotTraceInfos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotTraceInfos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotTraceInfos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotTraceInfos(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotInspectionInfos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotInspectionInfos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotInspectionInfos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotInspectionInfos(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BusinessRPC_FindChatbotFormItems_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).FindChatbotFormItems(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_FindChatbotFormItems_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).FindChatbotFormItems(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BusinessRPC_ServiceDesc is the grpc.ServiceDesc for BusinessRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1098,6 +1406,42 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SyncOrderProfit",
 			Handler:    _BusinessRPC_SyncOrderProfit_Handler,
+		},
+		{
+			MethodName: "FindChatbotOngoingInsts",
+			Handler:    _BusinessRPC_FindChatbotOngoingInsts_Handler,
+		},
+		{
+			MethodName: "FindChatbotHistoryInsts",
+			Handler:    _BusinessRPC_FindChatbotHistoryInsts_Handler,
+		},
+		{
+			MethodName: "FindChatbotProcInstIDBySerialNumber",
+			Handler:    _BusinessRPC_FindChatbotProcInstIDBySerialNumber_Handler,
+		},
+		{
+			MethodName: "FindChatbotIdentityLinksByProcInstID",
+			Handler:    _BusinessRPC_FindChatbotIdentityLinksByProcInstID_Handler,
+		},
+		{
+			MethodName: "FindChatbotIdentityLinkByID",
+			Handler:    _BusinessRPC_FindChatbotIdentityLinkByID_Handler,
+		},
+		{
+			MethodName: "FindChatbotBoxInfos",
+			Handler:    _BusinessRPC_FindChatbotBoxInfos_Handler,
+		},
+		{
+			MethodName: "FindChatbotTraceInfos",
+			Handler:    _BusinessRPC_FindChatbotTraceInfos_Handler,
+		},
+		{
+			MethodName: "FindChatbotInspectionInfos",
+			Handler:    _BusinessRPC_FindChatbotInspectionInfos_Handler,
+		},
+		{
+			MethodName: "FindChatbotFormItems",
+			Handler:    _BusinessRPC_FindChatbotFormItems_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
