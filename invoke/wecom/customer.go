@@ -91,6 +91,10 @@ func InvokeRpcUpdateCustomerRemark(userID, markName, oldMarkName string, ctx con
 }
 
 func InvokeRpcGetCustomerInRobotChat(externalUserID, remark string, ctx context.Context) (map[string]interface{}, error) {
+	return InvokeRpcGetCustomerInRobotChatByRobotUserID("", externalUserID, remark, ctx)
+}
+
+func InvokeRpcGetCustomerInRobotChatByRobotUserID(robotUserID, externalUserID, remark string, ctx context.Context) (map[string]interface{}, error) {
 	conn, err := client.InitWecomRpcClientConn()
 	if err != nil {
 		return nil, err
@@ -100,6 +104,7 @@ func InvokeRpcGetCustomerInRobotChat(externalUserID, remark string, ctx context.
 	ao := &wecom_rpc.GetCustomerInRobotChatAO{
 		ExternalUserID: externalUserID,
 		Remark:         remark,
+		RobotUserID:    robotUserID,
 	}
 	ctx, cancel := client.SetTimeout(ctx)
 	defer cancel()

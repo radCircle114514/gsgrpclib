@@ -19,6 +19,12 @@ option go_package = "github.com/iznilul/worktool_rpc";
 package wtrpc;
 
 service WorkToolRPC {
+  rpc ListRobots(RequestAO) returns (ResponseVO);
+  rpc GetRobot(RequestAO) returns (ResponseVO);
+  rpc FlushRobotCustomers(RequestAO) returns (ResponseVO);
+  rpc FlushAllRobotCustomers(RequestAO) returns (ResponseVO);
+  rpc FlushRobotGroup(RequestAO) returns (ResponseVO);
+  rpc FlushAllRobotGroups(RequestAO) returns (ResponseVO);
   rpc SendTextMessage(RequestAO) returns (ResponseVO);
   rpc AddCustomer(RequestAO) returns (ResponseVO);
   rpc UpdateCustomerRemark(RequestAO) returns (ResponseVO);

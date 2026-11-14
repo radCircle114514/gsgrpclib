@@ -237,6 +237,7 @@ message UpdateCustomerAO {
 message GetCustomerInRobotChatAO {
   string remark = 1;
   string externalUserID = 2;
+  string robotUserID = 3;
 }
 
 message RequestAO {

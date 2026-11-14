@@ -19,12 +19,12 @@ import (
 //	params    action-specific query parameters
 func InvokeRpcDoCommonRequest(ctx context.Context, domain, version, apiAction, method, regionId string, params map[string]interface{}) (map[string]interface{}, error) {
 	req := map[string]interface{}{
-		"domain":     domain,
-		"version":    version,
-		"apiAction":  apiAction,
-		"method":     method,
-		"regionId":   regionId,
-		"params":     params,
+		"domain":    domain,
+		"version":   version,
+		"apiAction": apiAction,
+		"method":    method,
+		"regionId":  regionId,
+		"params":    params,
 	}
 	toAny, err := utils.ParseMapToAny(req)
 	if err != nil {

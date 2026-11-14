@@ -205,8 +205,15 @@ const file_proto_worktool_worktool_rpc_proto_rawDesc = "" +
 	"\x04data\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x04data\x120\n" +
 	"\bdataList\x18\x04 \x03(\v2\x14.google.protobuf.AnyR\bdataList\x12&\n" +
 	"\x03map\x18\x05 \x01(\v2\x14.google.protobuf.AnyR\x03map\x12.\n" +
-	"\amapList\x18\x06 \x03(\v2\x14.google.protobuf.AnyR\amapList2\x95\x06\n" +
-	"\vWorkToolRPC\x126\n" +
+	"\amapList\x18\x06 \x03(\v2\x14.google.protobuf.AnyR\amapList2\xe8\b\n" +
+	"\vWorkToolRPC\x121\n" +
+	"\n" +
+	"ListRobots\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12/\n" +
+	"\bGetRobot\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12:\n" +
+	"\x13FlushRobotCustomers\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12=\n" +
+	"\x16FlushAllRobotCustomers\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x126\n" +
+	"\x0fFlushRobotGroup\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12:\n" +
+	"\x13FlushAllRobotGroups\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x126\n" +
 	"\x0fSendTextMessage\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x122\n" +
 	"\vAddCustomer\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12;\n" +
 	"\x14UpdateCustomerRemark\x12\x10.wtrpc.RequestAO\x1a\x11.wtrpc.ResponseVO\x12:\n" +
@@ -248,34 +255,46 @@ var file_proto_worktool_worktool_rpc_proto_depIdxs = []int32{
 	2,  // 5: wtrpc.ResponseVO.dataList:type_name -> google.protobuf.Any
 	2,  // 6: wtrpc.ResponseVO.map:type_name -> google.protobuf.Any
 	2,  // 7: wtrpc.ResponseVO.mapList:type_name -> google.protobuf.Any
-	0,  // 8: wtrpc.WorkToolRPC.SendTextMessage:input_type -> wtrpc.RequestAO
-	0,  // 9: wtrpc.WorkToolRPC.AddCustomer:input_type -> wtrpc.RequestAO
-	0,  // 10: wtrpc.WorkToolRPC.UpdateCustomerRemark:input_type -> wtrpc.RequestAO
-	0,  // 11: wtrpc.WorkToolRPC.QueryCommandResults:input_type -> wtrpc.RequestAO
-	0,  // 12: wtrpc.WorkToolRPC.QueryCommandResultByMessageID:input_type -> wtrpc.RequestAO
-	0,  // 13: wtrpc.WorkToolRPC.SyncCommandResults:input_type -> wtrpc.RequestAO
-	0,  // 14: wtrpc.WorkToolRPC.SaveCommandResults:input_type -> wtrpc.RequestAO
-	0,  // 15: wtrpc.WorkToolRPC.ListPendingResults:input_type -> wtrpc.RequestAO
-	0,  // 16: wtrpc.WorkToolRPC.ClearReplyNumber:input_type -> wtrpc.RequestAO
-	0,  // 17: wtrpc.WorkToolRPC.ReceiveCallback:input_type -> wtrpc.RequestAO
-	0,  // 18: wtrpc.WorkToolRPC.ReceiveResultCallback:input_type -> wtrpc.RequestAO
-	0,  // 19: wtrpc.WorkToolRPC.ReceiveOnlineCallback:input_type -> wtrpc.RequestAO
-	0,  // 20: wtrpc.WorkToolRPC.ReceiveOfflineCallback:input_type -> wtrpc.RequestAO
-	1,  // 21: wtrpc.WorkToolRPC.SendTextMessage:output_type -> wtrpc.ResponseVO
-	1,  // 22: wtrpc.WorkToolRPC.AddCustomer:output_type -> wtrpc.ResponseVO
-	1,  // 23: wtrpc.WorkToolRPC.UpdateCustomerRemark:output_type -> wtrpc.ResponseVO
-	1,  // 24: wtrpc.WorkToolRPC.QueryCommandResults:output_type -> wtrpc.ResponseVO
-	1,  // 25: wtrpc.WorkToolRPC.QueryCommandResultByMessageID:output_type -> wtrpc.ResponseVO
-	1,  // 26: wtrpc.WorkToolRPC.SyncCommandResults:output_type -> wtrpc.ResponseVO
-	1,  // 27: wtrpc.WorkToolRPC.SaveCommandResults:output_type -> wtrpc.ResponseVO
-	1,  // 28: wtrpc.WorkToolRPC.ListPendingResults:output_type -> wtrpc.ResponseVO
-	1,  // 29: wtrpc.WorkToolRPC.ClearReplyNumber:output_type -> wtrpc.ResponseVO
-	1,  // 30: wtrpc.WorkToolRPC.ReceiveCallback:output_type -> wtrpc.ResponseVO
-	1,  // 31: wtrpc.WorkToolRPC.ReceiveResultCallback:output_type -> wtrpc.ResponseVO
-	1,  // 32: wtrpc.WorkToolRPC.ReceiveOnlineCallback:output_type -> wtrpc.ResponseVO
-	1,  // 33: wtrpc.WorkToolRPC.ReceiveOfflineCallback:output_type -> wtrpc.ResponseVO
-	21, // [21:34] is the sub-list for method output_type
-	8,  // [8:21] is the sub-list for method input_type
+	0,  // 8: wtrpc.WorkToolRPC.ListRobots:input_type -> wtrpc.RequestAO
+	0,  // 9: wtrpc.WorkToolRPC.GetRobot:input_type -> wtrpc.RequestAO
+	0,  // 10: wtrpc.WorkToolRPC.FlushRobotCustomers:input_type -> wtrpc.RequestAO
+	0,  // 11: wtrpc.WorkToolRPC.FlushAllRobotCustomers:input_type -> wtrpc.RequestAO
+	0,  // 12: wtrpc.WorkToolRPC.FlushRobotGroup:input_type -> wtrpc.RequestAO
+	0,  // 13: wtrpc.WorkToolRPC.FlushAllRobotGroups:input_type -> wtrpc.RequestAO
+	0,  // 14: wtrpc.WorkToolRPC.SendTextMessage:input_type -> wtrpc.RequestAO
+	0,  // 15: wtrpc.WorkToolRPC.AddCustomer:input_type -> wtrpc.RequestAO
+	0,  // 16: wtrpc.WorkToolRPC.UpdateCustomerRemark:input_type -> wtrpc.RequestAO
+	0,  // 17: wtrpc.WorkToolRPC.QueryCommandResults:input_type -> wtrpc.RequestAO
+	0,  // 18: wtrpc.WorkToolRPC.QueryCommandResultByMessageID:input_type -> wtrpc.RequestAO
+	0,  // 19: wtrpc.WorkToolRPC.SyncCommandResults:input_type -> wtrpc.RequestAO
+	0,  // 20: wtrpc.WorkToolRPC.SaveCommandResults:input_type -> wtrpc.RequestAO
+	0,  // 21: wtrpc.WorkToolRPC.ListPendingResults:input_type -> wtrpc.RequestAO
+	0,  // 22: wtrpc.WorkToolRPC.ClearReplyNumber:input_type -> wtrpc.RequestAO
+	0,  // 23: wtrpc.WorkToolRPC.ReceiveCallback:input_type -> wtrpc.RequestAO
+	0,  // 24: wtrpc.WorkToolRPC.ReceiveResultCallback:input_type -> wtrpc.RequestAO
+	0,  // 25: wtrpc.WorkToolRPC.ReceiveOnlineCallback:input_type -> wtrpc.RequestAO
+	0,  // 26: wtrpc.WorkToolRPC.ReceiveOfflineCallback:input_type -> wtrpc.RequestAO
+	1,  // 27: wtrpc.WorkToolRPC.ListRobots:output_type -> wtrpc.ResponseVO
+	1,  // 28: wtrpc.WorkToolRPC.GetRobot:output_type -> wtrpc.ResponseVO
+	1,  // 29: wtrpc.WorkToolRPC.FlushRobotCustomers:output_type -> wtrpc.ResponseVO
+	1,  // 30: wtrpc.WorkToolRPC.FlushAllRobotCustomers:output_type -> wtrpc.ResponseVO
+	1,  // 31: wtrpc.WorkToolRPC.FlushRobotGroup:output_type -> wtrpc.ResponseVO
+	1,  // 32: wtrpc.WorkToolRPC.FlushAllRobotGroups:output_type -> wtrpc.ResponseVO
+	1,  // 33: wtrpc.WorkToolRPC.SendTextMessage:output_type -> wtrpc.ResponseVO
+	1,  // 34: wtrpc.WorkToolRPC.AddCustomer:output_type -> wtrpc.ResponseVO
+	1,  // 35: wtrpc.WorkToolRPC.UpdateCustomerRemark:output_type -> wtrpc.ResponseVO
+	1,  // 36: wtrpc.WorkToolRPC.QueryCommandResults:output_type -> wtrpc.ResponseVO
+	1,  // 37: wtrpc.WorkToolRPC.QueryCommandResultByMessageID:output_type -> wtrpc.ResponseVO
+	1,  // 38: wtrpc.WorkToolRPC.SyncCommandResults:output_type -> wtrpc.ResponseVO
+	1,  // 39: wtrpc.WorkToolRPC.SaveCommandResults:output_type -> wtrpc.ResponseVO
+	1,  // 40: wtrpc.WorkToolRPC.ListPendingResults:output_type -> wtrpc.ResponseVO
+	1,  // 41: wtrpc.WorkToolRPC.ClearReplyNumber:output_type -> wtrpc.ResponseVO
+	1,  // 42: wtrpc.WorkToolRPC.ReceiveCallback:output_type -> wtrpc.ResponseVO
+	1,  // 43: wtrpc.WorkToolRPC.ReceiveResultCallback:output_type -> wtrpc.ResponseVO
+	1,  // 44: wtrpc.WorkToolRPC.ReceiveOnlineCallback:output_type -> wtrpc.ResponseVO
+	1,  // 45: wtrpc.WorkToolRPC.ReceiveOfflineCallback:output_type -> wtrpc.ResponseVO
+	27, // [27:46] is the sub-list for method output_type
+	8,  // [8:27] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
 	8,  // [8:8] is the sub-list for extension extendee
 	0,  // [0:8] is the sub-list for field type_name

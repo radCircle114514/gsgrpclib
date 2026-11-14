@@ -8,6 +8,66 @@ import (
 	"github.com/iznilul/gsgrpclib/utils"
 )
 
+func InvokeRpcListRobots(ctx context.Context) ([]map[string]interface{}, error) {
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "ListRobots", &worktool_rpc.RequestAO{})
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMapList(vo.MapList), nil
+}
+
+func InvokeRpcGetRobot(robotKey string, ctx context.Context) (map[string]interface{}, error) {
+	ao, err := buildMapAO(map[string]interface{}{"robotKey": robotKey})
+	if err != nil {
+		return nil, err
+	}
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "GetRobot", ao)
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMap(vo.Map), nil
+}
+
+func InvokeRpcFlushAllRobotCustomers(ctx context.Context) ([]map[string]interface{}, error) {
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "FlushAllRobotCustomers", &worktool_rpc.RequestAO{})
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMapList(vo.MapList), nil
+}
+
+func InvokeRpcFlushRobotCustomers(robotKey string, ctx context.Context) (map[string]interface{}, error) {
+	ao, err := buildMapAO(map[string]interface{}{"robotKey": robotKey})
+	if err != nil {
+		return nil, err
+	}
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "FlushRobotCustomers", ao)
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMap(vo.Data), nil
+}
+
+func InvokeRpcFlushAllRobotGroups(ctx context.Context) ([]map[string]interface{}, error) {
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "FlushAllRobotGroups", &worktool_rpc.RequestAO{})
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMapList(vo.MapList), nil
+}
+
+func InvokeRpcFlushRobotGroup(chatID string, ctx context.Context) (map[string]interface{}, error) {
+	ao, err := buildMapAO(map[string]interface{}{"chatID": chatID})
+	if err != nil {
+		return nil, err
+	}
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "FlushRobotGroup", ao)
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMap(vo.Data), nil
+}
+
 func InvokeRpcSendTextMessage(ao *worktool_rpc.RequestAO, ctx context.Context) (map[string]interface{}, error) {
 	vo, err := client.InvokeWorkToolRPCMethod(ctx, "SendTextMessage", ao)
 	if err != nil {
@@ -64,8 +124,12 @@ func InvokeRpcSaveCommandResults(ao *worktool_rpc.RequestAO, ctx context.Context
 	return err
 }
 
-func InvokeRpcListPendingResults(ctx context.Context) ([]map[string]interface{}, error) {
-	vo, err := client.InvokeWorkToolRPCMethod(ctx, "ListPendingResults", &worktool_rpc.RequestAO{})
+func InvokeRpcListPendingResults(robotKey string, ctx context.Context) ([]map[string]interface{}, error) {
+	ao, err := buildMapAO(map[string]interface{}{"robotKey": robotKey})
+	if err != nil {
+		return nil, err
+	}
+	vo, err := client.InvokeWorkToolRPCMethod(ctx, "ListPendingResults", ao)
 	if err != nil {
 		return nil, err
 	}
@@ -75,4 +139,12 @@ func InvokeRpcListPendingResults(ctx context.Context) ([]map[string]interface{},
 func InvokeRpcClearReplyNumber(ctx context.Context) error {
 	_, err := client.InvokeWorkToolRPCMethod(ctx, "ClearReplyNumber", &worktool_rpc.RequestAO{})
 	return err
+}
+
+func buildMapAO(data map[string]interface{}) (*worktool_rpc.RequestAO, error) {
+	anyMap, err := utils.ParseMapToAny(data)
+	if err != nil {
+		return nil, err
+	}
+	return &worktool_rpc.RequestAO{Map: anyMap}, nil
 }

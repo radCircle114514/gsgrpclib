@@ -33,6 +33,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	WorkToolRPC_ListRobots_FullMethodName                    = "/wtrpc.WorkToolRPC/ListRobots"
+	WorkToolRPC_GetRobot_FullMethodName                      = "/wtrpc.WorkToolRPC/GetRobot"
+	WorkToolRPC_FlushRobotCustomers_FullMethodName           = "/wtrpc.WorkToolRPC/FlushRobotCustomers"
+	WorkToolRPC_FlushAllRobotCustomers_FullMethodName        = "/wtrpc.WorkToolRPC/FlushAllRobotCustomers"
+	WorkToolRPC_FlushRobotGroup_FullMethodName               = "/wtrpc.WorkToolRPC/FlushRobotGroup"
+	WorkToolRPC_FlushAllRobotGroups_FullMethodName           = "/wtrpc.WorkToolRPC/FlushAllRobotGroups"
 	WorkToolRPC_SendTextMessage_FullMethodName               = "/wtrpc.WorkToolRPC/SendTextMessage"
 	WorkToolRPC_AddCustomer_FullMethodName                   = "/wtrpc.WorkToolRPC/AddCustomer"
 	WorkToolRPC_UpdateCustomerRemark_FullMethodName          = "/wtrpc.WorkToolRPC/UpdateCustomerRemark"
@@ -52,6 +58,12 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WorkToolRPCClient interface {
+	ListRobots(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	GetRobot(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushRobotCustomers(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushAllRobotCustomers(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushRobotGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FlushAllRobotGroups(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SendTextMessage(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	AddCustomer(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	UpdateCustomerRemark(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
@@ -73,6 +85,66 @@ type workToolRPCClient struct {
 
 func NewWorkToolRPCClient(cc grpc.ClientConnInterface) WorkToolRPCClient {
 	return &workToolRPCClient{cc}
+}
+
+func (c *workToolRPCClient) ListRobots(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_ListRobots_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workToolRPCClient) GetRobot(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_GetRobot_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workToolRPCClient) FlushRobotCustomers(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_FlushRobotCustomers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workToolRPCClient) FlushAllRobotCustomers(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_FlushAllRobotCustomers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workToolRPCClient) FlushRobotGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_FlushRobotGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *workToolRPCClient) FlushAllRobotGroups(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WorkToolRPC_FlushAllRobotGroups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *workToolRPCClient) SendTextMessage(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
@@ -209,6 +281,12 @@ func (c *workToolRPCClient) ReceiveOfflineCallback(ctx context.Context, in *Requ
 // All implementations must embed UnimplementedWorkToolRPCServer
 // for forward compatibility.
 type WorkToolRPCServer interface {
+	ListRobots(context.Context, *RequestAO) (*ResponseVO, error)
+	GetRobot(context.Context, *RequestAO) (*ResponseVO, error)
+	FlushRobotCustomers(context.Context, *RequestAO) (*ResponseVO, error)
+	FlushAllRobotCustomers(context.Context, *RequestAO) (*ResponseVO, error)
+	FlushRobotGroup(context.Context, *RequestAO) (*ResponseVO, error)
+	FlushAllRobotGroups(context.Context, *RequestAO) (*ResponseVO, error)
 	SendTextMessage(context.Context, *RequestAO) (*ResponseVO, error)
 	AddCustomer(context.Context, *RequestAO) (*ResponseVO, error)
 	UpdateCustomerRemark(context.Context, *RequestAO) (*ResponseVO, error)
@@ -232,6 +310,24 @@ type WorkToolRPCServer interface {
 // pointer dereference when methods are called.
 type UnimplementedWorkToolRPCServer struct{}
 
+func (UnimplementedWorkToolRPCServer) ListRobots(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListRobots not implemented")
+}
+func (UnimplementedWorkToolRPCServer) GetRobot(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetRobot not implemented")
+}
+func (UnimplementedWorkToolRPCServer) FlushRobotCustomers(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushRobotCustomers not implemented")
+}
+func (UnimplementedWorkToolRPCServer) FlushAllRobotCustomers(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushAllRobotCustomers not implemented")
+}
+func (UnimplementedWorkToolRPCServer) FlushRobotGroup(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushRobotGroup not implemented")
+}
+func (UnimplementedWorkToolRPCServer) FlushAllRobotGroups(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FlushAllRobotGroups not implemented")
+}
 func (UnimplementedWorkToolRPCServer) SendTextMessage(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendTextMessage not implemented")
 }
@@ -290,6 +386,114 @@ func RegisterWorkToolRPCServer(s grpc.ServiceRegistrar, srv WorkToolRPCServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&WorkToolRPC_ServiceDesc, srv)
+}
+
+func _WorkToolRPC_ListRobots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).ListRobots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_ListRobots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).ListRobots(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkToolRPC_GetRobot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).GetRobot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_GetRobot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).GetRobot(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkToolRPC_FlushRobotCustomers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).FlushRobotCustomers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_FlushRobotCustomers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).FlushRobotCustomers(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkToolRPC_FlushAllRobotCustomers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).FlushAllRobotCustomers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_FlushAllRobotCustomers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).FlushAllRobotCustomers(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkToolRPC_FlushRobotGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).FlushRobotGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_FlushRobotGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).FlushRobotGroup(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WorkToolRPC_FlushAllRobotGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkToolRPCServer).FlushAllRobotGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkToolRPC_FlushAllRobotGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkToolRPCServer).FlushAllRobotGroups(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _WorkToolRPC_SendTextMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -533,6 +737,30 @@ var WorkToolRPC_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "wtrpc.WorkToolRPC",
 	HandlerType: (*WorkToolRPCServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListRobots",
+			Handler:    _WorkToolRPC_ListRobots_Handler,
+		},
+		{
+			MethodName: "GetRobot",
+			Handler:    _WorkToolRPC_GetRobot_Handler,
+		},
+		{
+			MethodName: "FlushRobotCustomers",
+			Handler:    _WorkToolRPC_FlushRobotCustomers_Handler,
+		},
+		{
+			MethodName: "FlushAllRobotCustomers",
+			Handler:    _WorkToolRPC_FlushAllRobotCustomers_Handler,
+		},
+		{
+			MethodName: "FlushRobotGroup",
+			Handler:    _WorkToolRPC_FlushRobotGroup_Handler,
+		},
+		{
+			MethodName: "FlushAllRobotGroups",
+			Handler:    _WorkToolRPC_FlushAllRobotGroups_Handler,
+		},
 		{
 			MethodName: "SendTextMessage",
 			Handler:    _WorkToolRPC_SendTextMessage_Handler,

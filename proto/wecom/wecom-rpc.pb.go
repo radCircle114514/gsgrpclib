@@ -790,6 +790,7 @@ type GetCustomerInRobotChatAO struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Remark         string                 `protobuf:"bytes,1,opt,name=remark,proto3" json:"remark,omitempty"`
 	ExternalUserID string                 `protobuf:"bytes,2,opt,name=externalUserID,proto3" json:"externalUserID,omitempty"`
+	RobotUserID    string                 `protobuf:"bytes,3,opt,name=robotUserID,proto3" json:"robotUserID,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -834,6 +835,13 @@ func (x *GetCustomerInRobotChatAO) GetRemark() string {
 func (x *GetCustomerInRobotChatAO) GetExternalUserID() string {
 	if x != nil {
 		return x.ExternalUserID
+	}
+	return ""
+}
+
+func (x *GetCustomerInRobotChatAO) GetRobotUserID() string {
+	if x != nil {
+		return x.RobotUserID
 	}
 	return ""
 }
@@ -1192,10 +1200,11 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\x10UpdateCustomerAO\x12\x16\n" +
 	"\x06userID\x18\x01 \x01(\tR\x06userID\x12\x1a\n" +
 	"\bmarkName\x18\x02 \x01(\tR\bmarkName\x12 \n" +
-	"\voldMarkName\x18\x03 \x01(\tR\voldMarkName\"Z\n" +
+	"\voldMarkName\x18\x03 \x01(\tR\voldMarkName\"|\n" +
 	"\x18GetCustomerInRobotChatAO\x12\x16\n" +
 	"\x06remark\x18\x01 \x01(\tR\x06remark\x12&\n" +
-	"\x0eexternalUserID\x18\x02 \x01(\tR\x0eexternalUserID\"\xbf\x01\n" +
+	"\x0eexternalUserID\x18\x02 \x01(\tR\x0eexternalUserID\x12 \n" +
+	"\vrobotUserID\x18\x03 \x01(\tR\vrobotUserID\"\xbf\x01\n" +
 	"\tRequestAO\x12(\n" +
 	"\x04data\x18\x01 \x01(\v2\x14.google.protobuf.AnyR\x04data\x120\n" +
 	"\bdataList\x18\x02 \x03(\v2\x14.google.protobuf.AnyR\bdataList\x12&\n" +
