@@ -70,6 +70,7 @@ const (
 	BusinessRPC_FindChatbotTraceInfos_FullMethodName                = "/brpc.BusinessRPC/FindChatbotTraceInfos"
 	BusinessRPC_FindChatbotInspectionInfos_FullMethodName           = "/brpc.BusinessRPC/FindChatbotInspectionInfos"
 	BusinessRPC_FindChatbotFormItems_FullMethodName                 = "/brpc.BusinessRPC/FindChatbotFormItems"
+	BusinessRPC_RefreshReportInfoStatus_FullMethodName              = "/brpc.BusinessRPC/RefreshReportInfoStatus"
 )
 
 // BusinessRPCClient is the client API for BusinessRPC service.
@@ -121,6 +122,8 @@ type BusinessRPCClient interface {
 	FindChatbotTraceInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindChatbotInspectionInfos(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FindChatbotFormItems(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	// WorkTool Report Status Callback
+	RefreshReportInfoStatus(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 }
 
 type businessRPCClient struct {
@@ -481,6 +484,16 @@ func (c *businessRPCClient) FindChatbotFormItems(ctx context.Context, in *Reques
 	return out, nil
 }
 
+func (c *businessRPCClient) RefreshReportInfoStatus(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, BusinessRPC_RefreshReportInfoStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BusinessRPCServer is the server API for BusinessRPC service.
 // All implementations must embed UnimplementedBusinessRPCServer
 // for forward compatibility.
@@ -530,6 +543,8 @@ type BusinessRPCServer interface {
 	FindChatbotTraceInfos(context.Context, *RequestAO) (*ResponseVO, error)
 	FindChatbotInspectionInfos(context.Context, *RequestAO) (*ResponseVO, error)
 	FindChatbotFormItems(context.Context, *RequestAO) (*ResponseVO, error)
+	// WorkTool Report Status Callback
+	RefreshReportInfoStatus(context.Context, *RequestAO) (*ResponseVO, error)
 	mustEmbedUnimplementedBusinessRPCServer()
 }
 
@@ -644,6 +659,9 @@ func (UnimplementedBusinessRPCServer) FindChatbotInspectionInfos(context.Context
 }
 func (UnimplementedBusinessRPCServer) FindChatbotFormItems(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method FindChatbotFormItems not implemented")
+}
+func (UnimplementedBusinessRPCServer) RefreshReportInfoStatus(context.Context, *RequestAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method RefreshReportInfoStatus not implemented")
 }
 func (UnimplementedBusinessRPCServer) mustEmbedUnimplementedBusinessRPCServer() {}
 func (UnimplementedBusinessRPCServer) testEmbeddedByValue()                     {}
@@ -1296,6 +1314,24 @@ func _BusinessRPC_FindChatbotFormItems_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BusinessRPC_RefreshReportInfoStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BusinessRPCServer).RefreshReportInfoStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BusinessRPC_RefreshReportInfoStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BusinessRPCServer).RefreshReportInfoStatus(ctx, req.(*RequestAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BusinessRPC_ServiceDesc is the grpc.ServiceDesc for BusinessRPC service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1442,6 +1478,10 @@ var BusinessRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindChatbotFormItems",
 			Handler:    _BusinessRPC_FindChatbotFormItems_Handler,
+		},
+		{
+			MethodName: "RefreshReportInfoStatus",
+			Handler:    _BusinessRPC_RefreshReportInfoStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

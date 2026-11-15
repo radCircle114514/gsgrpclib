@@ -16,6 +16,14 @@ type ReportOverviewFilterInAgent struct {
 	PageSize    int `json:"pageSize"`
 }
 
+// ReportInfoStatusAO 是 worktool-service 同步指令结果后，回调刷新
+// report_info 状态的入参：按消息 ID 分别给出执行成功与失败的两组列表，
+// business 侧按 message_id IN (...) 批量更新 is_success / is_failed。
+type ReportInfoStatusAO struct {
+	SuccessMessageIDList []string `json:"successMessageIDList"`
+	FailMessageIDList    []string `json:"failMessageIDList"`
+}
+
 // InvokeRpcFindReportOverviewInAgent 供 Agent 调用，分页返回当前所有
 // “待汇报”的活跃 report_info 记录（delete_flag=0 且 is_finished=0）。
 // 返回通用 map 行与总条数；不涉及历史表。
@@ -32,4 +40,17 @@ func InvokeRpcFindReportOverviewInAgent(filter ReportOverviewFilterInAgent, ctx 
 	list := utils.ParseAnyToMapList(vo.MapList)
 	count, _ := utils.ParseAnyToData(vo.Data).(int64)
 	return list, count, nil
+}
+
+// InvokeRpcRefreshReportInfoStatus 供 worktool-service 调用：把同步得到的
+// 成功 / 失败消息 ID 列表回传 business，由其按 message_id 批量刷新
+// report_info 的 is_success / is_failed 状态。
+func InvokeRpcRefreshReportInfoStatus(ao ReportInfoStatusAO, ctx context.Context) error {
+	toAny, err := utils.ParseDataToAny(ao)
+	if err != nil {
+		return err
+	}
+	req := &business_rpc.RequestAO{Data: toAny}
+	_, err = client.InvokeBusinessRPCMethod(ctx, "RefreshReportInfoStatus", req)
+	return err
 }

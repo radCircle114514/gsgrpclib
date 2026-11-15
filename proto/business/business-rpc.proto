@@ -76,6 +76,9 @@ service BusinessRPC {
   rpc FindChatbotTraceInfos(RequestAO) returns (ResponseVO) {}
   rpc FindChatbotInspectionInfos(RequestAO) returns (ResponseVO) {}
   rpc FindChatbotFormItems(RequestAO) returns (ResponseVO) {}
+
+  // WorkTool Report Status Callback
+  rpc RefreshReportInfoStatus(RequestAO) returns (ResponseVO) {}
 }
 
 message IdentityLink {
