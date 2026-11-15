@@ -226,12 +226,14 @@ message AddCustomerAO {
   string name = 2;
   string markName = 3;
   string phone = 4;
+  string robotKey = 5;
 }
 
 message UpdateCustomerAO {
   string userID = 1;
   string markName = 2;
   string oldMarkName = 3;
+  string robotKey = 4;
 }
 
 message GetCustomerInRobotChatAO {

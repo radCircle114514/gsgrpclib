@@ -664,6 +664,7 @@ type AddCustomerAO struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	MarkName      string                 `protobuf:"bytes,3,opt,name=markName,proto3" json:"markName,omitempty"`
 	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
+	RobotKey      string                 `protobuf:"bytes,5,opt,name=robotKey,proto3" json:"robotKey,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -726,11 +727,19 @@ func (x *AddCustomerAO) GetPhone() string {
 	return ""
 }
 
+func (x *AddCustomerAO) GetRobotKey() string {
+	if x != nil {
+		return x.RobotKey
+	}
+	return ""
+}
+
 type UpdateCustomerAO struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserID        string                 `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
 	MarkName      string                 `protobuf:"bytes,2,opt,name=markName,proto3" json:"markName,omitempty"`
 	OldMarkName   string                 `protobuf:"bytes,3,opt,name=oldMarkName,proto3" json:"oldMarkName,omitempty"`
+	RobotKey      string                 `protobuf:"bytes,4,opt,name=robotKey,proto3" json:"robotKey,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -782,6 +791,13 @@ func (x *UpdateCustomerAO) GetMarkName() string {
 func (x *UpdateCustomerAO) GetOldMarkName() string {
 	if x != nil {
 		return x.OldMarkName
+	}
+	return ""
+}
+
+func (x *UpdateCustomerAO) GetRobotKey() string {
+	if x != nil {
+		return x.RobotKey
 	}
 	return ""
 }
@@ -1191,16 +1207,18 @@ const file_proto_wecom_wecom_rpc_proto_rawDesc = "" +
 	"\bpageSize\x18\x03 \x01(\x05R\bpageSize\x12\x16\n" +
 	"\x06userID\x18\x04 \x01(\tR\x06userID\x12\x1a\n" +
 	"\bsearcher\x18\x05 \x01(\tR\bsearcher\x12\x10\n" +
-	"\x03all\x18\x06 \x01(\bR\x03all\"m\n" +
+	"\x03all\x18\x06 \x01(\bR\x03all\"\x89\x01\n" +
 	"\rAddCustomerAO\x12\x16\n" +
 	"\x06userID\x18\x01 \x01(\tR\x06userID\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
 	"\bmarkName\x18\x03 \x01(\tR\bmarkName\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\"h\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x1a\n" +
+	"\brobotKey\x18\x05 \x01(\tR\brobotKey\"\x84\x01\n" +
 	"\x10UpdateCustomerAO\x12\x16\n" +
 	"\x06userID\x18\x01 \x01(\tR\x06userID\x12\x1a\n" +
 	"\bmarkName\x18\x02 \x01(\tR\bmarkName\x12 \n" +
-	"\voldMarkName\x18\x03 \x01(\tR\voldMarkName\"|\n" +
+	"\voldMarkName\x18\x03 \x01(\tR\voldMarkName\x12\x1a\n" +
+	"\brobotKey\x18\x04 \x01(\tR\brobotKey\"|\n" +
 	"\x18GetCustomerInRobotChatAO\x12\x16\n" +
 	"\x06remark\x18\x01 \x01(\tR\x06remark\x12&\n" +
 	"\x0eexternalUserID\x18\x02 \x01(\tR\x0eexternalUserID\x12 \n" +

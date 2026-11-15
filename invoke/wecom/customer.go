@@ -45,7 +45,7 @@ func InvokeRpcFindCustomerCouldBeSelectedList(ctx context.Context) ([]map[string
 	return mapList, nil
 }
 
-func InvokeRpcAddCustomer(name, userID, markName, phone string, ctx context.Context) error {
+func InvokeRpcAddCustomer(name, userID, markName, phone, robotKey string, ctx context.Context) error {
 	conn, err := client.InitWecomRpcClientConn()
 	if err != nil {
 		return err
@@ -57,6 +57,7 @@ func InvokeRpcAddCustomer(name, userID, markName, phone string, ctx context.Cont
 		UserID:   userID,
 		MarkName: markName,
 		Phone:    phone,
+		RobotKey: robotKey,
 	}
 	ctx, cancel := client.SetTimeout(ctx)
 	defer cancel()
@@ -68,7 +69,7 @@ func InvokeRpcAddCustomer(name, userID, markName, phone string, ctx context.Cont
 	return nil
 }
 
-func InvokeRpcUpdateCustomerRemark(userID, markName, oldMarkName string, ctx context.Context) error {
+func InvokeRpcUpdateCustomerRemark(userID, markName, oldMarkName, robotKey string, ctx context.Context) error {
 	conn, err := client.InitWecomRpcClientConn()
 	if err != nil {
 		return err
@@ -79,6 +80,7 @@ func InvokeRpcUpdateCustomerRemark(userID, markName, oldMarkName string, ctx con
 		UserID:      userID,
 		MarkName:    markName,
 		OldMarkName: oldMarkName,
+		RobotKey:    robotKey,
 	}
 	ctx, cancel := client.SetTimeout(ctx)
 	defer cancel()
