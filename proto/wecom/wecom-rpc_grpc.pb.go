@@ -63,6 +63,7 @@ const (
 	WecomRPC_GetCustomerGroupChat_FullMethodName            = "/wrpc.WecomRPC/GetCustomerGroupChat"
 	WecomRPC_GetCustomerGroupChatByChatID_FullMethodName    = "/wrpc.WecomRPC/GetCustomerGroupChatByChatID"
 	WecomRPC_QueryCustomerGroupByCond_FullMethodName        = "/wrpc.WecomRPC/QueryCustomerGroupByCond"
+	WecomRPC_FindNotifyGroups_FullMethodName                = "/wrpc.WecomRPC/FindNotifyGroups"
 	WecomRPC_SyncCustomerGroup_FullMethodName               = "/wrpc.WecomRPC/SyncCustomerGroup"
 	WecomRPC_FlushCustomerGroup_FullMethodName              = "/wrpc.WecomRPC/FlushCustomerGroup"
 	WecomRPC_FindAccountUserList_FullMethodName             = "/wrpc.WecomRPC/FindAccountUserList"
@@ -169,6 +170,7 @@ type WecomRPCClient interface {
 	GetCustomerGroupChat(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	GetCustomerGroupChatByChatID(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	QueryCustomerGroupByCond(ctx context.Context, in *OptionAO, opts ...grpc.CallOption) (*ResponseVO, error)
+	FindNotifyGroups(ctx context.Context, in *FindNotifyGroupsAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	SyncCustomerGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	FlushCustomerGroup(ctx context.Context, in *RequestAO, opts ...grpc.CallOption) (*ResponseVO, error)
 	// Account User
@@ -533,6 +535,16 @@ func (c *wecomRPCClient) QueryCustomerGroupByCond(ctx context.Context, in *Optio
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResponseVO)
 	err := c.cc.Invoke(ctx, WecomRPC_QueryCustomerGroupByCond_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wecomRPCClient) FindNotifyGroups(ctx context.Context, in *FindNotifyGroupsAO, opts ...grpc.CallOption) (*ResponseVO, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResponseVO)
+	err := c.cc.Invoke(ctx, WecomRPC_FindNotifyGroups_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1237,6 +1249,7 @@ type WecomRPCServer interface {
 	GetCustomerGroupChat(context.Context, *RequestAO) (*ResponseVO, error)
 	GetCustomerGroupChatByChatID(context.Context, *RequestAO) (*ResponseVO, error)
 	QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error)
+	FindNotifyGroups(context.Context, *FindNotifyGroupsAO) (*ResponseVO, error)
 	SyncCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error)
 	FlushCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error)
 	// Account User
@@ -1410,6 +1423,9 @@ func (UnimplementedWecomRPCServer) GetCustomerGroupChatByChatID(context.Context,
 }
 func (UnimplementedWecomRPCServer) QueryCustomerGroupByCond(context.Context, *OptionAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method QueryCustomerGroupByCond not implemented")
+}
+func (UnimplementedWecomRPCServer) FindNotifyGroups(context.Context, *FindNotifyGroupsAO) (*ResponseVO, error) {
+	return nil, status.Error(codes.Unimplemented, "method FindNotifyGroups not implemented")
 }
 func (UnimplementedWecomRPCServer) SyncCustomerGroup(context.Context, *RequestAO) (*ResponseVO, error) {
 	return nil, status.Error(codes.Unimplemented, "method SyncCustomerGroup not implemented")
@@ -2130,6 +2146,24 @@ func _WecomRPC_QueryCustomerGroupByCond_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WecomRPCServer).QueryCustomerGroupByCond(ctx, req.(*OptionAO))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WecomRPC_FindNotifyGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindNotifyGroupsAO)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WecomRPCServer).FindNotifyGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WecomRPC_FindNotifyGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WecomRPCServer).FindNotifyGroups(ctx, req.(*FindNotifyGroupsAO))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3440,6 +3474,10 @@ var WecomRPC_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "QueryCustomerGroupByCond",
 			Handler:    _WecomRPC_QueryCustomerGroupByCond_Handler,
+		},
+		{
+			MethodName: "FindNotifyGroups",
+			Handler:    _WecomRPC_FindNotifyGroups_Handler,
 		},
 		{
 			MethodName: "SyncCustomerGroup",

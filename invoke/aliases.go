@@ -63,6 +63,7 @@ var (
 	InvokeRpcFindAccountUserList                         = wecom.InvokeRpcFindAccountUserList
 	InvokeRpcFindCustomerCouldBeSelectedList             = wecom.InvokeRpcFindCustomerCouldBeSelectedList
 	InvokeRpcFindCustomerGroupList                       = wecom.InvokeRpcFindCustomerGroupList
+	InvokeRpcFindNotifyGroups                            = wecom.InvokeRpcFindNotifyGroups
 	InvokeRpcFindCustomerList                            = wecom.InvokeRpcFindCustomerList
 	InvokeRpcFlushAccountUser                            = wecom.InvokeRpcFlushAccountUser
 	InvokeRpcFlushContactWay                             = wecom.InvokeRpcFlushContactWay

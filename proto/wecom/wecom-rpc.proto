@@ -61,6 +61,7 @@ service WecomRPC {
   rpc GetCustomerGroupChat(RequestAO) returns (ResponseVO) {}
   rpc GetCustomerGroupChatByChatID(RequestAO) returns (ResponseVO) {}
   rpc QueryCustomerGroupByCond(OptionAO) returns (ResponseVO) {}
+  rpc FindNotifyGroups(FindNotifyGroupsAO) returns (ResponseVO) {}
   rpc SyncCustomerGroup(RequestAO) returns (ResponseVO) {}
   rpc FlushCustomerGroup(RequestAO) returns (ResponseVO) {}
 
@@ -219,6 +220,11 @@ message FindCustomerGroupAO  {
   string userID = 4;
   string searcher = 5;
   bool  all = 6;
+}
+
+message FindNotifyGroupsAO {
+  string searcher = 1;
+  string groupName = 2;
 }
 
 message AddCustomerAO {

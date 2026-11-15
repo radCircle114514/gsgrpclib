@@ -61,6 +61,27 @@ func InvokeRpcFlushCustomerGroup(chatID string, ctx context.Context) (string, er
 	return res.Msg, nil
 }
 
+func InvokeRpcFindNotifyGroups(searcher, groupName string, ctx context.Context) ([]map[string]interface{}, error) {
+	conn, err := client.InitWecomRpcClientConn()
+	if err != nil {
+		return nil, err
+	}
+	defer conn.Close()
+	rpcClient := wecom_rpc.NewWecomRPCClient(conn)
+	ao := &wecom_rpc.FindNotifyGroupsAO{
+		Searcher:  searcher,
+		GroupName: groupName,
+	}
+	ctx, cancel := client.SetTimeout(ctx)
+	defer cancel()
+
+	vo, err := rpcClient.FindNotifyGroups(ctx, ao)
+	if err != nil {
+		return nil, err
+	}
+	return utils.ParseAnyToMapList(vo.MapList), nil
+}
+
 func InvokeRpcQueryCustomerGroupByCond(table, field, value string, flag bool, ctx context.Context) ([]map[string]interface{}, []interface{}, error) {
 	conn, err := client.InitWecomRpcClientConn()
 	if err != nil {
